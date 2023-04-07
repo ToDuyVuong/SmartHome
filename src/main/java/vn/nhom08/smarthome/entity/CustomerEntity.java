@@ -1,21 +1,52 @@
 package vn.nhom08.smarthome.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+
+
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Entity
+import java.sql.Date;
+import java.util.List;
+
+//import javax.persistence.*;
+
 @Data
-@Table(name = "customer")
 @NoArgsConstructor
 @AllArgsConstructor
+@Entity
+@Table(name = "customers")
 public class CustomerEntity {
     @Id
-    private Integer customerId;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
 
-    private  String customerFullName;
+    @Column(nullable = false, name = "username")
+    private String username;
+
+    @Column(nullable = false, name = "fullname")
+    private String fullname;
+
+    @Column(nullable = false, name = "email")
+    private String email;
+
+    @Column(nullable = false, name = "password")
+    private String password;
+
+    @Column(name = "gender")
+    private boolean gender;
+
+    @Column(name = "phone")
+    private String phone;
+
+    @Column(name = "address", columnDefinition = "nvarchar(200)")
+    private String address;
+
+    @Column(name = "birthday")
+    private Date birthday;
+
+    @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL)
+    private List<OrderEntity> orders;
+
 }
