@@ -34,8 +34,8 @@ public class Order {
     @Column(name = "order_date")
     private LocalDate orderDate;
 
-    @Column(name = "address")
-    private String address;
+    @Column(name = "ship_to")
+    private String shipTo;
 
     @Column(name = "status")
     @Enumerated(EnumType.STRING)
