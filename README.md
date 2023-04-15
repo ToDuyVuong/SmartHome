@@ -8,10 +8,10 @@
 
 ## --- RUN APP ---
 B1: download project từ Github
-    git clone https://github.com/ToDuyVuong/SmartHome.git
+git clone https://github.com/ToDuyVuong/SmartHome.git
 
 B2: Tạo database "smarthome_db" trong MYSQL Server và cấu hình properties file.
-    -- có thể sử dụng file "smarthome_db.sql" trong thư mục Documentation/data để import dữ liệu.
+-- có thể sử dụng file "smarthome_db.sql" trong thư mục Documentation/data để import dữ liệu.
 
 B3: chạy lệnh sau ở thư mục gốc của ứng dụng:
-    ./mvnw spring-boot:run
+./mvnw spring-boot:run
