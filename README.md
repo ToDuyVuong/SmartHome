@@ -5,6 +5,7 @@
 ### 2011xxxx - Đinh Tấn Phúc Huy
 ### 2011xxxx - Đỗ Trung Đức
 <hr>
+
 ## --- RUN APP ---
 B1: download project từ Github
     git clone https://github.com/ToDuyVuong/SmartHome.git
