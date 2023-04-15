@@ -1,17 +1,18 @@
 # SmartHome - Project Mẫu thiết kế phần mềm
 Thành viên nhóm 8:
-20110599 - Hà Nhật Vềnh
-201105xx - Tô Duy Vượng
-2011xxxx - Đinh Tấn Phúc Huy
-2011xxxx - Đỗ Trung Đức
+20110599 - Hà Nhật Vềnh\n
+201105xx - Tô Duy Vượng\n
+2011xxxx - Đinh Tấn Phúc Huy\n
+2011xxxx - Đỗ Trung Đức\n
 <hr>
 
 # --- RUN APP ---
-## B1: download project từ Github\n
+## B1: download project từ Github
 git clone https://github.com/ToDuyVuong/SmartHome.git
 
-## B2: Tạo database "smarthome_db" trong MYSQL Server và cấu hình properties file.\n
--- có thể sử dụng file "smarthome_db.sql" trong thư mục Documentation/data để import dữ liệu.
+## B2: Cấu hình database
+- Tạo database "smarthome_db" trong MYSQL Server và cấu hình properties file.\n
+- Có thể sử dụng file "smarthome_db.sql" trong thư mục Documentation/data để import dữ liệu.
 
-## B3: chạy lệnh sau ở thư mục gốc của ứng dụng:\n
+## B3: chạy lệnh sau ở thư mục gốc của ứng dụng:
 ./mvnw spring-boot:run
