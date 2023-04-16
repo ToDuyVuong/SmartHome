@@ -1,0 +1,11 @@
+Product là sản phẩm, chứa thông tin về một sản phẩm.
+
+Category là loại sản phẩm, một sản phẩm thuộc về một category và một category có thể chứa nhiều sp. >> "Product" & "Category" có quan hệ 1-n
+
+Customer chứa thông tin của khách hàng.
+
+Cart là giỏ hàng của khách hàng, chứa số lượng các sản phẩm dự tính mua của khách hàng. Một giỏ hàng là của một khách hàng >> "Cart" & "Customer" quan hệ 1-1. Giỏ hàng có thể chứa nhiều sản phẩm khác nhau và một sản phẩm có thể thuộc nhiều giỏ hàng khác nhau >> "Cart" và "Product" có quan hệ n-n.
+	
+Order là một đơn đặt hàng, giống như một phiếu thanh toán, chứa thông tin của một giao dịch. Mỗi Order phải thuộc về một khách hàng, và một khách hàng có thể có nhiều Order >> "Customer" & "Order" có quan hệ 1-n.
+
+OrderItem là các mặt hàng trong một đơn hàng. Mỗi Order chứa nhiều OrderItem >> "Order" & "OrderItem" có quan hệ 1-n. Tương tự, mỗi OrderItem có thông tin về một Product >> "OrderItem" & "Product" quan hệ 1-n
