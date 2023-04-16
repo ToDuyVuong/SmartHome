@@ -15,6 +15,7 @@ Thành viên nhóm 8:
 - MySQL
 
 <hr>
+
 # RUN APP
 ## B1: Sao chép dự án từ Github
 git clone https://github.com/ToDuyVuong/SmartHome.git
