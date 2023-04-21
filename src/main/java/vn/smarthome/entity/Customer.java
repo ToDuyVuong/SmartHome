@@ -21,6 +21,7 @@ import javax.persistence.*;
 public class Customer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(nullable = false, name = "customer_id")
     private int customerId;
 
     @Column(name = "fullname")

@@ -5,15 +5,15 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-@Controller
-@RequestMapping("/jsp")
+//@Controller
+//@RequestMapping("/jsp")
 public class JSPController {
-    @GetMapping("/test")
-    public String show2(Model model) {
-        String message = "Test from JSP Controller!";
-        model.addAttribute("message", message);
-        return "jsp-test";
-    }
+//    @GetMapping("/test")
+//    public String show2(Model model) {
+//        String message = "Test from JSP Controller!";
+//        model.addAttribute("message", message);
+//        return "jsp-test";
+//    }
 
     // @GetMapping("/hello-jsp")
     // public ModelAndView showHelloPageJSP() {

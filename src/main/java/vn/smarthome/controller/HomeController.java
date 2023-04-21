@@ -19,7 +19,7 @@ public class HomeController {
 //    @Autowired
 //    IProductService productService;
     @RequestMapping(value = {"", "home"}, method = RequestMethod.GET)
-    public String StartHonme(ModelMap modelMap)
+    public String StartHonme(/*ModelMap modelMap*/)
     {
 
 

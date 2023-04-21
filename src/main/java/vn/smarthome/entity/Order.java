@@ -18,6 +18,8 @@ import javax.persistence.*;
 public class Order {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(nullable = false, name = "order_id")
+
     private int orderId;
 
     @Column(name = "order_date")
@@ -36,7 +38,7 @@ public class Order {
 
     // relationship with Customer
     @ManyToOne(targetEntity = Customer.class, fetch = FetchType.LAZY)
-    @JoinColumn(name = "customer_id", referencedColumnName = "customer_id", foreignKey = @ForeignKey(name = "FK_customer_order"))
+    @JoinColumn(name = "customerId", referencedColumnName = "customer_id", foreignKey = @ForeignKey(name = "FK_customer_order"))
     private Customer customer;
 
     @PrePersist
