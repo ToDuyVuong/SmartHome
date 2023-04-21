@@ -7,9 +7,9 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.JstlView;
-import org.thymeleaf.spring6.ISpringTemplateEngine;
-import org.thymeleaf.spring6.SpringTemplateEngine;
-import org.thymeleaf.spring6.view.ThymeleafViewResolver;
+//import org.thymeleaf.spring6.ISpringTemplateEngine;
+//import org.thymeleaf.spring6.SpringTemplateEngine;
+//import org.thymeleaf.spring6.view.ThymeleafViewResolver;
 import org.thymeleaf.templatemode.TemplateMode;
 import org.thymeleaf.templateresolver.ClassLoaderTemplateResolver;
 import org.thymeleaf.templateresolver.ITemplateResolver;
@@ -30,19 +30,19 @@ public class ViewResolverConfig {
         return resolver;
     }
 
-    @Bean(name = "thymeleafViewResolver")
-    public ViewResolver thymeleafViewResolver() {
-        ThymeleafViewResolver resolver = new ThymeleafViewResolver();
-        resolver.setTemplateEngine(templateEngine());
-        resolver.setCharacterEncoding("UTF-8");
-        return resolver;
-    }
-
-    private ISpringTemplateEngine templateEngine() {
-        SpringTemplateEngine engine = new SpringTemplateEngine();
-        engine.setTemplateResolver(thymeleafTemplateResolver());
-        return engine;
-    }
+//    @Bean(name = "thymeleafViewResolver")
+//    public ViewResolver thymeleafViewResolver() {
+//        ThymeleafViewResolver resolver = new ThymeleafViewResolver();
+//        resolver.setTemplateEngine(templateEngine());
+//        resolver.setCharacterEncoding("UTF-8");
+//        return resolver;
+//    }
+//
+//    private ISpringTemplateEngine templateEngine() {
+//        SpringTemplateEngine engine = new SpringTemplateEngine();
+//        engine.setTemplateResolver(thymeleafTemplateResolver());
+//        return engine;
+//    }
 
     private ITemplateResolver thymeleafTemplateResolver() {
         ClassLoaderTemplateResolver resolver = new ClassLoaderTemplateResolver();
