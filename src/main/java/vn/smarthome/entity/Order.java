@@ -18,7 +18,7 @@ import javax.persistence.*;
 public class Order {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int order_id;
+    private int orderId;
 
     @Column(name = "order_date")
     private LocalDate orderDate;
