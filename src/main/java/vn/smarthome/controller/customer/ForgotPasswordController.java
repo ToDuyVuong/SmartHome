@@ -49,7 +49,6 @@ public class ForgotPasswordController {
         int code = (int) Math.floor(((Math.random() * 899999) + 100000));
         Mail mail = new Mail();
         mail.setMailFrom("conc5288@gmail.com");
-//        mail.setMailFrom("conc5288@gmail.com");
 
         mail.setMailTo(Customer.getEmail());
         mail.setMailSubject("For got Password");
