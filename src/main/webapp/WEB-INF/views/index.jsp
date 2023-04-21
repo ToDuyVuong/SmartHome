@@ -1,7 +1,10 @@
-<!doctype html>
-<html lang="en">
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+         pageEncoding="UTF-8" %>
+<%@include file="/common/taglib.jsp" %>
+<!DOCTYPE html>
+<html>
 <head>
-    <meta charset="utf-8">
+<%--    <%@include file="/common/web/header.jsp" %>--%>
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -11,6 +14,12 @@
 </head>
 <body>
 
+
+    <%@include file="/common/web/header.jsp" %>
+
+
+
+
 <h1>
     <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample"
             aria-expanded="false" aria-controls="collapseExample">
@@ -19,6 +28,7 @@
 </h1>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+        crossorigin="anonymous"></script>
 </body>
 </html>

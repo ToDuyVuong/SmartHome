@@ -38,4 +38,8 @@ public class CustomerModel {
 
     // relationship 1-1 with Cart
     private Cart cart;
+
+    private String newpassword;
+
+    private String password2;
 }
