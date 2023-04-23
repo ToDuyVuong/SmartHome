@@ -1,0 +1,31 @@
+package vn.smarthome.service;
+
+import org.springframework.data.domain.Example;
+import vn.smarthome.entity.Customer;
+import vn.smarthome.entity.Product;
+
+import java.util.List;
+import java.util.Optional;
+
+public interface IProductService {
+    List<Product> findAll();
+
+    <S extends Product> List<S> findAll(Example<S> example);
+
+    <S extends Product> S save(S entity);
+
+    Optional<Product> findById(Integer integer);
+
+    long count();
+
+    List<Product> findByNameContaining(String name);
+    List<Product> findByName(String name);
+
+    List<Product> findByPrice(Long price);
+
+    List<Product> findByQuantity(int quantity);
+
+    List<Product> findByCategoryId(int categoryId);
+
+    Product findById(int id);
+}
