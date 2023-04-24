@@ -25,7 +25,7 @@ public interface IProductService {
 
     List<Product> findByQuantity(int quantity);
 
-    List<Product> findByCategoryId(int categoryId);
+    List<Product> findByCategory_CategoryId(int categoryId);
 
     Product findById(int id);
 }

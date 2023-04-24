@@ -58,8 +58,8 @@ public class ProductServiceImpl implements IProductService {
     }
 
     @Override
-    public List<Product> findByCategoryId(int categoryId) {
-        return productRepository.findByCategoryId(categoryId);
+    public List<Product> findByCategory_CategoryId(int categoryId) {
+        return productRepository.findByCategory_CategoryId(categoryId);
     }
 
     @Override

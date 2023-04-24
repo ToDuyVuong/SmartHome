@@ -35,7 +35,7 @@
 <body>
 <nav class="navbar navbar-expand-md navbar navbar-light fixed-top" style="background-color: #80ea6e;">
     <div class="container">
-        <a class="navbar-brand" href="">Smart Home Shop</a>
+        <a class="navbar-brand" href="/">Smart Home Shop</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse"
                 data-target="#navbarsExampleDefault"
                 aria-controls="navbarsExampleDefault" aria-expanded="false"
