@@ -1,7 +1,6 @@
 package vn.smarthome.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-
 import vn.smarthome.entity.Customer;
 
 import java.util.List;

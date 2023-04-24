@@ -1,15 +1,12 @@
 package vn.smarthome.entity;
 
-import java.util.List;
-
 import com.fasterxml.jackson.annotation.JsonIgnore;
-
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "categories")
@@ -21,7 +18,7 @@ public class Category {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(nullable = false, name = "category_id")
 
-    private int categoryId;
+    private Integer categoryId;
 
     @Column(name = "name")
     private String name;

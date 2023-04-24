@@ -7,7 +7,6 @@ import lombok.NoArgsConstructor;
 import vn.smarthome.entity.Cart;
 import vn.smarthome.entity.Order;
 
-import javax.persistence.*;
 import java.sql.Date;
 import java.util.List;
 
@@ -15,7 +14,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 public class CustomerModel {
-    private int customerId;
+    private Integer customerId;
 
     private String fullname;
 

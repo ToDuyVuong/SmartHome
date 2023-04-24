@@ -1,15 +1,11 @@
 package vn.smarthome.entity;
 
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "products")
@@ -22,7 +18,7 @@ public class Product {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(nullable = false, name = "product_id")
 
-    private int productId;
+    private Integer productId;
 
     @Column(name = "name")
     private String name;
@@ -50,6 +46,6 @@ public class Product {
     private List<OrderItem> orderItems;
 
     //relationship with Cart
-    @ManyToMany(mappedBy = "products", fetch = FetchType.LAZY)
-    private Set<Cart> carts = new HashSet<>();
+//    @ManyToMany(mappedBy = "products", fetch = FetchType.LAZY)
+//    private Set<Cart> carts = new HashSet<>();
 }

@@ -15,7 +15,7 @@ import java.util.Set;
 @NoArgsConstructor
 @AllArgsConstructor
 public class ProductModel {
-    private int productId;
+    private Integer productId;
     private String name;
     private String description;
     private String image;

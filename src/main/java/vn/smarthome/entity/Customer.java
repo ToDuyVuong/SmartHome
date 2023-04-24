@@ -1,16 +1,15 @@
 package vn.smarthome.entity;
-import java.sql.Date;
-import java.util.List;
-
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.sql.Date;
+import java.util.List;
 
 @Entity
-@Table(name = "customers", uniqueConstraints = { 
+@Table(name = "customer", uniqueConstraints = {
     @UniqueConstraint(name = "UQ_Customer_username" ,columnNames = "username"),
     @UniqueConstraint(name = "UQ_Customer_email" ,columnNames = "email"),
     @UniqueConstraint(name = "UQ_Customer_phone" ,columnNames = "phone")
@@ -22,7 +21,7 @@ public class Customer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(nullable = false, name = "customer_id")
-    private int customerId;
+    private Integer customerId;
 
     @Column(name = "fullname")
     private String fullname;

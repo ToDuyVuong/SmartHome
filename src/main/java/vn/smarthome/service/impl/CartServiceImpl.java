@@ -1,9 +1,9 @@
 package vn.smarthome.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Example;
 import org.springframework.stereotype.Service;
 import vn.smarthome.entity.Cart;
+import vn.smarthome.entity.CartItem;
 import vn.smarthome.repository.CartRepository;
 import vn.smarthome.service.ICartService;
 
@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class CartServiceImpl implements ICartService {
+public class CartServiceImpl implements ICartService{
 
     @Autowired
     CartRepository cartRepository;
@@ -23,13 +23,20 @@ public class CartServiceImpl implements ICartService {
     }
 
     @Override
-    public List<Cart> findAll() {
-        return cartRepository.findAll();
+    public void createCart(Cart cart) {
+        cartRepository.save(cart);
     }
 
     @Override
-    public <S extends Cart> List<S> findAll(Example<S> example) {
-        return cartRepository.findAll(example);
+    public Long getCartTotal(Cart cartEntity) {
+        Long cartTotal = 0L;
+        List<CartItem> cartItems = (List<CartItem>) cartEntity.getCartitems();
+        for (CartItem cartItem : cartItems) {
+            Long price = cartItem.getProducts().getPrice();
+            Long quantity = Long.valueOf(cartItem.getQuantity());
+            cartTotal += price * quantity;
+        }
+        return cartTotal;
     }
 
     @Override
@@ -38,7 +45,33 @@ public class CartServiceImpl implements ICartService {
     }
 
     @Override
-    public Optional<Cart> findById(Integer integer) {
-        return cartRepository.findById(integer);
+    public Cart getCartByCustomerId(int id) {
+        return cartRepository.findByCustomerId(id);
     }
+    @Override
+    public List<Cart> findAll() {
+        return cartRepository.findAll();
+    }
+
+    @Override
+    public Optional<Cart> findById(Integer cartId) {
+        return cartRepository.findById(cartId);
+    }
+
+    @Override
+    public long count() {
+        return cartRepository.count();
+    }
+
+    @Override
+    public void deleteById(Integer cartId) {
+        cartRepository.deleteById(cartId);
+    }
+
+    @Override
+    public void deleteAll() {
+        cartRepository.deleteAll();
+    }
+
+
 }

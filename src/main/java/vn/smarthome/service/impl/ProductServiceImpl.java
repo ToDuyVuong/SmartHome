@@ -62,6 +62,7 @@ public class ProductServiceImpl implements IProductService {
         return productRepository.findByCategory_CategoryId(categoryId);
     }
 
+
     @Override
     public List<Product> findByQuantity(int quantity) {
         return productRepository.findByQuantity(quantity);

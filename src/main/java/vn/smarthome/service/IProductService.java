@@ -1,7 +1,6 @@
 package vn.smarthome.service;
 
 import org.springframework.data.domain.Example;
-import vn.smarthome.entity.Customer;
 import vn.smarthome.entity.Product;
 
 import java.util.List;
@@ -25,7 +24,9 @@ public interface IProductService {
 
     List<Product> findByQuantity(int quantity);
 
+
     List<Product> findByCategory_CategoryId(int categoryId);
+
 
     Product findById(int id);
 }

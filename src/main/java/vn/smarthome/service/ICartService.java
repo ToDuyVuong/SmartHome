@@ -1,18 +1,26 @@
 package vn.smarthome.service;
 
-import org.springframework.data.domain.Example;
 import vn.smarthome.entity.Cart;
 
 import java.util.List;
 import java.util.Optional;
-
 public interface ICartService {
 
-    List<Cart> findAll();
+    void createCart(Cart cart);
 
-    <S extends Cart> List<S> findAll(Example<S> example);
+    public Long getCartTotal(Cart cartEntity);
+    void deleteAll();
+
+    void deleteById(Integer cartId);
+
+    long count();
+
+    Optional<Cart> findById(Integer cartId);
 
     <S extends Cart> S save(S entity);
 
-    Optional<Cart> findById(Integer integer);
+    Cart getCartByCustomerId(int id);
+
+    List<Cart> findAll();
+
 }

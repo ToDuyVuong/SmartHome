@@ -1,14 +1,11 @@
 package vn.smarthome.entity;
 
-import java.time.LocalDate;
-import java.util.List;
-
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "orders")
@@ -20,13 +17,28 @@ public class Order {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(nullable = false, name = "order_id")
 
-    private int orderId;
+    private Integer orderId;
 
     @Column(name = "order_date")
-    private LocalDate orderDate;
+    private String date;
 
     @Column(name = "ship_to")
     private String shipTo;
+
+    @Column(name= "totalprice")
+    private Long totalPrice;
+
+    @Column(name = "note")
+    private String note;
+
+    @Column(name = "address")
+    private String address;
+
+    @Column(name = "phone")
+    private String phone;
+
+    @Column(name = "totalquantity")
+    private Integer totalQuantity;
 
     @Column(name = "status")
     @Enumerated(EnumType.STRING)
@@ -41,10 +53,10 @@ public class Order {
     @JoinColumn(name = "customerId", referencedColumnName = "customer_id", foreignKey = @ForeignKey(name = "FK_customer_order"))
     private Customer customer;
 
-    @PrePersist
-    public void setPurchaseDate() {
-        this.orderDate = LocalDate.now();
-    }
+//    @PrePersist
+//    public void setPurchaseDate() {
+//        this.orderDate = LocalDate.now();
+//    }
 
     public enum Status {
         PENDING(0), DELIVERING(1), DELIVERED(2), CANCELED(3);
