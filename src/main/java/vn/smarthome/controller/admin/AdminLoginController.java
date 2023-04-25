@@ -27,14 +27,14 @@ import java.util.Objects;
 @RequestMapping("")
 public class AdminLoginController {
     // Vao trang admin
-    @RequestMapping(value = {"/admin", "admin"}, method = RequestMethod.GET)
-    public String LoginForAdmin(HttpServletRequest request) {
-        // Get the current URL
-        String currentUrl = request.getRequestURI();
-        System.out.println("currentUrl = " + currentUrl);
-
-        return "admin/loginforadmin";
-    }
+//    @RequestMapping(value = {"/admin", "admin"}, method = RequestMethod.GET)
+//    public String LoginForAdmin(HttpServletRequest request) {
+//        // Get the current URL
+//        String currentUrl = request.getRequestURI();
+//        System.out.println("currentUrl = " + currentUrl);
+//
+//        return "admin/loginforadmin";
+//    }
 
     // Hoat dong login
     @RequestMapping(value = {"/admin", "admin"}, method = RequestMethod.POST)
