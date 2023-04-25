@@ -3,7 +3,7 @@
 Thành viên nhóm 8:
 
 - 20110599 - Hà Nhật Vềnh
-- 201105xx - Tô Duy Vượng
+- 20110053 - Tô Duy Vượng
 - 2011xxxx - Đinh Tấn Phúc Huy
 - 2011xxxx - Đỗ Trung Đức
 <hr>
