@@ -1,14 +1,28 @@
 package vn.smarthome.entity;
 
+import java.util.List;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.ForeignKey;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.*;
-import java.util.List;
-
 @Entity
-@Table(name = "cart")
+@Table(name = "carts")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -21,23 +35,20 @@ public class Cart {
     @Column(name = "quantity")
     private int quantity;
 
-    @Column(nullable = false, name = "totalprice")
+    @Column(nullable = false, name = "totalPrice")
     private int totalPrice;
 
-    @OneToMany(mappedBy = "cart", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private List<CartItem> cartitems;
+    // DONE relationship with Product
+    @ManyToMany(fetch = FetchType.LAZY, targetEntity = Product.class)
+    @JsonIgnore
+    @JoinTable(name = "cart_product",
+            joinColumns = @JoinColumn(name = "cartId", referencedColumnName = "cart_id", nullable = false, foreignKey = @ForeignKey(name = "FK_cartId")),
+            inverseJoinColumns = @JoinColumn(name = "productId", referencedColumnName = "product_id", nullable = false, foreignKey = @ForeignKey(name = "FK_productId"))
+    )
+    private List<Product> products;
 
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "customer_id")
+    // DONE relationship with Customer
+    @OneToOne(fetch = FetchType.LAZY, optional = false, targetEntity = Customer.class)
+    @JoinColumn(name = "customerId", referencedColumnName = "customer_id", nullable = false, foreignKey = @ForeignKey(name = "FK_customer_cart"))
     private Customer customer;
-
-//    // relationship with Customer
-//    @OneToOne(targetEntity = Customer.class, fetch = FetchType.LAZY)
-//    @JoinColumn(name = "customerId", referencedColumnName = "customer_id", nullable = false, foreignKey = @ForeignKey(name = "FK_customer_cart"))
-//    private Customer customer;
-//
-//    // relationship with Product, create a new table "cart_product"
-//    @ManyToMany(targetEntity = Product.class, fetch = FetchType.LAZY, cascade = { CascadeType.PERSIST, CascadeType.MERGE })
-//    @JoinTable(name = "cart_product", joinColumns = @JoinColumn(name = "cartId", referencedColumnName = "cart_id", nullable = false, foreignKey = @ForeignKey(name = "FK_cart__product")), inverseJoinColumns = @JoinColumn(name = "productId", referencedColumnName = "product_id", nullable = false, foreignKey = @ForeignKey(name = "FK_product__cart")))
-//    private List<Product> products;
 }

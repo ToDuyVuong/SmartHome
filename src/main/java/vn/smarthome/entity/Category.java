@@ -26,7 +26,7 @@ public class Category {
     @Column(name = "description")
     private String description;
 
-    // relationship with Product
+    // DONE relationship with Product
     @OneToMany(mappedBy = "category", fetch = FetchType.LAZY)
     @JsonIgnore
     private List<Product> products;

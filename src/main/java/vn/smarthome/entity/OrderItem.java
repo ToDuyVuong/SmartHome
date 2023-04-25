@@ -1,6 +1,5 @@
 package vn.smarthome.entity;
 
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -8,7 +7,7 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "orderitem")
+@Table(name = "orderItems")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -17,18 +16,18 @@ public class OrderItem {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer orderItemId;
 
-
     @Column(name = "quantity")
     private int quantity;
 
-    @Column(name= "price")
+    @Column(name = "price")
     private Long price;
-    // relationship with Product
-    @ManyToOne(targetEntity = Product.class, fetch = FetchType.LAZY)
+
+    // DONE relationship with Product || một orderItem chỉ thuộc về 1 product
+    @ManyToOne(targetEntity = Product.class, fetch = FetchType.LAZY, optional = true)
     @JoinColumn(name = "productId", referencedColumnName = "product_id", nullable = false, foreignKey = @ForeignKey(name = "FK_product_orderItem"))
     private Product product;
 
-    // relationship with Order
+    // DONE relationship with Order
     @ManyToOne(targetEntity = Order.class, fetch = FetchType.LAZY)
     @JoinColumn(name = "orderId", referencedColumnName = "order_id", nullable = false, foreignKey = @ForeignKey(name = "FK_order_orderItem"))
     private Order order;

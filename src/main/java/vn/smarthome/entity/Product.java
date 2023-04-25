@@ -5,6 +5,9 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.util.List;
 
 @Entity
@@ -36,16 +39,17 @@ public class Product {
     private int quantity;
 
 
-    // relationship with Category
+    // DONE relationship with Category
     @ManyToOne(targetEntity = Category.class, fetch = FetchType.LAZY)
-    @JoinColumn(name = "category_id", referencedColumnName = "category_id", nullable = false, foreignKey = @ForeignKey(name = "FK_category_product"))
+    @JoinColumn(name = "categoryId", referencedColumnName = "category_id", nullable = false, foreignKey = @ForeignKey(name = "FK_category_product"))
     private Category category;
 
-    // relationship with OrderItem
-    @OneToMany(mappedBy = "product", fetch = FetchType.LAZY)
+    // DONE relationship with OrderItem
+    @OneToMany(mappedBy = "product", fetch = FetchType.LAZY, targetEntity = OrderItem.class)
+    @JsonIgnore
     private List<OrderItem> orderItems;
 
-    //relationship with Cart
-//    @ManyToMany(mappedBy = "products", fetch = FetchType.LAZY)
-//    private Set<Cart> carts = new HashSet<>();
+    // DONE relationship with Cart
+    @ManyToMany(mappedBy = "products", fetch = FetchType.LAZY, targetEntity = Cart.class)
+    private List<Cart> carts;
 }

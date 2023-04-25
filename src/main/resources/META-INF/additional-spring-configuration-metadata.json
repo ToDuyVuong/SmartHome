@@ -1,0 +1,12 @@
+{"properties": [
+  {
+    "name": "spring.mvc.view.view-names",
+    "type": "java.lang.String",
+    "description": "A description for 'spring.mvc.view.view-names'"
+  },
+  {
+    "name": "mail.smtp.debug",
+    "type": "java.lang.String",
+    "description": "A description for 'mail.smtp.debug'"
+  }
+]}

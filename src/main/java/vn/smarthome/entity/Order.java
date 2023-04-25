@@ -5,6 +5,9 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.util.List;
 
 @Entity
@@ -19,13 +22,13 @@ public class Order {
 
     private Integer orderId;
 
-    @Column(name = "order_date")
+    @Column(name = "orderDate")
     private String date;
 
-    @Column(name = "ship_to")
+    @Column(name = "shipTo")
     private String shipTo;
 
-    @Column(name= "totalprice")
+    @Column(name= "totalPrice")
     private Long totalPrice;
 
     @Column(name = "note")
@@ -37,18 +40,19 @@ public class Order {
     @Column(name = "phone")
     private String phone;
 
-    @Column(name = "totalquantity")
+    @Column(name = "totalQuantity")
     private Integer totalQuantity;
 
     @Column(name = "status")
     @Enumerated(EnumType.STRING)
     private Status status;
 
-    // relationship with OrderItem
+    // DONE relationship with OrderItem
     @OneToMany(targetEntity = OrderItem.class, fetch = FetchType.LAZY, mappedBy = "order")
+    @JsonIgnore
     private List<OrderItem> orderItems;
 
-    // relationship with Customer
+    // DONE relationship with Customer
     @ManyToOne(targetEntity = Customer.class, fetch = FetchType.LAZY)
     @JoinColumn(name = "customerId", referencedColumnName = "customer_id", foreignKey = @ForeignKey(name = "FK_customer_order"))
     private Customer customer;

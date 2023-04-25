@@ -1,15 +1,27 @@
 package vn.smarthome.entity;
 
+import java.sql.Date;
+import java.util.List;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.*;
-import java.sql.Date;
-import java.util.List;
-
 @Entity
-@Table(name = "customer", uniqueConstraints = {
+@Table(name = "customers", uniqueConstraints = {
     @UniqueConstraint(name = "UQ_Customer_username" ,columnNames = "username"),
     @UniqueConstraint(name = "UQ_Customer_email" ,columnNames = "email"),
     @UniqueConstraint(name = "UQ_Customer_phone" ,columnNames = "phone")
@@ -20,7 +32,7 @@ import java.util.List;
 public class Customer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(nullable = false, name = "customer_id")
+    @Column(name = "customer_id")
     private Integer customerId;
 
     @Column(name = "fullname")
@@ -47,11 +59,12 @@ public class Customer {
     @Column(name = "password")
     private String password;
 
-    // relationship with Order
-    @OneToMany(targetEntity = Order.class, mappedBy = "customer")
+    // DONE relationship with Order || 1 customer có thể có nhiều order
+    @OneToMany(mappedBy = "customer", targetEntity = Order.class)
+    @JsonIgnore
     private List<Order> orders;
 
-    // relationship 1-1 with Cart
-    @OneToOne(targetEntity = Cart.class, mappedBy = "customer")
+    // DONE relationship 1-1 with Cart
+    @OneToOne(mappedBy = "customer", fetch = FetchType.LAZY, optional = true)
     private Cart cart;
 }
