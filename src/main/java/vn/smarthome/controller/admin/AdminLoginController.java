@@ -27,17 +27,17 @@ import java.util.Objects;
 @RequestMapping("")
 public class AdminLoginController {
     // Vao trang admin
-//    @RequestMapping(value = {"/admin", "admin"}, method = RequestMethod.GET)
-//    public String LoginForAdmin(HttpServletRequest request) {
-//        // Get the current URL
-//        String currentUrl = request.getRequestURI();
-//        System.out.println("currentUrl = " + currentUrl);
-//
-//        return "admin/loginforadmin";
-//    }
+    @RequestMapping(value ="/loginadmin", method = RequestMethod.GET)
+    public String LoginForAdmin(HttpServletRequest request) {
+        // Get the current URL
+        String currentUrl = request.getRequestURI();
+        System.out.println("currentUrl = " + currentUrl);
+
+        return "admin/loginforadmin";
+    }
 
     // Hoat dong login
-    @RequestMapping(value = {"/admin", "admin"}, method = RequestMethod.POST)
+    @RequestMapping(value ="/loginadmin", method = RequestMethod.POST)
     public String LoginForAdmin(ModelMap model, HttpServletRequest request) {
 
         // xử lý yêu cầu đăng nhập tại đây
@@ -45,7 +45,7 @@ public class AdminLoginController {
          String password = request.getParameter("password");
         try {
             if (Objects.equals(username, "admin") && Objects.equals(password, "admin")) {
-                return "admin/listcategory";
+                return "admin/product";
             } else {
                 model.addAttribute("message", "Sai tài khoản hoặc mật khẩu!");
                 return "admin/loginforadmin";
