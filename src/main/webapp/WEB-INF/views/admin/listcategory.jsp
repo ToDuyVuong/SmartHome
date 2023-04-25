@@ -16,15 +16,15 @@
     <title>Admin Smart Home</title>
 
     <!-- Custom fonts for this template-->
-<%--    <link href="./TemplateAdmin/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">--%>
+    <link href="./TemplateAdmin/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link
             href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
             rel="stylesheet">
+    <link href="./TemplateAdmin/css/sb-admin-2.min.css" rel="stylesheet" type="text/css">
 
     <!-- Custom styles for this template-->
-<%--    <link href="./TemplateAdmin/css/sb-admin-2.min.css" rel="stylesheet">--%>
-    <style><%@include file="TemplateAdmin/vendor/fontawesome-free/css/all.min.css"%></style>
-    <style><%@include file="TemplateAdmin/css/sb-admin-2.min.css"%></style>
+<%--    <style><%@include file="TemplateAdmin/vendor/fontawesome-free/css/all.min.css"%></style>--%>
+<%--    <style><%@include file="TemplateAdmin/css/sb-admin-2.min.css"%></style>--%>
 </head>
 <body id="page-top">
 
@@ -128,7 +128,7 @@
                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <span class="mr-2 d-none d-lg-inline text-gray-600 small">Admin</span>
                             <img class="img-profile rounded-circle"
-                                 src="./TemplateAdmin/img/undraw_profile.svg">
+                                 src="../../../TemplateAdmin/img/undraw_profile.svg">
                         </a>
                         <!-- Dropdown - User Information -->
                         <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"

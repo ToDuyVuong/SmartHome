@@ -8,24 +8,24 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class AdminController {
     //    @Autowired
 //    IProductService productService;
-    @RequestMapping(value = {"/admin", "admin"}, method = RequestMethod.GET)
-    public String StartHonme(/*ModelMap modelMap*/)
-    {
-
-
-//        List<ProductEntity> productEntityList = new ArrayList<>();
+//    @RequestMapping(value = {"/admin", "admin"}, method = RequestMethod.GET)
+//    public String StartHonme(/*ModelMap modelMap*/)
+//    {
 //
-//        productEntityList = productService.findAll();
 //
-//        for (ProductEntity productEntity : productEntityList) {
-//            System.out.println(productEntity.getProductName());
-//        }
+////        List<ProductEntity> productEntityList = new ArrayList<>();
+////
+////        productEntityList = productService.findAll();
+////
+////        for (ProductEntity productEntity : productEntityList) {
+////            System.out.println(productEntity.getProductName());
+////        }
+////
+////        modelMap.addAttribute("productList", productEntityList);
 //
-//        modelMap.addAttribute("productList", productEntityList);
-
-
-
-        return "admin/addcategory";
-    }
+//
+//
+//        return "admin/addcategory";
+//    }
 
 }
