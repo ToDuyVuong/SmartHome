@@ -1,5 +1,8 @@
 <%--<jsp:useBean id="authUser" scope="session" type="Model.User"/>--%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+         pageEncoding="utf-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -14,13 +17,13 @@
     <title>Admin Smart Home</title>
 
     <!-- Custom fonts for this template-->
-    <link rel="stylesheet" type="text/css" href="./TemplateAdmin/vendor/fontawesome-free/css/all.min.css" >
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/TemplateAdmin/vendor/fontawesome-free/css/all.min.css" >
     <link
             href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
             rel="stylesheet">
 
     <!-- Custom styles for this template-->
-    <link rel="stylesheet" href="./TemplateAdmin/css/sb-admin-2.min.css" >
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/TemplateAdmin/css/sb-admin-2.min.css" >
 
 </head>
 <body id="page-top">
@@ -65,10 +68,8 @@
             <div id="collapseCategory" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
                     <h6 class="collapse-header">Lựa chọn:</h6>
-                    <a class="collapse-item" href="${pageContext.request.contextPath}/Admin/Category/ThemCategory">Thêm
-                        danh mục</a>
-                    <a class="collapse-item" href="${pageContext.request.contextPath}/Admin/Category/ShowCategory">Danh
-                        sách danh mục</a>
+                    <a class="collapse-item" href="<c:url value="/admin/addCategory"/>">Thêm danh mục</a>
+                    <a class="collapse-item" href="<c:url value="/admin/listCategory"/>">Danh sách danh mục</a>
                 </div>
             </div>
         </li>
@@ -161,7 +162,7 @@
                                     </h4>
                                 </div>
                                 <div class="card-body">
-                                    <form class="form-valide-with-icon" action="AddCategory" method="POST"
+                                    <form class="form-valide-with-icon" action="addCategory" method="POST"
                                           novalidate="novalidate">
                                         <div class="form-group">
                                             <div class="form-group">
@@ -184,7 +185,7 @@
                                                             <i class="fa fa-header" aria-hidden="true"></i>
                                                         </span>
                                                     </div>
-                                                    <input type="text" class="form-control" name="name"
+                                                    <input type="text" class="form-control" name="description"
                                                            placeholder="Mô tả" value="">
                                                 </div>
                                             </div>
@@ -226,21 +227,21 @@
 
 
 <!-- Bootstrap core JavaScript-->
-<script src="./TemplateAdmin/vendor/jquery/jquery.min.js"></script>
-<script src="./TemplateAdmin/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="${pageContext.request.contextPath}/TemplateAdmin/vendor/jquery/jquery.min.js"></script>
+<script src="${pageContext.request.contextPath}/TemplateAdmin/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
 <!-- Core plugin JavaScript-->
-<script src="./TemplateAdmin/vendor/jquery-easing/jquery.easing.min.js"></script>
+<script src="${pageContext.request.contextPath}/TemplateAdmin/vendor/jquery-easing/jquery.easing.min.js"></script>
 
 <!-- Custom scripts for all pages-->
-<script src="./TemplateAdmin/js/sb-admin-2.min.js"></script>
+<script src="${pageContext.request.contextPath}/TemplateAdmin/js/sb-admin-2.min.js"></script>
 
 <!-- Page level plugins -->
-<script src="./TemplateAdmin/vendor/chart.js/Chart.min.js"></script>
+<script src="${pageContext.request.contextPath}/TemplateAdmin/vendor/chart.js/Chart.min.js"></script>
 
 <!-- Page level custom scripts -->
-<script src="./TemplateAdmin/js/demo/chart-area-demo.js"></script>
-<script src="./TemplateAdmin/js/demo/chart-pie-demo.js"></script>
+<script src="${pageContext.request.contextPath}/TemplateAdmin/js/demo/chart-area-demo.js"></script>
+<script src="${pageContext.request.contextPath}/TemplateAdmin/js/demo/chart-pie-demo.js"></script>
 
 </body>
 </html>

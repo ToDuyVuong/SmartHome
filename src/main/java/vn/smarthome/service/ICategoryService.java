@@ -19,4 +19,9 @@ public interface ICategoryService {
     List<Category> findByNameContaining(String name);
     List<Category> findByName (String name);
     Category findById(int id);
+
+    void deleteCategoryByCategoryId(int cateId);
+
+    public Category saveOrUpdate(Category category);
+
 }
