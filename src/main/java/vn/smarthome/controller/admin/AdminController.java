@@ -1,4 +1,4 @@
-package vn.smarthome.controller.customer;
+package vn.smarthome.controller.admin;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,24 +18,9 @@ import java.util.List;
 public class AdminController {
     //    @Autowired
 //    IProductService productService;
-    @RequestMapping(value = {"/admin", "admin"}, method = RequestMethod.GET)
-    public String StartHonme(/*ModelMap modelMap*/)
-    {
-
-
-//        List<ProductEntity> productEntityList = new ArrayList<>();
-//
-//        productEntityList = productService.findAll();
-//
-//        for (ProductEntity productEntity : productEntityList) {
-//            System.out.println(productEntity.getProductName());
-//        }
-//
-//        modelMap.addAttribute("productList", productEntityList);
-
-
-
-        return "admin/addcategory";
-    }
-
+//    @RequestMapping(value = {"/admin", "admin"}, method = RequestMethod.GET)
+//    public String StartHonme(/*ModelMap modelMap*/)
+//    {
+//        return "admin/loginforadmin";
+//    }
 }
