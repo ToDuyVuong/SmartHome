@@ -49,72 +49,68 @@
                 <li class="nav-item active"><a class="nav-link" href=/home>Trang
                     Chủ<span class="sr-only">(current)</span>
                 </a></li>
-                <li class="nav-item"><a class="nav-link" href="/product/list">Sản
+                <li class="nav-item"><a class="nav-link" href="/product">Sản
                     Phẩm</a></li>
-                <li class="nav-item"><a class="nav-link" href="/login">Đăng
-                    Nhập</a></li>
+                <%--                <li class="nav-item"><a class="nav-link" href="/login">Đăng--%>
+                <%--                    Nhập</a></li>--%>
 
-                <c:if test="${not empty sessionScope.id}">
-                    <li class="nav-item"><a class="nav-link" href="/profile">Trang
-                        Cá nhân: <c:if test="${not empty sessionScope.id}">
-                            <%=session.getAttribute("id")%>
-                        </c:if>
-                    </a></li>
-                </c:if>
+                <%--                <c:if test="${not empty sessionScope.id}">--%>
+                <%--                    <li class="nav-item"><a class="nav-link" href="/profile">Trang--%>
+                <%--                        Cá nhân: <c:if test="${not empty sessionScope.id}">--%>
+                <%--                            <%=session.getAttribute("id")%>--%>
+                <%--                        </c:if>--%>
+                <%--                    </a></li>--%>
+                <%--                </c:if>--%>
 
 
             </ul>
 
 
-            <form action="/product/search/${txt}" class="form-inline my-2 my-lg-0">
+            <form method="GET" action="/product/search/${txt}" class="form-inline my-2 my-lg-0">
                 <div class="input-group input-group-sm">
-                    <input type="text" id="txt" name="txt" value="" class="form-control"
-                           placeholder="Tìm Kiếm">
+                    <input type="text" id="txt" value="" class="form-control"
+                           placeholder="Tìm Kiếm" name="keyword"/>
                     <div class="input-group-append">
                         <button type="submit" class="btn btn-secondary btn-number">
                             <i class="fa fa-search"></i>
                         </button>
                     </div>
                 </div>
-                <div>
-                    <a class="btn btn-sm ml-3" <c:if test="${not empty sessionScope.id}">
-                        href="/profile"
-                    </c:if>
-                            <c:if test="${ empty sessionScope.id}">
-                                href="/login"
-                            </c:if>><i style='font-size:24px' class='far'>&#xf2bd;</i>
-                    </a>
+            </form>
 
-                    <a class="btn btn-sm ml-3"
-                            <c:if test="${not empty sessionScope.id}">
-                                href="/cart"
-                            </c:if>
-                            <c:if test="${ empty sessionScope.id}">
-                                href="/login"
-                            </c:if>> <i
-                            class="fa fa-shopping-cart"></i><!--  Giỏ Hàng <span
-						class="badge badge-light"></span> -->
-                    </a>
 
-                    <%--					<a class="btn btn-success btn-sm ml-3" href="cart"> <i--%>
-                    <%--							class="fa fa-shopping-cart"></i><!--  Giỏ Hàng <span--%>
-                    <%--						class="badge badge-light"></span> -->--%>
-                    <%--					</a>--%>
-                </div>
 
-                <!-- logout -->
-                <c:if test="${not empty sessionScope.id}">
-                    <div>
-                        <a class="btn btn-success btn-sm ml-3" href="/logout"
-                           role="button">Logout User <span class="badge badge-light"></span>
-                        </a>
-                    </div>
+
+            <div>
+                <a class="btn btn-sm ml-3" <c:if test="${not empty sessionScope.id}">
+                    href="/profile"
                 </c:if>
+                        <c:if test="${ empty sessionScope.id}">
+                            href="/login"
+                        </c:if>><i style='font-size:24px' class='far'>&#xf2bd;</i>
+                </a>
 
-                <form method="GET" action="/search">
-                    <input type="text" placeholder="Tìm kiếm sản phẩm..." name="keyword" />
-                    <button type="submit">Tìm kiếm</button>
-                </form>
+                <a class="btn btn-sm ml-3"
+                        <c:if test="${not empty sessionScope.id}">
+                            href="/cart"
+                        </c:if>
+                        <c:if test="${ empty sessionScope.id}">
+                            href="/login"
+                        </c:if>> <i
+                        class="fa fa-shopping-cart"></i><!--  Giỏ Hàng <span
+						class="badge badge-light"></span> -->
+                </a>
+            </div>
+
+            <!-- logout -->
+            <c:if test="${not empty sessionScope.id}">
+                <div>
+                    <a class="btn btn-success btn-sm ml-3" href="/logout"
+                       role="button">Logout User <span class="badge badge-light"></span>
+                    </a>
+                </div>
+            </c:if>
+
 
             <%-- <!-- Session  -->
             <p>
@@ -124,9 +120,6 @@
                 đến với trang web của chúng tôi!</li>
             </p>
 --%>
-
-
-            </form>
 
 
         </div>

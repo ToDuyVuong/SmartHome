@@ -1,6 +1,9 @@
 package vn.smarthome.service;
 
 import org.springframework.data.domain.Example;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import vn.smarthome.entity.Product;
 
 import java.util.List;
@@ -29,4 +32,22 @@ public interface IProductService {
 
 
     Product findById(int id);
+
+
+    List<Product> findAll(Sort sort);
+
+    List<Product> findAllById(Iterable<Integer> integers);
+
+    <S extends Product> List<S> findAll(Example<S> example, Sort sort);
+
+    Page<Product> findAll(Pageable pageable);
+
+    <S extends Product> Optional<S> findOne(Example<S> example);
+
+    <S extends Product> Page<S> findAll(Example<S> example, Pageable pageable);
+
+    Page<Product> findPaginated(int pageNumber, int pageSize);
+
+
+    List<Product> findByCategoryCategoryId(Integer categoryId);
 }

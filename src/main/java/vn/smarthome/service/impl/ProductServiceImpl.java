@@ -1,7 +1,7 @@
 package vn.smarthome.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Example;
+import org.springframework.data.domain.*;
 import org.springframework.stereotype.Service;
 import vn.smarthome.entity.Product;
 import vn.smarthome.repository.ProductRepository;
@@ -71,5 +71,47 @@ public class ProductServiceImpl implements IProductService {
     @Override
     public Product findById(int id) {
         return productRepository.findById(id);
+    }
+
+    @Override
+    public List<Product> findAll(Sort sort) {
+        return productRepository.findAll(sort);
+    }
+
+    @Override
+    public List<Product> findAllById(Iterable<Integer> integers) {
+        return productRepository.findAllById(integers);
+    }
+
+    @Override
+    public <S extends Product> List<S> findAll(Example<S> example, Sort sort) {
+        return productRepository.findAll(example, sort);
+    }
+
+    @Override
+    public Page<Product> findAll(Pageable pageable) {
+        return productRepository.findAll(pageable);
+    }
+
+    @Override
+    public <S extends Product> Optional<S> findOne(Example<S> example) {
+        return productRepository.findOne(example);
+    }
+
+    @Override
+    public <S extends Product> Page<S> findAll(Example<S> example, Pageable pageable) {
+        return productRepository.findAll(example, pageable);
+    }
+
+
+    @Override
+    public Page<Product> findPaginated(int pageNumber, int pageSize) {
+        Sort sort = Sort.by("name").ascending();
+        Pageable pageable = PageRequest.of(pageNumber - 1, pageSize, sort);
+        return productRepository.findAll(pageable);
+    }
+    @Override
+    public List<Product> findByCategoryCategoryId(Integer categoryId) {
+        return productRepository.findByCategoryCategoryId(categoryId);
     }
 }

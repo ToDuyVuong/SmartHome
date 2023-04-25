@@ -6,28 +6,9 @@
 <html>
 <head>
     <%@include file="/common/web/header.jsp" %>
-    <%--        <link rel="stylesheet" type="text/css" href="/css/style.css">--%>
-    <%--    <link rel="stylesheet" type="text/css" href="<c:url value="/css/rcs.css"/>">--%>
     <link rel="stylesheet" href="<c:url value="/css/cart.css"/>">
 
     <title>Giỏ hàng</title>
-
-    <%--    <style>.gradient-custom {--%>
-    <%--        /* fallback for old browsers */--%>
-    <%--        background: #6a11cb;--%>
-
-    <%--        /* Chrome 10-25, Safari 5.1-6 */--%>
-    <%--        background: -webkit-linear-gradient(to right, rgba(106, 17, 203, 1), rgba(37, 117, 252, 1));--%>
-
-    <%--        /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */--%>
-    <%--        background: linear-gradient(to right, rgba(106, 17, 203, 1), rgba(37, 117, 252, 1))--%>
-    <%--    }</style>--%>
-
-    <%--    <style>--%>
-    <%--        .table-bordered td, .table-bordered th {--%>
-    <%--            border: none !important;--%>
-    <%--        }--%>
-    <%--    </style>--%>
 
     <meta name=" viewport"
           content="width=device-width, user-scalable=no, initial-scale=1">
@@ -65,11 +46,7 @@
                         </div>
                     </c:if>
                 </div>
-                <%--                <div class="row justify-content-start ">--%>
-                <%--                    <div class="col">--%>
-                <%--                        <h1 class="text-center">Giỏ hàng</h1>--%>
-                <%--                    </div>--%>
-                <%--                </div>--%>
+
                 <div class="col">
                     <%-- Lấy ngày giờ hiện tại --%>
                     <% java.util.Date currentDateTime = new java.util.Date(); %>
@@ -111,10 +88,9 @@
                                     </div>
                                 </th>
                                 <th class="text-center py-3 px-4" style="width: 180px;">Hình ảnh</th>
-                                <th class="text-center py-3 px-4" style="min-width: 400px;">Tên Sản Phẩm &amp; Mô tả
-                                </th>
-                                <th class="text-center text-right py-3 px-4" style="width: 120px;">Đơn Giá</th>
+                                <th class="text-center py-3 px-4" style="min-width: 400px;">Tên Sản Phẩm &amp; Mô tả</th>
                                 <th class="text-center py-3 px-4" style="width: 130px;">Số lượng</th>
+                                <th class="text-center text-right py-3 px-4" style="width: 120px;">Đơn Giá</th>
                                 <th class="text-center text-right py-3 px-4" style="width: 120px;">Số Tiền</th>
                                 <th class="text-center align-middle py-3 px-0" style="width: 50px;">Xóa</th>
                             </tr>
@@ -162,8 +138,8 @@
                                         </div>
                                     </td>
 `
+                                    <td class="text-right">${item.products.price } VNĐ</td>
                                     <td class="text-right">${item.products.price * item.quantity} VNĐ</td>
-                                    <td class="text-right">${item.products.price} VNĐ</td>
                                     <td class="text-center">
                                         <a href="/cart/remove/${item.cartItemId}"
                                            class="shop-tooltip close float-none text-danger " title=""
