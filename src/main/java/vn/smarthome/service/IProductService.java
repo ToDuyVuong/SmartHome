@@ -53,4 +53,6 @@ public interface IProductService {
     List<Product> findByCategoryCategoryId(Integer categoryId);
 
     public Product saveOrUpdate(Product category);
+
+    void deleteProductByProductId(int productId);
 }

@@ -15,9 +15,7 @@ import vn.smarthome.entity.*;
 import vn.smarthome.model.CategoryModel;
 import vn.smarthome.model.CustomerModel;
 import vn.smarthome.model.ProductModel;
-import vn.smarthome.service.ICategoryService;
-import vn.smarthome.service.ICustomerService;
-import vn.smarthome.service.IProductService;
+import vn.smarthome.service.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -34,6 +32,10 @@ public class AdminController {
     IProductService productService;
     @Autowired
     ICustomerService customerService;
+    @Autowired
+    ICartService cartService;
+    @Autowired
+    IOrderService orderService;
     @RequestMapping("/listCategory")
     public ModelAndView ListCategory(ModelMap model) {
         List<Category> categories = categoryService.findAll();
@@ -47,7 +49,7 @@ public class AdminController {
     }
 
     @RequestMapping("/deleteCategory/{categoryId}")
-    public ModelAndView RemoveProductToCart(ModelMap model, @PathVariable("categoryId") Integer categoryId) {
+    public ModelAndView deleteCategory(ModelMap model, @PathVariable("categoryId") Integer categoryId) {
         Optional<Category> opt = categoryService.findById(categoryId);
         if (opt.isPresent()) {
             categoryService.deleteCategoryByCategoryId(categoryId);
@@ -173,5 +175,37 @@ public class AdminController {
         }
 
         return new ModelAndView("redirect:/admin/listProduct", model);
+    }
+
+    @RequestMapping("/deleteProduct/{productId}")
+    public ModelAndView deleteProduct(ModelMap model, @PathVariable("productId") Integer productId) {
+        Optional<Product> opt = productService.findById(productId);
+        if (opt.isPresent()) {
+            productService.deleteProductByProductId(productId);
+        }
+        return new ModelAndView("redirect:/admin/listProduct", model);
+    }
+
+
+    @RequestMapping("/deleteCustomer/{customerId}")
+    public ModelAndView deleteCustomer(ModelMap model, @PathVariable("customerId") Integer customerId) {
+        Optional<Customer> opt = customerService.findById(customerId);
+        // Delete the customer's cart
+        Cart cart = cartService.getCartByCustomerId(customerId);
+        if (cart != null) {
+            cartService.deleteById(cart.getCartId());
+        }
+
+        // Delete the customer's orders
+        List<Order> orders = orderService.listOrderByCustomerId(customerId);
+        if (!orders.isEmpty()) {
+            for (Order order : orders) {
+                orderService.deleteById(order.getOrderId());
+            }
+        }
+        if (opt.isPresent()) {
+            customerService.deleteCustomerByCustomerId(customerId);
+        }
+        return new ModelAndView("redirect:/admin/listCustomer", model);
     }
 }

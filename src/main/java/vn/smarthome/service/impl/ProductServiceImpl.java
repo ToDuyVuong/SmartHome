@@ -116,6 +116,11 @@ public class ProductServiceImpl implements IProductService {
     }
 
     @Override
+    public void deleteProductByProductId(int id) {
+        productRepository.deleteById(id);
+    }
+
+    @Override
     public Product saveOrUpdate(Product product) {
         if (product.getProductId() == null) {
             // This is a new product, so save it

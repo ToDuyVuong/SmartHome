@@ -189,7 +189,7 @@
                                                                     <td>${t.birthday}</td>
                                                                     <td>${t.gender}</td>
                                                                     <td>${t.phone}</td>
-                                                                    <td><a href ="deleteUser?id=${t.customerId}">
+                                                                    <td><a href ="/admin/deleteCustomer/${t.customerId}">
                                                                         <button class="btn btn-danger btn sweet-confirm destroy">Xóa</button>
                                                                     </a>
                                                                     </td>
@@ -231,36 +231,7 @@
                 </div>
             </div>
         </div>
-        <div class="modal fade" id="editDanhMuc" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-             aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Sửa tag</h5>
-                        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">×</span>
-                        </button>
-                        <form action="EditTag" method="post">
-                        </form>
-                    </div>
-                    <div class="modal-body">
-                        <div class="form-group">
-                            <label>ID</label>
-                            <input name="id" type="text" class="form-control" required>
-                        </div>
-                        <div class="form-group">
-                            <label>Tên tag</label>
-                            <input name="name" type="text" class="form-control" required>
-                        </div>
-                        <div class="modal-footer">
-                            <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-                            <input type="submit" class="btn btn-success" value="Sửa">
-                        </div>
-                    </div>
-                    </form>
-                </div>
-            </div>
-        </div>
+
 
         <!-- Bootstrap core JavaScript-->
         <script src="${pageContext.request.contextPath}/TemplateAdmin/vendor/jquery/jquery.min.js"></script>

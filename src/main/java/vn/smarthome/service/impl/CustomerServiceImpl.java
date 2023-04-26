@@ -64,4 +64,9 @@ public class CustomerServiceImpl implements ICustomerService {
     public Customer findById(int id) {
         return customerRepository.findById(id);
     }
+
+    public void deleteCustomerByCustomerId(int id) {
+        customerRepository.deleteById(id);
+    }
+
 }

@@ -191,7 +191,7 @@
                                             <td>${t.category.categoryId}</td>
                                             <td>
                                                 <div class="d-flex justify-content-sm-center">
-                                                    <a href=deleteProduct?id=${t.productId}"
+                                                    <a href="/admin/deleteProduct/${t.productId}"
                                                        class="btn btn-danger btn-icon-split ">
                                                         <span class="icon text-white-50 ">
                                                             <i class="fas fa-trash"></i>
