@@ -60,7 +60,6 @@ public class AdminController {
         String id = request.getParameter("idcate");
         String name = request.getParameter("namecate");
         String description = request.getParameter("descriptioncate");
-        // do something in here
         Optional<Category> category = categoryService.findById(Integer.valueOf(id));
         if (category.isPresent()) {
             Category updatedCategory = category.get();
@@ -111,5 +110,68 @@ public class AdminController {
             model.addAttribute("listC", customers);
         }
         return new ModelAndView("/admin/customer", model);
+    }
+
+    @RequestMapping(value = "/addProduct", method = RequestMethod.POST)
+    public ModelAndView addProduct(ModelMap model, HttpServletRequest request) {
+        String name = request.getParameter("name_add");
+        String description = request.getParameter("description_add");
+        String image = request.getParameter("image_add");
+        String price = request.getParameter("price_add");
+        String quantity = request.getParameter("quantity_add");
+        String category_id = request.getParameter("categoryid_add");
+
+        // Create a new Product object
+        Product newProduct = new Product();
+        newProduct.setName(name);
+        newProduct.setDescription(description);
+        newProduct.setImage(image);
+        newProduct.setPrice(Long.parseLong(price));
+        newProduct.setQuantity(Integer.parseInt(quantity));
+
+        // Find the Category object with the given ID
+        Optional<Category> category = categoryService.findById(Integer.valueOf(category_id));
+
+        if (category.isPresent()) {
+            Category categoryObj = category.get();
+            newProduct.setCategory(categoryObj);
+        }
+
+        productService.saveOrUpdate(newProduct);
+
+        return new ModelAndView("redirect:/admin/listProduct", model);
+    }
+
+    @RequestMapping(value = "/editProduct", method = RequestMethod.POST)
+    public ModelAndView editProduct(ModelMap model, HttpServletRequest request) {
+
+        String productId = request.getParameter("id_edit");
+        String name = request.getParameter("name_edit");
+        String description = request.getParameter("description_edit");
+        String image = request.getParameter("image_edit");
+        String price = request.getParameter("price_edit");
+        String quantity = request.getParameter("quantity_edit");
+        String categoryId = request.getParameter("categoryid_edit");
+
+        Optional<Product> product = productService.findById(Integer.valueOf(productId));
+
+        if (product.isPresent()) {
+            Product updatedProduct = product.get();
+            updatedProduct.setName(name);
+            updatedProduct.setDescription(description);
+            updatedProduct.setImage(image);
+            updatedProduct.setPrice(Long.parseLong(price));
+            updatedProduct.setQuantity(Integer.parseInt(quantity));
+
+            Optional<Category> category = categoryService.findById(Integer.valueOf(categoryId));
+            if (category.isPresent()) {
+                Category categoryObj = category.get();
+                updatedProduct.setCategory(categoryObj);
+            }
+
+            productService.saveOrUpdate(updatedProduct);
+        }
+
+        return new ModelAndView("redirect:/admin/listProduct", model);
     }
 }

@@ -4,6 +4,7 @@ import org.springframework.data.domain.Example;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
+import vn.smarthome.entity.Category;
 import vn.smarthome.entity.Product;
 
 import java.util.List;
@@ -50,4 +51,6 @@ public interface IProductService {
 
 
     List<Product> findByCategoryCategoryId(Integer categoryId);
+
+    public Product saveOrUpdate(Product category);
 }

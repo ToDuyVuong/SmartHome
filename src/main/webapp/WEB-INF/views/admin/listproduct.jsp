@@ -29,10 +29,8 @@
 
 <!-- Page Wrapper -->
 <div id="wrapper">
-
     <!-- Sidebar -->
     <ul class="navbar-nav bg-gradient-info sidebar sidebar-dark accordion" id="accordionSidebar">
-
         <!-- Sidebar - Brand -->
         <a class="sidebar-brand d-flex align-items-center justify-content-center"
            href="<c:url value="/admin/listProduct"/>">
@@ -41,7 +39,6 @@
             </div>
             <div class="sidebar-brand-text mx-3">Admin Smart Home</div>
         </a>
-
         <!-- Divider -->
         <hr class="sidebar-divider my-0">
 
@@ -50,11 +47,7 @@
             <a class="nav-link" href="<c:url value="/admin/listProduct"/>">
                 <span>Quản lý bài viết</span></a>
         </li>
-
-
         <hr class="sidebar-divider">
-
-
         <div class="sidebar-heading">
             Quản lý category
         </div>
@@ -72,10 +65,8 @@
                 </div>
             </div>
         </li>
-
         <!-- Divider -->
         <hr class="sidebar-divider">
-
         <!-- Heading -->
         <div class="sidebar-heading">
             Quản lý người dùng
@@ -86,41 +77,26 @@
                 <span>Danh sách người dùng</span>
             </a>
         </li>
-
-        <!-- Nav Item - Tables -->
-
         <!-- Divider -->
         <hr class="sidebar-divider d-none d-md-block">
-
         <!-- Sidebar Toggler (Sidebar) -->
         <div class="text-center d-none d-md-inline">
             <button class="rounded-circle border-0" id="sidebarToggle"></button>
         </div>
-
-
     </ul>
     <!-- End of Sidebar -->
-
     <!-- Content Wrapper -->
     <div id="content-wrapper" class="d-flex flex-column">
-
         <!-- Main Content -->
         <div id="content">
-
             <!-- Topbar -->
             <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
-
                 <!-- Sidebar Toggle (Topbar) -->
                 <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
                     <i class="fa fa-bars"></i>
                 </button>
-
-
                 <ul class="navbar-nav ml-auto">
-
-
                     <div class="topbar-divider d-none d-sm-block"></div>
-
                     <!-- Nav Item - User Information -->
                     <li class="nav-item dropdown no-arrow">
                         <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
@@ -139,13 +115,9 @@
                             </a>
                         </div>
                     </li>
-
                 </ul>
-
             </nav>
-
             <div class="container-fluid  ">
-
                 <div class="row ">
                     <!-- Earnings (Monthly) Card Example -->
                     <div class="col-xl-3 col-md-6 mb-4">
@@ -164,8 +136,6 @@
                             </div>
                         </div>
                     </div>
-
-
                 </div>
                 <div class="container-fluid">
                     <!-- Page Heading -->
@@ -174,7 +144,7 @@
                     <div class="d-flex justify-content-end ">
                         <a href="#"
                            class="btn btn-success btn-icon-split align-content-center"
-                           data-target="#addSanPham" data-toggle="modal">
+                           data-target="#addProduct" data-toggle="modal">
                                         <span class="icon text-white-50">
                                             <i class="fas fa-plus"></i>
                                         </span>
@@ -184,7 +154,7 @@
                         </div>
                         <a href="#"
                            class="btn btn-info btn-icon-split align-content-center"
-                           data-target="#editSanPham" data-toggle="modal">
+                           data-target="#editProduct" data-toggle="modal">
                                         <span class="icon text-white-50">
                                             <i class="fas fa-edit"></i>
                                         </span>
@@ -275,12 +245,9 @@
                             </div>
                         </div>
                     </div>
-
                 </div>
                 <!-- /.container-fluid -->
-
             </div>
-
             <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
                  aria-hidden="true">
                 <div class="modal-dialog" role="document">
@@ -299,11 +266,10 @@
                     </div>
                 </div>
             </div>
-
         </div>
     </div>
 </div>
-<div class="modal fade" id="editSanPham" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+<div class="modal fade" id="editProduct" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
      aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -313,35 +279,35 @@
                     <span aria-hidden="true">×</span>
                 </button>
             </div>
-            <form action="EditProduct" method="post">
+            <form action="editProduct" method="post">
                 <div class="modal-body">
                     <div class="form-group">
-                        <label>ID</label>
-                        <input name="id" type="text" class="form-control" required>
+                        <label>Id</label>
+                        <input name="id_edit" type="text" class="form-control" required>
                     </div>
                     <div class="form-group">
                         <label>Name</label>
-                        <input name="name" type="text" class="form-control" required>
+                        <input name="name_edit" type="text" class="form-control" required>
                     </div>
                     <div class="form-group">
                         <label>Description</label>
-                        <input name="description" type="text" class="form-control" required>
+                        <input name="description_edit" type="text" class="form-control" required>
                     </div>
                     <div class="form-group">
                         <label>Image</label>
-                        <input name="image" type="text" class="form-control" required>
+                        <input name="image_edit" type="text" class="form-control" required>
                     </div>
                     <div class="form-group">
                         <label>Price</label>
-                        <input name="price" type="text" class="form-control" required>
+                        <input name="price_edit" type="text" class="form-control" required>
                     </div>
                     <div class="form-group">
                         <label>Quantity</label>
-                        <input name="quantity" type="text" class="form-control" required>
+                        <input name="quantity_edit" type="text" class="form-control" required>
                     </div>
                     <div class="form-group">
                         <label>Category ID</label>
-                        <input name="categoryid" type="text" class="form-control" required>
+                        <input name="categoryid_edit" type="text" class="form-control" required>
                     </div>
                     <div class="modal-footer">
                         <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
@@ -352,7 +318,7 @@
         </div>
     </div>
 </div>
-<div class="modal fade" id="addSanPham" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+<div class="modal fade" id="addProduct" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
      aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -362,35 +328,31 @@
                     <span aria-hidden="true">×</span>
                 </button>
             </div>
-            <form action="AddProduct" method="post">
+            <form action="addProduct" method="post">
                 <div class="modal-body">
                     <div class="form-group">
-                        <label>ID</label>
-                        <input name="id" type="text" class="form-control" required>
-                    </div>
-                    <div class="form-group">
                         <label>Name</label>
-                        <input name="name" type="text" class="form-control" required>
+                        <input name="name_add" type="text" class="form-control" required>
                     </div>
                     <div class="form-group">
                         <label>Description</label>
-                        <input name="name" type="text" class="form-control" required>
+                        <input name="description_add" type="text" class="form-control" required>
                     </div>
                     <div class="form-group">
                         <label>Image</label>
-                        <input name="name" type="text" class="form-control" required>
+                        <input name="image_add" type="text" class="form-control" required>
                     </div>
                     <div class="form-group">
                         <label>Price</label>
-                        <input name="name" type="text" class="form-control" required>
+                        <input name="price_add" type="text" class="form-control" required>
                     </div>
                     <div class="form-group">
                         <label>Quantity</label>
-                        <input name="name" type="text" class="form-control" required>
+                        <input name="quantity_add" type="text" class="form-control" required>
                     </div>
                     <div class="form-group">
                         <label>Category ID</label>
-                        <input name="name" type="text" class="form-control" required>
+                        <input name="categoryid_add" type="text" class="form-control" required>
                     </div>
                     <div class="modal-footer">
                         <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
