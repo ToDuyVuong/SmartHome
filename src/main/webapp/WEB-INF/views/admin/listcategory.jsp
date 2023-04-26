@@ -37,7 +37,7 @@
 
         <!-- Sidebar - Brand -->
         <a class="sidebar-brand d-flex align-items-center justify-content-center"
-           href="${pageContext.request.contextPath}/Admin/Product/ShowProduct">
+           href="<c:url value="/admin/listProduct"/>">
             <div class="sidebar-brand-icon rotate-n-15">
                 <i class="fas fa-laugh-wink"></i>
             </div>
@@ -49,7 +49,7 @@
 
         <!-- Nav Item - Dashboard -->
         <li class="nav-item active">
-            <a class="nav-link" href="${pageContext.request.contextPath}/Admin/Product/ShowProduct">
+            <a class="nav-link" href="<c:url value="/admin/listProduct"/>">
                 <span>Quản lý sản phẩm</span></a>
         </li>
 
@@ -81,7 +81,7 @@
             Quản lý người dùng
         </div>
         <li class="nav-item">
-            <a class="nav-link collapsed" href="${pageContext.request.contextPath}/Admin/User/ShowUser"
+            <a class="nav-link collapsed" href="<c:url value="/admin/listCustomer"/>"
                aria-expanded="true">
                 <span>Danh sách người dùng</span>
             </a>

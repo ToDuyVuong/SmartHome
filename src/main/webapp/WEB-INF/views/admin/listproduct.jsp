@@ -35,7 +35,7 @@
 
         <!-- Sidebar - Brand -->
         <a class="sidebar-brand d-flex align-items-center justify-content-center"
-           href="${pageContext.request.contextPath}/Admin/Product/ShowProduct">
+           href="<c:url value="/admin/listProduct"/>">
             <div class="sidebar-brand-icon rotate-n-15">
                 <i class="fas fa-laugh-wink"></i>
             </div>
@@ -47,7 +47,7 @@
 
         <!-- Nav Item - Dashboard -->
         <li class="nav-item active">
-            <a class="nav-link" href="${pageContext.request.contextPath}/Admin/Product/ShowProduct">
+            <a class="nav-link" href="<c:url value="/admin/listProduct"/>">
                 <span>Quản lý bài viết</span></a>
         </li>
 
@@ -81,7 +81,7 @@
             Quản lý người dùng
         </div>
         <li class="nav-item">
-            <a class="nav-link collapsed" href="${pageContext.request.contextPath}/Admin/User/ShowUser"
+            <a class="nav-link collapsed" href="<c:url value="/admin/listCustomer"/>"
                aria-expanded="true">
                 <span>Danh sách người dùng</span>
             </a>
@@ -212,16 +212,16 @@
                                     <c:forEach items="${list}" var="t">
                                         <tbody>
                                         <tr>
-                                            <td>${t.product_id}</td>
+                                            <td>${t.productId}</td>
                                             <td>${t.name}</td>
                                             <td>${t.description}</td>
                                             <td>${t.image}</td>
                                             <td>${t.price}</td>
                                             <td>${t.quantity}</td>
-                                            <td>${t.category_id}</td>
+                                            <td>${t.category.categoryId}</td>
                                             <td>
                                                 <div class="d-flex justify-content-sm-center">
-                                                    <a href="DeleteProduct?id=${t.product_id}"
+                                                    <a href=deleteProduct?id=${t.productId}"
                                                        class="btn btn-danger btn-icon-split ">
                                                         <span class="icon text-white-50 ">
                                                             <i class="fas fa-trash"></i>
@@ -234,44 +234,44 @@
                                         </tbody>
                                     </c:forEach>
                                 </table>
-                                <div class="col-sm-12 col-md-7">
-                                    <div class="dataTables_paginate paging_simple_numbers" id="dataTable_paginate">
-                                        <ul class="pagination">
-                                            <c:if test="${page != 1}">
-                                                <li class="paginate_button page-item" id="dataTable_previous">
-                                                    <a href="${pageContext.request.contextPath}/Admin/Product/ShowProduct?keyword=<%= request.getParameter("keyword") != null ? request.getParameter("keyword") :
-                                                    ""%>&page=${page - 1 }" aria-controls="dataTable" data-dt-idx="0"
-                                                       tabindex="0" class="page-link">Previous</a>
-                                                </li>
-                                            </c:if>
-                                            <c:forEach var="i" begin="1" end="${totalpage}">
-                                                <c:choose>
-                                                    <c:when test="${ page == i}">
-                                                        <li class="paginate_button page-item active">
-                                                            <a href="${pageContext.request.contextPath}/Admin/Product/ShowProduct?keyword=<%= request.getParameter("keyword") != null ? request.getParameter("keyword") :
-                                                            ""%>&page=${i}" aria-controls="dataTable" tabindex="0"
-                                                               class="page-link">${ i}</a>
-                                                        </li>
-                                                    </c:when>
-                                                    <c:otherwise>
-                                                        <li class="paginate_button page-item">
-                                                            <a href="${pageContext.request.contextPath}/Admin/Product/ShowProduct?keyword=<%= request.getParameter("keyword") != null ? request.getParameter("keyword") :
-                                                            ""%>&page=${i}" aria-controls="dataTable" tabindex="0"
-                                                               class="page-link">${ i}</a>
-                                                        </li>
-                                                    </c:otherwise>
-                                                </c:choose>
-                                            </c:forEach>
-                                            <c:if test="${page < totalpage}">
-                                                <li class="paginate_button page-item next" id="dataTable_next">
-                                                    <a href="${pageContext.request.contextPath}/Admin/Product/ShowProduct?keyword=<%= request.getParameter("keyword") != null ? request.getParameter("keyword") :
-                                                    ""%>&page=${page + 1}" aria-controls="dataTable" tabindex="0"
-                                                       class="page-link">Next</a>
-                                                </li>
-                                            </c:if>
-                                        </ul>
-                                    </div>
-                                </div>
+<%--                                <div class="col-sm-12 col-md-7">--%>
+<%--                                    <div class="dataTables_paginate paging_simple_numbers" id="dataTable_paginate">--%>
+<%--                                        <ul class="pagination">--%>
+<%--                                            <c:if test="${page != 1}">--%>
+<%--                                                <li class="paginate_button page-item" id="dataTable_previous">--%>
+<%--                                                    <a href="${pageContext.request.contextPath}/Admin/Product/ShowProduct?keyword=<%= request.getParameter("keyword") != null ? request.getParameter("keyword") :--%>
+<%--                                                    ""%>&page=${page - 1 }" aria-controls="dataTable" data-dt-idx="0"--%>
+<%--                                                       tabindex="0" class="page-link">Previous</a>--%>
+<%--                                                </li>--%>
+<%--                                            </c:if>--%>
+<%--                                            <c:forEach var="i" begin="1" end="${totalpage}">--%>
+<%--                                                <c:choose>--%>
+<%--                                                    <c:when test="${ page == i}">--%>
+<%--                                                        <li class="paginate_button page-item active">--%>
+<%--                                                            <a href="${pageContext.request.contextPath}/Admin/Product/ShowProduct?keyword=<%= request.getParameter("keyword") != null ? request.getParameter("keyword") :--%>
+<%--                                                            ""%>&page=${i}" aria-controls="dataTable" tabindex="0"--%>
+<%--                                                               class="page-link">${ i}</a>--%>
+<%--                                                        </li>--%>
+<%--                                                    </c:when>--%>
+<%--                                                    <c:otherwise>--%>
+<%--                                                        <li class="paginate_button page-item">--%>
+<%--                                                            <a href="${pageContext.request.contextPath}/Admin/Product/ShowProduct?keyword=<%= request.getParameter("keyword") != null ? request.getParameter("keyword") :--%>
+<%--                                                            ""%>&page=${i}" aria-controls="dataTable" tabindex="0"--%>
+<%--                                                               class="page-link">${ i}</a>--%>
+<%--                                                        </li>--%>
+<%--                                                    </c:otherwise>--%>
+<%--                                                </c:choose>--%>
+<%--                                            </c:forEach>--%>
+<%--                                            <c:if test="${page < totalpage}">--%>
+<%--                                                <li class="paginate_button page-item next" id="dataTable_next">--%>
+<%--                                                    <a href="${pageContext.request.contextPath}/Admin/Product/ShowProduct?keyword=<%= request.getParameter("keyword") != null ? request.getParameter("keyword") :--%>
+<%--                                                    ""%>&page=${page + 1}" aria-controls="dataTable" tabindex="0"--%>
+<%--                                                       class="page-link">Next</a>--%>
+<%--                                                </li>--%>
+<%--                                            </c:if>--%>
+<%--                                        </ul>--%>
+<%--                                    </div>--%>
+<%--                                </div>--%>
                             </div>
                         </div>
                     </div>
@@ -325,23 +325,23 @@
                     </div>
                     <div class="form-group">
                         <label>Description</label>
-                        <input name="name" type="text" class="form-control" required>
+                        <input name="description" type="text" class="form-control" required>
                     </div>
                     <div class="form-group">
                         <label>Image</label>
-                        <input name="name" type="text" class="form-control" required>
+                        <input name="image" type="text" class="form-control" required>
                     </div>
                     <div class="form-group">
                         <label>Price</label>
-                        <input name="name" type="text" class="form-control" required>
+                        <input name="price" type="text" class="form-control" required>
                     </div>
                     <div class="form-group">
                         <label>Quantity</label>
-                        <input name="name" type="text" class="form-control" required>
+                        <input name="quantity" type="text" class="form-control" required>
                     </div>
                     <div class="form-group">
                         <label>Category ID</label>
-                        <input name="name" type="text" class="form-control" required>
+                        <input name="categoryid" type="text" class="form-control" required>
                     </div>
                     <div class="modal-footer">
                         <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">

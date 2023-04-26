@@ -1,5 +1,6 @@
 package vn.smarthome.controller.admin;
 
+import org.apache.catalina.User;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -13,7 +14,9 @@ import org.springframework.web.servlet.ModelAndView;
 import vn.smarthome.entity.*;
 import vn.smarthome.model.CategoryModel;
 import vn.smarthome.model.CustomerModel;
+import vn.smarthome.model.ProductModel;
 import vn.smarthome.service.ICategoryService;
+import vn.smarthome.service.ICustomerService;
 import vn.smarthome.service.IProductService;
 
 import javax.servlet.http.HttpServletRequest;
@@ -27,7 +30,10 @@ import java.util.Optional;
 public class AdminController {
     @Autowired
     ICategoryService categoryService;
-
+    @Autowired
+    IProductService productService;
+    @Autowired
+    ICustomerService customerService;
     @RequestMapping("/listCategory")
     public ModelAndView ListCategory(ModelMap model) {
         List<Category> categories = categoryService.findAll();
@@ -81,5 +87,29 @@ public class AdminController {
         newCategory.setDescription(description);
         categoryService.saveOrUpdate(newCategory);
         return new ModelAndView("redirect:/admin/addCategory", model);
+    }
+
+    @RequestMapping("/listProduct")
+    public ModelAndView listProduct(ModelMap model) {
+        List<Product> products = productService.findAll();
+
+        if (!products.isEmpty()) {
+            ProductModel productModel = new ProductModel();
+            BeanUtils.copyProperties(products, productModel);
+            model.addAttribute("list", products);
+        }
+        return new ModelAndView("/admin/listproduct", model);
+    }
+
+    @RequestMapping("/listCustomer")
+    public ModelAndView listCustomer(ModelMap model) {
+        List<Customer> customers = customerService.findAll();
+
+        if (!customers.isEmpty()) {
+            CustomerModel customerModel = new CustomerModel();
+            BeanUtils.copyProperties(customers, customerModel);
+            model.addAttribute("listC", customers);
+        }
+        return new ModelAndView("/admin/customer", model);
     }
 }

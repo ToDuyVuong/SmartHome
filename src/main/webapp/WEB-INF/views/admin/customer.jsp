@@ -1,6 +1,7 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
 <%@ page language="java" contentType="text/html; charset=utf-8"
          pageEncoding="utf-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--<jsp:useBean id="authUser" scope="session" type="Model.User"/>--%>
 <!DOCTYPE html>
 <html lang="en">
@@ -16,13 +17,13 @@
     <title>Admin Smart Home</title>
 
     <!-- Custom fonts for this template-->
-    <link href="./TemplateAdmin/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="${pageContext.request.contextPath}/TemplateAdmin/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link
             href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
             rel="stylesheet">
 
     <!-- Custom styles for this template-->
-    <link href="./TemplateAdmin/css/sb-admin-2.min.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/TemplateAdmin/css/sb-admin-2.min.css" rel="stylesheet">
 
 </head>
 <body id="page-top">
@@ -35,7 +36,7 @@
 
         <!-- Sidebar - Brand -->
         <a class="sidebar-brand d-flex align-items-center justify-content-center"
-           href="${pageContext.request.contextPath}/Admin/Product/ShowProduct">
+           href="<c:url value="/admin/listProduct"/>">
             <div class="sidebar-brand-icon rotate-n-15">
                 <i class="fas fa-laugh-wink"></i>
             </div>
@@ -47,7 +48,7 @@
 
         <!-- Nav Item - Dashboard -->
         <li class="nav-item active">
-            <a class="nav-link" href="${pageContext.request.contextPath}/Admin/Product/ShowProduct">
+            <a class="nav-link" href="<c:url value="/admin/listProduct"/>">
                 <span>Quản lý sản phẩm</span></a>
         </li>
 
@@ -67,10 +68,8 @@
             <div id="collapseCategory" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
                     <h6 class="collapse-header">Lựa chọn:</h6>
-                    <a class="collapse-item" href="${pageContext.request.contextPath}/Admin/Category/ThemCategory">Thêm
-                        danh mục</a>
-                    <a class="collapse-item" href="${pageContext.request.contextPath}/Admin/Category/ShowCategory">Danh
-                        sách danh mục</a>
+                    <a class="collapse-item" href="<c:url value="/admin/addCategory"/>">Thêm danh mục</a>
+                    <a class="collapse-item" href="<c:url value="/admin/listCategory"/>">Danh sách danh mục</a>
                 </div>
             </div>
         </li>
@@ -83,7 +82,7 @@
             Quản lý người dùng
         </div>
         <li class="nav-item">
-            <a class="nav-link collapsed" href="${pageContext.request.contextPath}/Admin/User/ShowUser"
+            <a class="nav-link collapsed" href="<c:url value="/admin/listCustomer"/>"
                aria-expanded="true">
                 <span>Danh sách người dùng</span>
             </a>
@@ -169,19 +168,28 @@
                                                         <table id="example" class="table table-bordered" style="min-width: 845px" role="grid" aria-describedby="example_info">
                                                             <thead>
                                                             <tr role="row"><th class="sorting_desc" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-sort="descending" aria-label="Mã: activate to sort column ascending" style="width: 98.2969px;">Mã User</th>
-                                                                <th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-label="Tên đăng nhập: activate to sort column ascending" style="width: 485.891px;">Tên đăng nhập</th>
+                                                                <th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-label="Tên đăng nhập: activate to sort column ascending" style="width: 171.672px;">Tên đăng nhập</th>
                                                                 <th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-label="Họ và tên: activate to sort column ascending" style="width: 171.672px;">Họ và tên</th>
                                                                 <th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-label="Email: activate to sort column ascending" style="width: 171.672px;">Email</th>
-                                                                <th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-label="Xóa: activate to sort column ascending" style="width: 171.672px;">Xoá</th></tr>
+                                                                <th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-label="Địa chỉ: activate to sort column ascending" style="width: 171.672px;">Địa chỉ</th>
+                                                                <th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-label="Ngày sinh: activate to sort column ascending" style="width: 171.672px;">Ngày sinh</th>
+                                                                <th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-label="Giới tính: activate to sort column ascending" style="width: 171.672px;">Giới tính</th>
+                                                                <th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-label="Điện thoại: activate to sort column ascending" style="width: 171.672px;">Điện thoại</th>
+                                                                <th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-label="Xóa: activate to sort column ascending" style="width: 171.672px;">Xoá</th>
+                                                            </tr>
                                                             </thead>
-                                                            <c:forEach items="${list}" var="t">
+                                                            <c:forEach items="${listC}" var="t">
                                                                 <tbody>
                                                                 <tr class="odd" role="row">
-                                                                    <td class="sorting_1">${t.id}</td>
+                                                                    <td class="sorting_1">${t.customerId}</td>
                                                                     <td>${t.username}</td>
-                                                                    <td>${t.name}</td>
+                                                                    <td>${t.fullname}</td>
                                                                     <td>${t.email}</td>
-                                                                    <td><a href ="DeleteUser?id=${t.id}">
+                                                                    <td>${t.address}</td>
+                                                                    <td>${t.birthday}</td>
+                                                                    <td>${t.gender}</td>
+                                                                    <td>${t.phone}</td>
+                                                                    <td><a href ="deleteUser?id=${t.customerId}">
                                                                         <button class="btn btn-danger btn sweet-confirm destroy">Xóa</button>
                                                                     </a>
                                                                     </td>
@@ -255,21 +263,21 @@
         </div>
 
         <!-- Bootstrap core JavaScript-->
-        <script src="./TemplateAdmin/vendor/jquery/jquery.min.js"></script>
-        <script src="./TemplateAdmin/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <script src="${pageContext.request.contextPath}/TemplateAdmin/vendor/jquery/jquery.min.js"></script>
+        <script src="${pageContext.request.contextPath}/TemplateAdmin/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
         <!-- Core plugin JavaScript-->
-        <script src="./TemplateAdmin/vendor/jquery-easing/jquery.easing.min.js"></script>
+        <script src="${pageContext.request.contextPath}/TemplateAdmin/vendor/jquery-easing/jquery.easing.min.js"></script>
 
         <!-- Custom scripts for all pages-->
-        <script src="./TemplateAdmin/js/sb-admin-2.min.js"></script>
+        <script src="${pageContext.request.contextPath}/TemplateAdmin/js/sb-admin-2.min.js"></script>
 
         <!-- Page level plugins -->
-        <script src="./TemplateAdmin/vendor/chart.js/Chart.min.js"></script>
+        <script src="${pageContext.request.contextPath}/TemplateAdmin/vendor/chart.js/Chart.min.js"></script>
 
         <!-- Page level custom scripts -->
-        <script src="./TemplateAdmin/js/demo/chart-area-demo.js"></script>
-        <script src="./TemplateAdmin/js/demo/chart-pie-demo.js"></script>
+        <script src="${pageContext.request.contextPath}/TemplateAdmin/js/demo/chart-area-demo.js"></script>
+        <script src="${pageContext.request.contextPath}/TemplateAdmin/js/demo/chart-pie-demo.js"></script>
     </div>
 </div>
 </body>

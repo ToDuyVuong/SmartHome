@@ -45,7 +45,7 @@ public class AdminLoginController {
          String password = request.getParameter("password");
         try {
             if (Objects.equals(username, "admin") && Objects.equals(password, "admin")) {
-                return "admin/product";
+                return "admin/adminpage";
             } else {
                 model.addAttribute("message", "Sai tài khoản hoặc mật khẩu!");
                 return "admin/loginforadmin";

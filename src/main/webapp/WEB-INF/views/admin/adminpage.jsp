@@ -1,8 +1,7 @@
 <%--<jsp:useBean id="authUser" scope="session" type="Model.User"/>--%>
-<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
-<%@ page language="java" contentType="text/html; charset=utf-8"
-         pageEncoding="utf-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+         pageEncoding="utf-8" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -17,13 +16,14 @@
     <title>Admin Smart Home</title>
 
     <!-- Custom fonts for this template-->
-    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/TemplateAdmin/vendor/fontawesome-free/css/all.min.css" >
+    <link href="${pageContext.request.contextPath}/TemplateAdmin/vendor/fontawesome-free/css/all.min.css"
+          rel="stylesheet" type="text/css">
     <link
             href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
             rel="stylesheet">
 
     <!-- Custom styles for this template-->
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/TemplateAdmin/css/sb-admin-2.min.css" >
+    <link href="${pageContext.request.contextPath}/TemplateAdmin/css/sb-admin-2.min.css" rel="stylesheet">
 
 </head>
 <body id="page-top">
@@ -49,7 +49,7 @@
         <!-- Nav Item - Dashboard -->
         <li class="nav-item active">
             <a class="nav-link" href="<c:url value="/admin/listProduct"/>">
-                <span>Quản lý sản phẩm</span></a>
+                <span>Quản lý bài viết</span></a>
         </li>
 
 
@@ -104,24 +104,16 @@
 
     <!-- Content Wrapper -->
     <div id="content-wrapper" class="d-flex flex-column">
-
         <!-- Main Content -->
         <div id="content">
-
             <!-- Topbar -->
             <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
-
                 <!-- Sidebar Toggle (Topbar) -->
                 <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
                     <i class="fa fa-bars"></i>
                 </button>
-
-
                 <ul class="navbar-nav ml-auto">
-
-
                     <div class="topbar-divider d-none d-sm-block"></div>
-
                     <!-- Nav Item - User Information -->
                     <li class="nav-item dropdown no-arrow">
                         <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
@@ -140,92 +132,11 @@
                             </a>
                         </div>
                     </li>
-
                 </ul>
-
             </nav>
-
-            <!--Content-->
-            <!---------------------------------------------------------------------------------------------------------->
-            <div class="container-fluid">
-
-                <!-- Page Heading -->
-
-                <!-- DataTales Example -->
-                <div class="container-fluid">
-
-                    <div class="row">
-                        <div class="col-12">
-                            <div class="card">
-                                <div class="card-header">
-                                    <h4 class="card-title">Thêm danh mục
-                                    </h4>
-                                </div>
-                                <div class="card-body">
-                                    <form class="form-valide-with-icon" action="addCategory" method="POST"
-                                          novalidate="novalidate">
-                                        <div class="form-group">
-                                            <div class="form-group">
-                                                <label class="text-label">Tên danh mục</label>
-                                                <div class="input-group">
-                                                    <div class="input-group-prepend">
-                                                        <span class="input-group-text">
-                                                            <i class="fa fa-header" aria-hidden="true"></i>
-                                                        </span>
-                                                    </div>
-                                                    <input type="text" class="form-control" name="name"
-                                                           placeholder="Tên danh mục" value="">
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <label class="text-label">Mô tả</label>
-                                                <div class="input-group">
-                                                    <div class="input-group-prepend">
-                                                        <span class="input-group-text">
-                                                            <i class="fa fa-header" aria-hidden="true"></i>
-                                                        </span>
-                                                    </div>
-                                                    <input type="text" class="form-control" name="description"
-                                                           placeholder="Mô tả" value="">
-                                                </div>
-                                            </div>
-                                            <button type="submit" class="btn btn-primary">Thêm</button>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!---------------------------------------------------------------------------------------------------------->
-
-        </div>
-    </div>
-    <!-- /.container-fluid -->
-
-</div>
-</div>
-<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-     aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Bạn muốn thoát khỏi hệ thống ??</h5>
-                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">×</span>
-                </button>
-            </div>
-            <div class="modal-body">Bạn chọn xác nhận sẽ quay về trang chủ.</div>
-            <div class="modal-footer">
-                <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                <a class="btn btn-primary" href="/home">Xác nhận</a>
-            </div>
         </div>
     </div>
 </div>
-
-
 <!-- Bootstrap core JavaScript-->
 <script src="${pageContext.request.contextPath}/TemplateAdmin/vendor/jquery/jquery.min.js"></script>
 <script src="${pageContext.request.contextPath}/TemplateAdmin/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
