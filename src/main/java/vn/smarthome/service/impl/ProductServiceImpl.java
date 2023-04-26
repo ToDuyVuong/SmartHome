@@ -2,6 +2,8 @@ package vn.smarthome.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.*;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Service;
 import vn.smarthome.entity.Product;
 import vn.smarthome.repository.ProductRepository;
@@ -142,5 +144,10 @@ public class ProductServiceImpl implements IProductService {
                 throw new RuntimeException("Product not found");
             }
         }
+    }
+
+    @Query("SELECT p FROM Product p WHERE p.category.categoryId = :id")
+    public List<Product> listProductByCategoryId(int id){
+        return productRepository.listProductByCategoryId(id);
     }
 }

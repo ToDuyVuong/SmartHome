@@ -51,6 +51,12 @@ public class AdminController {
     @RequestMapping("/deleteCategory/{categoryId}")
     public ModelAndView deleteCategory(ModelMap model, @PathVariable("categoryId") Integer categoryId) {
         Optional<Category> opt = categoryService.findById(categoryId);
+        List<Product> products = productService.listProductByCategoryId(categoryId);
+        if (!products.isEmpty()) {
+            for (Product product : products) {
+                productService.deleteProductByProductId(product.getProductId());
+            }
+        }
         if (opt.isPresent()) {
             categoryService.deleteCategoryByCategoryId(categoryId);
         }
