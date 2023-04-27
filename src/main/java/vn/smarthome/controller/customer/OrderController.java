@@ -51,6 +51,11 @@ public class OrderController {
             // Nếu checkbox được chọn thì thêm vào list thanh toán
             String selected = request.getParameter(String.valueOf(cartItem.getCartItemId()));
             if (selected != null) {
+
+                if(cartItem.getQuantity() > cartItem.getProducts().getQuantity()){
+                   cartItem.setQuantity(cartItem.getProducts().getQuantity());
+                }
+
                 listCartItemSelecteds.add(cartItem);
                 quantity += cartItem.getQuantity();
                 total += cartItem.getQuantity() * cartItem.getProducts().getPrice();
