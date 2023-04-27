@@ -53,8 +53,13 @@
                                     <div class="card-body">
                                         <div class="row">
                                             <div class="col-md-2">
-                                                <img src="https://mdbcdn.b-cdn.net/img/Photos/Horizontal/E-commerce/Products/13.webp"
-                                                     class="img-fluid" alt="Phone">
+
+                                                <img src="${item.product.image}"
+                                                     alt="Hình ảnh sản phẩm"title="" width="150"
+                                                     height="150">
+
+<%--                                                <img src="https://mdbcdn.b-cdn.net/img/Photos/Horizontal/E-commerce/Products/13.webp"--%>
+<%--                                                     class="img-fluid" alt="Phone">--%>
                                             </div>
                                             <div class="col-md-2 text-center d-flex justify-content-center align-items-center">
                                                 <p class="text-muted mb-0">${item.product.name}</p>

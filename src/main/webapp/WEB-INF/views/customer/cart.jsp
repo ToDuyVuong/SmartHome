@@ -109,12 +109,12 @@
                                     <td class="hidden-xs text-center">
                                         <a href="#productdetail">
 
-<%--                                            <img src="${item.products.productImage}"--%>
-<%--                                                 alt="Hình ảnh sản phẩm"title="" width="150"--%>
-<%--                                                 height="150">--%>
-                                                                                            <img src="https://www.bootdey.com/image/200x200/"
-                                                                                                 alt="Age Of Wisdom Tan Graphic Tee" title="" width="150"
-                                                                                                 height="150">
+                                            <img src="${item.products.image}"
+                                                 alt="Hình ảnh sản phẩm"title="" width="150"
+                                                 height="150">
+<%--                                                                                            <img src="https://www.bootdey.com/image/200x200/"--%>
+<%--                                                                                                 alt="Age Of Wisdom Tan Graphic Tee" title="" width="150"--%>
+<%--                                                                                                 height="150">--%>
                                         </a>
                                     </td>
                                     <td>${item.products.name} <br>
@@ -137,7 +137,7 @@
                                             </div>
                                         </div>
                                     </td>
-`
+
                                     <td class="text-right">${item.products.price } VNĐ</td>
                                     <td class="text-right">${item.products.price * item.quantity} VNĐ</td>
                                     <td class="text-center">

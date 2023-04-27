@@ -41,13 +41,27 @@
                     <div class="preview col-md-6">
 
                         <div class="preview-pic tab-content">
-                            <div class="tab-pane active" id="pic-1"><img src="http://placekitten.com/400/252"/></div>
-                            <div class="tab-pane" id="pic-2"><img src="http://placekitten.com/400/252"/></div>
-                            <div class="tab-pane" id="pic-3"><img src="http://placekitten.com/400/252"/></div>
-                            <div class="tab-pane" id="pic-4"><img src="http://placekitten.com/400/252"/></div>
-                            <div class="tab-pane" id="pic-5"><img src="http://placekitten.com/400/252"/></div>
+
+
+                            <div class="tab-pane active" id="pic-1">
+
+<%--                                <img src="http://placekitten.com/400/252"/>--%>
+
+                                <img src="${product.image}"
+                                     alt="Hình ảnh sản phẩm"title="" width="300"
+                                     height="300">
+
+
+
+                            </div>
+
+
+<%--                            <div class="tab-pane" id="pic-2"><img src="http://placekitten.com/400/252"/></div>--%>
+<%--                            <div class="tab-pane" id="pic-3"><img src="http://placekitten.com/400/252"/></div>--%>
+<%--                            <div class="tab-pane" id="pic-4"><img src="http://placekitten.com/400/252"/></div>--%>
+<%--                            <div class="tab-pane" id="pic-5"><img src="http://placekitten.com/400/252"/></div>--%>
                         </div>
-                        <ul class="preview-thumbnail nav nav-tabs">
+                       <%-- <ul class="preview-thumbnail nav nav-tabs">
                             <li class="active"><a data-target="#pic-1" data-toggle="tab"><img
                                     src="http://placekitten.com/200/126"/></a></li>
                             <li><a data-target="#pic-2" data-toggle="tab"><img
@@ -62,7 +76,7 @@
                             <li><a data-target="#pic-5" data-toggle="tab"><img
                                     src="http://placekitten.com/200/126"/></a>
                             </li>
-                        </ul>
+                        </ul>--%>
 
                     </div>
                     <div class="details col-md-6">
@@ -97,10 +111,13 @@
                                     <c:if test="${ empty sessionScope.id}">
                                         href="/login"
                                     </c:if>>
-                                <button class="add-to-cart btn btn-default" type="button">Thêm vào giỏ hàng</button>
+                                <button class="add-to-cart btn btn-default" type="button">Thêm vào giỏ</button>
                             </a>
-                            <button class="like btn btn-default" type="button"><span class="fa fa-heart"></span>
+                            <a href="/product" >
+                            <button class="like btn btn-default" type="button">Sản phẩm khác</span>
                             </button>
+                            </a>
+
                         </div>
                     </div>
                 </div>

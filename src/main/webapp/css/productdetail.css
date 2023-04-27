@@ -144,7 +144,7 @@ img {
 }
 
 .add-to-cart, .like {
-    background: #ff9f1a;
+    background: #6bbb08;
     padding: 1.2em 1.5em;
     border: none;
     text-transform: UPPERCASE;
@@ -155,7 +155,7 @@ img {
 }
 
 .add-to-cart:hover, .like:hover {
-    background: #b36800;
+    background: #0ddad3;
     color: #fff;
 }
 
@@ -175,7 +175,7 @@ img {
 }
 
 .green {
-    background: #85ad00;
+    background: #0ddad3;
 }
 
 .blue {
@@ -218,7 +218,7 @@ img {
      display: flex;
      align-items: center;
      justify-content: center;
-     background-color: rgb(186, 216, 125);
+     background-color: rgb(172, 199, 136);
      font-size: 0.8rem;
      font-family: 'Work Sans'
  }
@@ -263,12 +263,12 @@ img {
 }
 
 .checked {
-    color: rgb(255, 217, 0);
+    color: rgb(156, 215, 74);
     margin-right: 1vh
 }
 
 .fa-star-half-full {
-    color: rgb(255, 217, 0)
+    color: rgb(134, 232, 14)
 }
 
 img {
@@ -353,14 +353,14 @@ label.radio input:checked + span {
     }
 }
 
-.btn {
-    background-color: transparent;
-    border-color: rgba(186, 216, 125, 0.863);
-    color: rgba(186, 216, 125, 0.863);
-    padding: 1.8vh 4.5vh;
-    height: fit-content;
-    border-radius: 3px
-}
+/*.btn {*/
+/*    background-color: transparent;*/
+/*    border-color: rgb(255, 255, 255);*/
+/*    color: rgba(0, 0, 0, 0.86);*/
+/*    padding: 1.8vh 4.5vh;*/
+/*    height: fit-content;*/
+/*    border-radius: 3px*/
+/*}*/
 
 .btn:focus {
     box-shadow: none;
