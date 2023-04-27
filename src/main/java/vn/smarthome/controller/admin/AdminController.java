@@ -59,20 +59,20 @@ public class AdminController {
         return new ModelAndView("admin/listcategory", model);
     }
 
-    @RequestMapping("/deleteCategory/{categoryId}")
-    public ModelAndView deleteCategory(ModelMap model, @PathVariable("categoryId") Integer categoryId) {
-        Optional<Category> opt = categoryService.findById(categoryId);
-        List<Product> products = productService.listProductByCategoryId(categoryId);
-        if (!products.isEmpty()) {
-            for (Product product : products) {
-                productService.deleteProductByProductId(product.getProductId());
-            }
-        }
-        if (opt.isPresent()) {
-            categoryService.deleteCategoryByCategoryId(categoryId);
-        }
-        return new ModelAndView("redirect:/admin/listCategory", model);
-    }
+//    @RequestMapping("/deleteCategory/{categoryId}")
+//    public ModelAndView deleteCategory(ModelMap model, @PathVariable("categoryId") Integer categoryId) {
+//        Optional<Category> opt = categoryService.findById(categoryId);
+//        List<Product> products = productService.listProductByCategoryId(categoryId);
+//        if (!products.isEmpty()) {
+//            for (Product product : products) {
+//                productService.deleteProductByProductId(product.getProductId());
+//            }
+//        }
+//        if (opt.isPresent()) {
+//            categoryService.deleteCategoryByCategoryId(categoryId);
+//        }
+//        return new ModelAndView("redirect:/admin/listCategory", model);
+//    }
 
     @RequestMapping(value = "/editCategory", method = RequestMethod.POST)
     public ModelAndView editCategory(ModelMap model, HttpServletRequest request) {
@@ -199,33 +199,36 @@ public class AdminController {
         Optional<Product> opt = productService.findById(productId);
 
         if (opt.isPresent()) {
-            productService.updateProductQuantityToZeroById(productId);        }
+
+            productService.updateProductQuantityToZeroById(productId);
+
+        }
         return new ModelAndView("redirect:/admin/listProduct", model);
     }
 
 
-    @RequestMapping("/deleteCustomer/{customerId}")
-    public ModelAndView deleteCustomer(ModelMap model, @PathVariable("customerId") Integer customerId) {
-        Optional<Customer> opt = customerService.findById(customerId);
-        // Delete the customer's cart
-        Cart cart = cartService.getCartByCustomerId(customerId);
-        if (cart != null) {
-            cartService.deleteById(cart.getCartId());
-        }
-
-        // Delete the customer's orders
-        List<Order> orders = orderService.listOrderByCustomerId(customerId);
-        if (!orders.isEmpty()) {
-            for (Order order : orders) {
-                orderService.deleteById(order.getOrderId());
-            }
-        }
-
-        if (opt.isPresent()) {
-            customerService.deleteCustomerByCustomerId(customerId);
-        }
-        return new ModelAndView("redirect:/admin/listCustomer", model);
-    }
+//    @RequestMapping("/deleteCustomer/{customerId}")
+//    public ModelAndView deleteCustomer(ModelMap model, @PathVariable("customerId") Integer customerId) {
+//        Optional<Customer> opt = customerService.findById(customerId);
+//        // Delete the customer's cart
+//        Cart cart = cartService.getCartByCustomerId(customerId);
+//        if (cart != null) {
+//            cartService.deleteById(cart.getCartId());
+//        }
+//
+//        // Delete the customer's orders
+//        List<Order> orders = orderService.listOrderByCustomerId(customerId);
+//        if (!orders.isEmpty()) {
+//            for (Order order : orders) {
+//                orderService.deleteById(order.getOrderId());
+//            }
+//        }
+//
+//        if (opt.isPresent()) {
+//            customerService.deleteCustomerByCustomerId(customerId);
+//        }
+//        return new ModelAndView("redirect:/admin/listCustomer", model);
+//    }
 
     @RequestMapping("/listOrder")
     public ModelAndView listOrder(ModelMap model) {
