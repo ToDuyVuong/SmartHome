@@ -53,6 +53,11 @@
                 <span>Quản lý sản phẩm</span></a>
         </li>
 
+        <li class="nav-item active">
+            <a class="nav-link" href="<c:url value="/admin/listOrder"/>">
+                <span>Quản lý đơn hàng</span></a>
+        </li>
+
         <hr class="sidebar-divider">
 
         <div class="sidebar-heading">

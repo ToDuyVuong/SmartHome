@@ -4,6 +4,7 @@ import org.springframework.data.domain.Example;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import vn.smarthome.entity.Category;
@@ -60,4 +61,6 @@ public interface IProductService {
 
     @Query("SELECT p FROM Product p WHERE p.category.categoryId = :id")
     List<Product> listProductByCategoryId(@Param("id") int id);
+
+    void updateProductQuantityToZeroById(int id);
 }

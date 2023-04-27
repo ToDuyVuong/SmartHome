@@ -2,6 +2,7 @@ package vn.smarthome.service;
 
 import org.springframework.data.jpa.repository.Query;
 import vn.smarthome.entity.Order;
+import vn.smarthome.entity.Product;
 
 import java.util.List;
 import java.util.Optional;
@@ -20,6 +21,5 @@ public interface IOrderService {
 
     @Query("SELECT c FROM Order c WHERE c.customer.customerId = :id")
     List<Order> listOrderByCustomerId(int id);
-
 
 }

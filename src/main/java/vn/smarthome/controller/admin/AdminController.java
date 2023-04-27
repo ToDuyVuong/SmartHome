@@ -1,25 +1,23 @@
 package vn.smarthome.controller.admin;
 
 import org.apache.catalina.User;
+import org.aspectj.weaver.ast.Or;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import vn.smarthome.entity.*;
-import vn.smarthome.model.CategoryModel;
-import vn.smarthome.model.CustomerModel;
-import vn.smarthome.model.ProductModel;
+import vn.smarthome.model.*;
 import vn.smarthome.service.*;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -36,6 +34,19 @@ public class AdminController {
     ICartService cartService;
     @Autowired
     IOrderService orderService;
+    @Autowired
+    IOrderItemService orderItemService;
+//    @RequestMapping(value = {"/", "/*"})
+//    public ModelAndView adminPages(HttpServletRequest request) {
+//        HttpSession adminsession = request.getSession(false); // don't create a new session if one doesn't exist
+//        if (adminsession != null && adminsession.getAttribute("isAdmin") != null && (Boolean) adminsession.getAttribute("isAdmin")) {
+//            // User is logged in as an admin, allow access to admin pages
+//            return new ModelAndView("admin/adminpage");
+//        } else {
+//            // User is not logged in as an admin, redirect to login page
+//            return new ModelAndView("redirect:/loginadmin");
+//        }
+//    }
     @RequestMapping("/listCategory")
     public ModelAndView ListCategory(ModelMap model) {
         List<Category> categories = categoryService.findAll();
@@ -186,9 +197,9 @@ public class AdminController {
     @RequestMapping("/deleteProduct/{productId}")
     public ModelAndView deleteProduct(ModelMap model, @PathVariable("productId") Integer productId) {
         Optional<Product> opt = productService.findById(productId);
+
         if (opt.isPresent()) {
-            productService.deleteProductByProductId(productId);
-        }
+            productService.updateProductQuantityToZeroById(productId);        }
         return new ModelAndView("redirect:/admin/listProduct", model);
     }
 
@@ -209,9 +220,66 @@ public class AdminController {
                 orderService.deleteById(order.getOrderId());
             }
         }
+
         if (opt.isPresent()) {
             customerService.deleteCustomerByCustomerId(customerId);
         }
         return new ModelAndView("redirect:/admin/listCustomer", model);
+    }
+
+    @RequestMapping("/listOrder")
+    public ModelAndView listOrder(ModelMap model) {
+        List<Order> orders = orderService.findAll();
+
+        if (!orders.isEmpty()) {
+            OrderModel orderModel = new OrderModel();
+            BeanUtils.copyProperties(orders, orderModel);
+            model.addAttribute("listO", orders);
+        }
+        return new ModelAndView("/admin/listorder", model);
+    }
+
+    @RequestMapping(value = {"/orderDetail/{orderId}"})
+    public ModelAndView orderDetail(ModelMap model, @PathVariable("orderId") Integer orderId)
+    {
+        List<OrderItem> orderItems = orderItemService.listOrderItemsByOrderId(orderId);
+
+        Optional<Order> orders = orderService.findById(orderId);
+        List<Integer> productIds = orderItemService.listProductIdByOrderId(orderId);
+        List<Product> products = new ArrayList<>();
+        for (Integer product : productIds) {
+            Optional<Product> pro = productService.findById(product);
+            products.add(pro.get());
+        }
+
+        if (!orderItems.isEmpty()) {
+            OrderModel orderModel = new OrderModel();
+            OrderItemModel orderItemModel = new OrderItemModel();
+            ProductModel productModel = new ProductModel();
+            BeanUtils.copyProperties(orders, orderModel);
+            BeanUtils.copyProperties(orderItems, orderItemModel);
+            BeanUtils.copyProperties(products, productModel);
+
+            model.addAttribute("listO", orders.get());
+            model.addAttribute("listOI", orderItems);
+            model.addAttribute("listP", products);
+        }
+
+        return new ModelAndView("/admin/detailorder", model);
+    }
+
+    @RequestMapping(value = {"/listOrder/{orderId}"})
+    public ModelAndView changeStatus(ModelMap model, @PathVariable("orderId") Integer orderId) {
+        Optional<Order> orders = orderService.findById(orderId);
+
+        Order updatedOrder = null;
+        if (orders.isPresent()) {
+            updatedOrder = orders.get();
+            Order.Status value = updatedOrder.getStatus();
+            if(value.ordinal() < 3)
+                updatedOrder.setStatus(Order.Status.values()[value.ordinal() +1]);
+        }
+        orderService.saveOrUpdate(updatedOrder);
+        return new ModelAndView("redirect:/admin/listOrder", model);
     }
 }

@@ -52,6 +52,10 @@
                 <span>Quản lý sản phẩm</span></a>
         </li>
 
+        <li class="nav-item active">
+            <a class="nav-link" href="<c:url value="/admin/listOrder"/>">
+                <span>Quản lý đơn hàng</span></a>
+        </li>
 
         <hr class="sidebar-divider">
 
@@ -187,7 +191,14 @@
                                                                     <td>${t.email}</td>
                                                                     <td>${t.address}</td>
                                                                     <td>${t.birthday}</td>
-                                                                    <td>${t.gender}</td>
+                                                                    <td>
+                                                                        <c:if test="${t.gender eq true}">
+                                                                            Nam
+                                                                        </c:if>
+                                                                        <c:if test="${t.gender eq false}">
+                                                                            Nữ
+                                                                        </c:if>
+                                                                    </td>
                                                                     <td>${t.phone}</td>
                                                                     <td><a href ="/admin/deleteCustomer/${t.customerId}">
                                                                         <button class="btn btn-danger btn sweet-confirm destroy">Xóa</button>

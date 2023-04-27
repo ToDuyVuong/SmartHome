@@ -1,12 +1,14 @@
 package vn.smarthome.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import vn.smarthome.entity.Order;
 import vn.smarthome.entity.Product;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface ProductRepository extends JpaRepository<Product, Integer>{
     Product findById(int id);
@@ -26,4 +28,8 @@ public interface ProductRepository extends JpaRepository<Product, Integer>{
 
     @Query("SELECT p FROM Product p WHERE p.category.categoryId = :id")
     List<Product> listProductByCategoryId(@Param("id") int id);
+
+    @Modifying
+    @Query("UPDATE Product p SET p.quantity = 0 WHERE p.productId = :id")
+    void updateProductQuantityToZeroById(@Param("id") int id);
 }

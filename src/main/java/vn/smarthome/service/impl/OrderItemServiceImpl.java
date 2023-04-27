@@ -61,5 +61,10 @@ public class OrderItemServiceImpl implements IOrderItemService {
     public List<OrderItem> listOrderItemsByOrderId(int orderId) {
         return orderItemRepository.listOrderItemsByOrderId(orderId);
     }
+    @Override
+    @Query("SELECT c.product.productId FROM OrderItem c WHERE c.order.orderId = :orderId")
+    public List<Integer> listProductIdByOrderId(int orderId){
+        return orderItemRepository.listProductIdByOrderId(orderId);
+    }
 }
 

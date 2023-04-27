@@ -3,6 +3,7 @@ package vn.smarthome.service;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.repository.Query;
 import vn.smarthome.entity.OrderItem;
+import vn.smarthome.entity.Product;
 
 import java.util.List;
 
@@ -25,4 +26,6 @@ public interface IOrderItemService {
 
     @Query("SELECT c FROM OrderItem c WHERE c.order.orderId = :orderId")
     List<OrderItem> listOrderItemsByOrderId(int orderId);
+    @Query("SELECT c.product.productId FROM OrderItem c WHERE c.order.orderId = :orderId")
+    List<Integer> listProductIdByOrderId(int orderId);
 }

@@ -2,9 +2,11 @@ package vn.smarthome.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.*;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import vn.smarthome.entity.Product;
 import vn.smarthome.repository.ProductRepository;
 import vn.smarthome.service.IProductService;
@@ -145,9 +147,15 @@ public class ProductServiceImpl implements IProductService {
             }
         }
     }
-
+    @Override
     @Query("SELECT p FROM Product p WHERE p.category.categoryId = :id")
     public List<Product> listProductByCategoryId(int id){
         return productRepository.listProductByCategoryId(id);
+    }
+
+    @Override
+    @Transactional
+    public void updateProductQuantityToZeroById(int id){
+        productRepository.updateProductQuantityToZeroById(id);
     }
 }

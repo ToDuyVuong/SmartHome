@@ -30,10 +30,8 @@
 
 <!-- Page Wrapper -->
 <div id="wrapper">
-
     <!-- Sidebar -->
     <ul class="navbar-nav bg-gradient-info sidebar sidebar-dark accordion" id="accordionSidebar">
-
         <!-- Sidebar - Brand -->
         <a class="sidebar-brand d-flex align-items-center justify-content-center"
            href="<c:url value="/admin/listProduct"/>">
@@ -42,7 +40,6 @@
             </div>
             <div class="sidebar-brand-text mx-3">Admin Smart Home</div>
         </a>
-
         <!-- Divider -->
         <hr class="sidebar-divider my-0">
 
@@ -58,8 +55,6 @@
         </li>
 
         <hr class="sidebar-divider">
-
-
         <div class="sidebar-heading">
             Quản lý category
         </div>
@@ -77,10 +72,8 @@
                 </div>
             </div>
         </li>
-
         <!-- Divider -->
         <hr class="sidebar-divider">
-
         <!-- Heading -->
         <div class="sidebar-heading">
             Quản lý người dùng
@@ -91,21 +84,14 @@
                 <span>Danh sách người dùng</span>
             </a>
         </li>
-
-        <!-- Nav Item - Tables -->
-
         <!-- Divider -->
         <hr class="sidebar-divider d-none d-md-block">
-
         <!-- Sidebar Toggler (Sidebar) -->
         <div class="text-center d-none d-md-inline">
             <button class="rounded-circle border-0" id="sidebarToggle"></button>
         </div>
-
-
     </ul>
     <!-- End of Sidebar -->
-
     <!-- Content Wrapper -->
     <div id="content-wrapper" class="d-flex flex-column">
         <!-- Main Content -->
@@ -138,27 +124,76 @@
                     </li>
                 </ul>
             </nav>
+            <div class="container-fluid  ">
+                <div class="container-fluid">
+                    <!-- Page Heading -->
+                    <h1 class="h3 mb-2 text-gray-800">Danh sách đơn hàng</h1>
+                    <!-- DataTales Example -->
+                    <div class="card shadow mb-4">
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                    <thead>
+                                    <tr>
+                                        <th>OrderId</th>
+                                        <th>CustomerId</th>
+                                        <th>Detail</th>
+                                        <th>Status</th>
+                                        <th>
+                                            <div class="d-flex justify-content-sm-center">Chuyển trạng thái</div>
+                                        </th>
+                                    </tr>
+                                    </thead>
+                                    <c:forEach items="${listO}" var="t">
+                                        <tbody>
+                                        <tr>
+                                            <td>${t.orderId}</td>
+                                            <td>${t.customer.customerId}</td>
+                                            <td><a href="/admin/orderDetail/${t.orderId}">order's detail</a></td>
+                                            <td>${t.status}</td>
+                                            <td>
+                                                <div class="d-flex justify-content-sm-center">
+                                                    <a href="/admin/listOrder/${t.orderId}"
+                                                       class="btn btn-primary btn-icon-split ">
+                                                        <span class="icon text-white-50 ">
+                                                            <i class="fas fa-arrow-circle-right"></i>
+                                                        </span>
+                                                        <span class="text">Chuyển trạng thái</span>
+                                                    </a>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        </tbody>
+                                    </c:forEach>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /.container-fluid -->
+            </div>
+            <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                 aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Bạn muốn thoát khỏi hệ thống ??</h5>
+                            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">×</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">Bạn chọn xác nhận sẽ quay về trang chủ.</div>
+                        <div class="modal-footer">
+                            <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                            <a class="btn btn-primary" href="/home">Xác nhận</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
-<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-     aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">Bạn muốn thoát khỏi hệ thống ??</h5>
-                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">×</span>
-                </button>
-            </div>
-            <div class="modal-body">Bạn chọn xác nhận sẽ quay về trang chủ.</div>
-            <div class="modal-footer">
-                <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                <a class="btn btn-primary" href="/home">Xác nhận</a>
-            </div>
-        </div>
-    </div>
-</div>
+
 <!-- Bootstrap core JavaScript-->
 <script src="${pageContext.request.contextPath}/TemplateAdmin/vendor/jquery/jquery.min.js"></script>
 <script src="${pageContext.request.contextPath}/TemplateAdmin/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
