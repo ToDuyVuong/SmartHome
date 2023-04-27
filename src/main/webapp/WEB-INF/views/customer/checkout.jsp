@@ -18,7 +18,7 @@
           crossorigin="anonymous" referrerpolicy="no-referrer"/>
 
 
-    <title>Cảm ơn bạn đã đặt haàng</title>
+    <title>Hóa đơn</title>
 
 
 </head>
