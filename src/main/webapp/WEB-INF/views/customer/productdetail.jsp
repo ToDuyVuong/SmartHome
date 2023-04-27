@@ -105,18 +105,48 @@
                         <br>
                         <br>
                         <div class="action">
-                            <a  <c:if test="${not empty sessionScope.id}">
-                                href="/cart/add/${product.productId}"
-                            </c:if>
-                                    <c:if test="${ empty sessionScope.id}">
-                                        href="/login"
-                                    </c:if>>
-                                <button class="add-to-cart btn btn-default" type="button">Thêm vào giỏ</button>
-                            </a>
-                            <a href="/product" >
-                            <button class="like btn btn-default" type="button">Sản phẩm khác</span>
-                            </button>
-                            </a>
+
+<%--                            <a  <c:if test="${not empty sessionScope.id}">--%>
+<%--                                href="/cart/add/${product.productId}"--%>
+<%--                            </c:if>--%>
+<%--                                    <c:if test="${ empty sessionScope.id}">--%>
+<%--                                        href="/login"--%>
+<%--                                    </c:if>>--%>
+
+
+
+
+<%--                                <button class="add-to-cart btn btn-default" type="button">Thêm vào giỏ</button>--%>
+
+                                <div class="col">
+                                    <c:choose>
+                                    <c:when test="${product.quantity > 0}">
+                                    <a href="<c:if test='${not empty sessionScope.id}'>
+                                                    /cart/add/${product.productId}</c:if>
+                                                          <c:if test='${empty sessionScope.id}'>
+                                                              /login</c:if>"
+                                       class="btn btn-success btn-block">Thêm giỏ hàng</a>
+                                    </c:when>
+                                    <c:otherwise>
+                                    <button disabled class="btn btn-danger btn-block">Hết hàng
+                                    </button>
+                                    </c:otherwise>
+                                    </c:choose>
+
+                                    <a href="/product" >     <button class="like btn btn-default" type="button">
+                                                                        Sản phẩm khác</span>
+                                                                    </button>
+                                    </a>
+                                </div>
+
+
+
+
+<%--                            </a>--%>
+<%--                            <a href="/product" >--%>
+<%--                            <button class="like btn btn-default" type="button">Sản phẩm khác</span>--%>
+<%--                            </button>--%>
+<%--                            </a>--%>
 
                         </div>
                     </div>

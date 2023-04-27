@@ -18,7 +18,7 @@
           crossorigin="anonymous" referrerpolicy="no-referrer"/>
 
 
-    <title>Thanh toán</title>
+    <title>Cảm ơn bạn đã đặt haàng</title>
 
 
 </head>
@@ -84,7 +84,7 @@
                         <div class="col">
                             <h1 class="text-center"><b
                                     style="font-family: Arial, sans-serif; font-weight: bold; font-size: 44px; color: #51d070;">
-                                Thanh Toán</b></h1>
+                               Cảm Ơn Bạn Đã Đặt Hàng</b></h1>
 
                         </div>
                     </div>
@@ -360,9 +360,13 @@
                                                     </div>
                                                 </div>
 
-                                                <button type="submit" class="btn btn-primary btn-lg btn-block">
-                                                    Tiếp tục mua hàng
-                                                </button>
+                                                <a href="/">
+                                                <button  type="submit" class="btn btn-primary btn-lg btn-block">
+                                                        Tiếp tục mua hàng
+                                                    </button>
+                                                </a>
+
+
 
 
                                             </div>

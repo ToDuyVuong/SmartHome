@@ -143,7 +143,7 @@
 
 <br>
 <br>
-<br>
+<%--<br>
 <section class="vh-100" style="background-color: #35558a;">
     <div class="container py-5 h-100">
         <div class="row d-flex justify-content-center align-items-center h-100 text-center">
@@ -204,7 +204,7 @@
             </div>
         </div>
     </div>
-</section>
+</section>--%>
 
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"

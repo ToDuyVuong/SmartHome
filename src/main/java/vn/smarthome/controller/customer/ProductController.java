@@ -89,18 +89,26 @@ public class ProductController {
         return "customer/productlist";
     }
 
-    @RequestMapping("/search/{txt}")
-    public String productCart(ModelMap model, @PathVariable("txt") String txt,  HttpServletRequest request){
-
-        System.out.println("aaaa="+ txt);
-
-        return "customer/searchproduct";
-    }
+//    @RequestMapping("/search/{txt}")
+//    public String productCart(ModelMap model, @PathVariable("txt") String txt,  HttpServletRequest request){
+//
+//        System.out.println("aaaa="+ txt);
+//
+//        return "customer/searchproduct";
+//    }
 
     @GetMapping(path = "/search")
     public String searchProduct(@RequestParam("keyword") String keyword, Model model) {
         List<Product> searchResult = productService.findByNameContaining(keyword);
         model.addAttribute("products", searchResult);
+
+
+        List<Category> categorys  = categoryService.findAll();
+
+        model.addAttribute("categories", categorys);
+
+
+
         return "/customer/product";
     }
 

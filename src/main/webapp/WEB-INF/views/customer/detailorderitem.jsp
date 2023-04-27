@@ -55,11 +55,11 @@
                                             <div class="col-md-2">
 
                                                 <img src="${item.product.image}"
-                                                     alt="Hình ảnh sản phẩm"title="" width="150"
+                                                     alt="Hình ảnh sản phẩm" title="" width="150"
                                                      height="150">
 
-<%--                                                <img src="https://mdbcdn.b-cdn.net/img/Photos/Horizontal/E-commerce/Products/13.webp"--%>
-<%--                                                     class="img-fluid" alt="Phone">--%>
+                                                    <%--                                                <img src="https://mdbcdn.b-cdn.net/img/Photos/Horizontal/E-commerce/Products/13.webp"--%>
+                                                    <%--                                                     class="img-fluid" alt="Phone">--%>
                                             </div>
                                             <div class="col-md-2 text-center d-flex justify-content-center align-items-center">
                                                 <p class="text-muted mb-0">${item.product.name}</p>
@@ -106,15 +106,16 @@
                             <p class="text-muted mb-0">Mã giảm giá: Không</p>
                             <%--                            <p class="text-muted mb-0"><span class="fw-bold me-4">Phí vận chuyển</span> ${order.d}</p>--%>
                             <p class="text-muted mb-0"><span class="fw-bold me-4">Phí vận chuyển: </span>
-                                ${order.totalQuantity > 0 ? 'Miễn phí' : '18,000đ'}
+                                <%--                                ${order.totalQuantity > 0 ? 'Miễn phí' : '18,000đ'}--%>
+                                Miễn phí
                             </p>
                         </div>
                     </div>
                     <div class="card-footer border-0 px-4 py-5"
                          style="background-color: #a8729a; border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;">
                         <h5 class="d-flex align-items-center justify-content-end text-white text-uppercase mb-0">
-                                                        Tổng đơn: <span class="h2 mb-0 ms-2">${order.totalPrice} VNĐ</span></h5>
-<%--                       <span>  <b style="color: #2F2D3B">  Tổng đơn:   </b> </span>   ${order.totalPrice} VNĐ</h5>--%>
+                            Tổng đơn: <span class="h2 mb-0 ms-2">${order.totalPrice} VNĐ</span></h5>
+                        <%--                       <span>  <b style="color: #2F2D3B">  Tổng đơn:   </b> </span>   ${order.totalPrice} VNĐ</h5>--%>
 
                     </div>
                 </div>
