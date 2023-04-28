@@ -18,7 +18,7 @@ public class LoginFactory {
                 return new CustomerLoginImpl();
 
             default:
-                throw new IllegalArgumentException("This bank type is unsupported");
+                throw new IllegalArgumentException("This role type is unsupported");
         }
     }
 }

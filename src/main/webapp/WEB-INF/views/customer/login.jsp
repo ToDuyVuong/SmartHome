@@ -51,13 +51,13 @@
                             <div class="form-outline mb-4">
                                 <input type="text" name="username" id="username"
                                        class="form-control form-control-lg"
-                                       value="${us.username}" placeholder="Tài khoản"/>
+                                       value="${us.username}" placeholder="Tài khoản" required/>
                             </div>
 
                             <div class="form-outline mb-4">
                                 <input type="password" name="password" id="password"
                                        class="form-control form-control-lg"
-                                       value="${us.password}" placeholder="Mật khẩu"/>
+                                       value="${us.password}" placeholder="Mật khẩu" required/>
                             </div>
 
                             <button class="btn btn-primary btn-lg btn-block" type="submit">Đăng nhập</button>

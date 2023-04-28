@@ -16,13 +16,15 @@
     <title>Admin Smart Home</title>
 
     <!-- Custom fonts for this template-->
-    <link href="${pageContext.request.contextPath}/TemplateAdmin/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="${pageContext.request.contextPath}/TemplateAdmin/vendor/fontawesome-free/css/all.min.css"
+          rel="stylesheet" type="text/css">
     <link
             href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
             rel="stylesheet">
 
     <!-- Custom styles for this template-->
     <link href="${pageContext.request.contextPath}/TemplateAdmin/css/sb-admin-2.min.css" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/f9029665cb.js" crossorigin="anonymous"></script>
 
 </head>
 <body id="page-top">
@@ -127,8 +129,27 @@
                 <div class="container-fluid">
                     <!-- Page Heading -->
                     <h1 class="h3 mb-2 text-gray-800">Danh sách sản phẩm</h1>
+
                     <!-- DataTales Example -->
                     <div class="d-flex justify-content-end ">
+
+                    </div>
+                    <div class="d-flex justify-content-end ">
+                        <div class="btn-group mr-4" role="group" aria-label="Button group with nested dropdown">
+
+                            <div class="btn-group" role="group">
+                                <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown"
+                                        aria-expanded="false">
+                                    Lọc theo danh mục
+                                </button>
+                                <div class="dropdown-menu">
+                                    <a class="dropdown-item" href="/admin/listProduct">Tất cả</a>
+                                    <c:forEach items="${categories}" var="t">
+                                        <a class="dropdown-item" href="/admin/listProduct/${t.categoryId}">${t.name}</a>
+                                    </c:forEach>
+                                </div>
+                            </div>
+                        </div>
                         <a href="#"
                            class="btn btn-success btn-icon-split align-content-center"
                            data-target="#addProduct" data-toggle="modal">
@@ -172,7 +193,7 @@
                                             <td>${t.productId}</td>
                                             <td>${t.name}</td>
                                             <td>${t.description}</td>
-                                            <td>${t.image}</td>
+                                            <td><img src="${t.image}" style="height: 100px"></td>
                                             <td>${t.price}</td>
                                             <td>${t.quantity}</td>
                                             <td>${t.category.categoryId}</td>
@@ -232,7 +253,7 @@
                 <div class="modal-body">
                     <div class="form-group">
                         <label>Id</label>
-                        <input name="id_edit" type="text" class="form-control" >
+                        <input name="id_edit" type="text" class="form-control">
                     </div>
                     <div class="form-group">
                         <label>Name</label>

@@ -99,7 +99,22 @@ public class AdminController {
     @RequestMapping("/listProduct")
     public ModelAndView listProduct(ModelMap model) {
         List<Product> products = productService.findAll();
+        List<Category> categories = categoryService.findAll();
 
+        if (!products.isEmpty()) {
+            ProductModel productModel = new ProductModel();
+            BeanUtils.copyProperties(products, productModel);
+            model.addAttribute("list", products);
+            model.addAttribute("categories", categories);
+        }
+        return new ModelAndView("/admin/listproduct", model);
+    }
+
+    @RequestMapping("/listProduct/{cate_id}")
+    public ModelAndView listProductByCate (ModelMap model, @PathVariable("cate_id") Integer cate_id) {
+        List<Product> products = productService.findByCategoryCategoryId(cate_id);
+        List<Category> categories = categoryService.findAll();
+        model.addAttribute("categories", categories);
         if (!products.isEmpty()) {
             ProductModel productModel = new ProductModel();
             BeanUtils.copyProperties(products, productModel);

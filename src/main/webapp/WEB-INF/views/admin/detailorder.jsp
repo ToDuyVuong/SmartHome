@@ -24,6 +24,7 @@
 
   <!-- Custom styles for this template-->
   <link href="${pageContext.request.contextPath}/TemplateAdmin/css/sb-admin-2.min.css" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/f9029665cb.js" crossorigin="anonymous"></script>
 
 </head>
 <body id="page-top">
@@ -202,7 +203,8 @@
                       <td>${t.product.productId}</td>
                       <td>${t.product.name}</td>
                       <td>${t.product.description}</td>
-                      <td>${t.product.image}</td>
+                      <td><img src="${t.product.image} " style="height: 100px"></td>
+                      
                       <td>${t.price}</td>
                       <td>${t.quantity}</td>
                     </tr>

@@ -18,7 +18,7 @@ import java.util.Optional;
 
 @RequestMapping("profile")
 @Controller
-public class ProfileController {
+public class  ProfileController {
 
     @Autowired
     ICustomerService customerService;

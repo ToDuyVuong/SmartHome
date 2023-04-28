@@ -37,7 +37,7 @@ public class LoginController {
     // Vao trang login
     @RequestMapping(value = "login", method = RequestMethod.GET)
     public String Login(ModelMap model, HttpServletRequest request) {
-        model.addAttribute("message", "Nhập tài khoản và mất khẩu.");
+        model.addAttribute("message", "Nhập tài khoản và mật khẩu.");
         // Get the current URL
         String currentUrl = request.getRequestURI();
         System.out.println("currentUrl = " + currentUrl);
@@ -60,7 +60,7 @@ public class LoginController {
             try {
                 Customer Customer = iLoginServiceAdmin.findByUsername(userName);
                 if(passWord.equals(Customer.getPassword())){
-                return "admin/adminpage";
+                    return "admin/adminpage";
                 } else {
                     model.addAttribute("message", "Sai tài khoản hoặc mật khẩu!");
                     return "customer/login";

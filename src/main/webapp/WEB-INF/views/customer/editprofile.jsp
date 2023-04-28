@@ -147,7 +147,7 @@
                             </div>
                             <a
                                     href="<c:url value="/profile"/>"
-                                    class="btn btn-primary"><i class="fas fas-bars"></i>Qauy lại</a></div>
+                                    class="btn btn-primary"><i class="fas fas-bars"></i>Quay lại</a></div>
 
 
                     </form>

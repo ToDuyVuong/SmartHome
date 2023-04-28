@@ -24,6 +24,7 @@
 
     <!-- Custom styles for this template-->
     <link rel="stylesheet" href="${pageContext.request.contextPath}/TemplateAdmin/css/sb-admin-2.min.css" >
+    <script src="https://kit.fontawesome.com/f9029665cb.js" crossorigin="anonymous"></script>
 
 </head>
 <body id="page-top">
