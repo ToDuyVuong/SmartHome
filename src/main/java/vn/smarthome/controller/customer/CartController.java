@@ -98,8 +98,14 @@ public class CartController {
                 CartItem cartItem = cartItemService.findByCartIdAndProductId(id.intValue(), productEntity.getProductId().intValue());
                 // Đã có sản phẩm trong item
                 if (cartItem != null) {
-                    cartItem.setQuantity(cartItem.getQuantity() + 1);
-                    cartItemService.saveCartItem(cartItemEntity);
+                    if(cartItem.getQuantity() >= productEntity.getQuantity()){
+                        cartItem.setQuantity(productEntity.getQuantity());
+                        cartItemService.saveCartItem(cartItemEntity);
+                    }else {
+                        cartItem.setQuantity(cartItem.getQuantity() + 1);
+                        cartItemService.saveCartItem(cartItemEntity);
+                    }
+
                 }
                 //Chưa có sản phẩm trùng trong item
                 else {

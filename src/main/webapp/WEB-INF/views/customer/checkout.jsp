@@ -18,7 +18,7 @@
           crossorigin="anonymous" referrerpolicy="no-referrer"/>
 
 
-    <title>Thanh toán</title>
+    <title>Hóa đơn</title>
 
 
 </head>
@@ -84,7 +84,7 @@
                         <div class="col">
                             <h1 class="text-center"><b
                                     style="font-family: Arial, sans-serif; font-weight: bold; font-size: 44px; color: #51d070;">
-                                Thanh Toán</b></h1>
+                               Cảm Ơn Bạn Đã Đặt Hàng</b></h1>
 
                         </div>
                     </div>
@@ -222,9 +222,18 @@
                                             <div class="row  justify-content-between">
                                                 <div class="col-auto col-md-7">
                                                     <div class="media flex-column flex-sm-row">
-                                                        <img class=" img-fluid" src="https://i.imgur.com/6oHix28.jpg"
-                                                             width="62"
-                                                             height="62">
+
+
+
+<%--                                                        <img class=" img-fluid" src="https://i.imgur.com/6oHix28.jpg"--%>
+<%--                                                             width="62"--%>
+<%--                                                             height="62">--%>
+
+                                                        <img src="${item.products.image}"
+                                                             alt="Hình ảnh sản phẩm"title="" width="150"
+                                                             height="150">
+
+
                                                         <div class="media-body  my-auto">
                                                             <div class="row ">
                                                                 <div class="col-auto"><p class="mb-0">
@@ -351,9 +360,13 @@
                                                     </div>
                                                 </div>
 
-                                                <button type="submit" class="btn btn-primary btn-lg btn-block">
-                                                    Tiếp tục mua hàng
-                                                </button>
+                                                <a href="/">
+                                                <button  type="submit" class="btn btn-primary btn-lg btn-block">
+                                                        Tiếp tục mua hàng
+                                                    </button>
+                                                </a>
+
+
 
 
                                             </div>
@@ -386,7 +399,7 @@
     let shippingFeeElem2 = document.getElementById('shipping-fee-2');
     let totalValueElem = document.getElementById('total-value');
     let totalOrder = parseInt(document.getElementById("total-order").textContent);
-    let basicShippingFee = 20000;
+    let basicShippingFee = 0;
     let fastShippingFee = 30000;
     let expressShippingFee = 60000;
 

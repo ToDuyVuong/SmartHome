@@ -225,12 +225,11 @@
                                             <form>
 
                                                 <div class="form-group row justify-content-between">
-                                                    <label for="shipping-method" class="col-auto col-form-label"><b>Hình
-                                                        thức
-                                                        vận chuyển:</b></label>
+                                                    <label for="shipping-method" class="col-auto col-form-label"><b>
+                                                        Hình thức vận chuyển:</b></label>
                                                     <div class="col-auto">
                                                         <select class="form-control" id="shipping-method"
-                                                                name="shipping-method">
+                                                                name="shipping-method" disabled>
                                                             <option value="basic">Cơ bản</option>
                                                             <option value="fast">Giao hàng nhanh</option>
                                                             <option value="express">Hỏa tốc</option>
@@ -276,8 +275,15 @@
                                             <div class="row  justify-content-between">
                                                 <div class="col-auto col-md-7">
                                                     <div class="media flex-column flex-sm-row">
-                                                        <img class=" img-fluid" src="https://i.imgur.com/6oHix28.jpg"
-                                                             width="62" height="62">
+
+
+                                                            <%--                                                        <img class=" img-fluid" src="https://i.imgur.com/6oHix28.jpg"--%>
+                                                            <%--                                                             width="62" height="62">--%>
+
+                                                        <img src="${item.products.image}"
+                                                             alt="Hình ảnh sản phẩm" title="" width="150"
+                                                             height="150">
+
                                                         <div class="media-body  my-auto">
                                                             <div class="row ">
                                                                 <div class="col-auto"><p class="mb-0">
@@ -476,7 +482,7 @@
     let shippingFeeElem2 = document.getElementById('shipping-fee-2');
     let totalValueElem = document.getElementById('total-value');
     let totalOrder = parseInt(document.getElementById("total-order").textContent);
-    let basicShippingFee = 20000;
+    let basicShippingFee = 0;
     let fastShippingFee = 30000;
     let expressShippingFee = 60000;
 
@@ -489,7 +495,7 @@
         }
         // Cập nhật phí vận chuyển vào HTML
 
-        if (totalOrder > 100000) {
+        if (totalOrder > 1000) {
             shippingFee = 0;
         }
         let total = parseInt(totalOrder) + parseInt(shippingFee);

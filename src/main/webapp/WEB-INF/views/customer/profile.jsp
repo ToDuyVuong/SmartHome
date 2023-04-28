@@ -28,7 +28,7 @@
 </head>
 <body>
 <%--<%@include file="/common/web/header.jsp" %>--%>
-<br>
+<br><br><br><br><br><br><br>
 <section style="background-color: #eee;">
     <div class="container py-5">
         <div class="row">
@@ -78,34 +78,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="card mb-4 mb-lg-0">
-                    <div class="card-body p-0">
-                        <ul class="list-group list-group-flush rounded-3">
-                            <a href="<c:url value="order/view"/>">
-                            <li class="list-group-item d-flex justify-content-between align-items-center p-3">
-                                <i class="fas fa-globe fa-lg text-warning"></i>
-                                <p class="mb-0">Danh sách đơn hàng</p>
-                            </li>
-                            </a>
-                            <li class="list-group-item d-flex justify-content-between align-items-center p-3">
-                                <i class="fab fa-github fa-lg" style="color: #333333;"></i>
-                                <p class="mb-0">mdbootstrap</p>
-                            </li>
-                            <li class="list-group-item d-flex justify-content-between align-items-center p-3">
-                                <i class="fab fa-twitter fa-lg" style="color: #55acee;"></i>
-                                <p class="mb-0">@mdbootstrap</p>
-                            </li>
-                            <li class="list-group-item d-flex justify-content-between align-items-center p-3">
-                                <i class="fab fa-instagram fa-lg" style="color: #ac2bac;"></i>
-                                <p class="mb-0">mdbootstrap</p>
-                            </li>
-                            <li class="list-group-item d-flex justify-content-between align-items-center p-3">
-                                <i class="fab fa-facebook-f fa-lg" style="color: #3b5998;"></i>
-                                <p class="mb-0">mdbootstrap</p>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
+
             </div>
 
 
@@ -178,8 +151,12 @@
                                 <p class="mb-0">Ngày sinh</p>
                             </div>
                             <div class="col-sm-9">
-                                <p class="text-muted mb-0"><fmt:formatDate value="${customer.birthday}"
-                                                                           pattern="dd/MM/yyyy"/></p>
+<%--                                <p class="text-muted mb-0"><fmt:formatDate value="${customer.birthday}"--%>
+<%--                                                                           pattern="dd/MM/yyyy"/></p>--%>
+
+                                <input class="form-control" id="birthday" type="date" placeholder="Ngày sinh."
+                                       value="${customer.birthday}" id="birthday"
+                                       name="birthday" aria-describedby="birthday" disabled>
                             </div>
                         </div>
                         <hr>
@@ -200,14 +177,7 @@
                     </a>
                 </div>
 
-                <!-- Delete account card-->
-                <div class="card mb-4">
-                    <div class="card-header">Delete Account</div>
-                    <div class="card-body">
-                        <p>Deleting your account is a permanent action and cannot be undone. If you are sure you want to delete your account, select the button below.</p>
-                        <button class="btn btn-danger-soft text-danger" type="button">I understand, delete my account</button>
-                    </div>
-                </div>
+
 
             </div>
         </div>

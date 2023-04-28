@@ -51,16 +51,17 @@
                 </a></li>
                 <li class="nav-item"><a class="nav-link" href="/product">Sản
                     Phẩm</a></li>
-                <%--                <li class="nav-item"><a class="nav-link" href="/login">Đăng--%>
-                <%--                    Nhập</a></li>--%>
+<%--                                <li class="nav-item"><a class="nav-link" href="/login">Đăng--%>
+<%--                                    Nhập</a></li>--%>
 
-                <%--                <c:if test="${not empty sessionScope.id}">--%>
-                <%--                    <li class="nav-item"><a class="nav-link" href="/profile">Trang--%>
-                <%--                        Cá nhân: <c:if test="${not empty sessionScope.id}">--%>
-                <%--                            <%=session.getAttribute("id")%>--%>
-                <%--                        </c:if>--%>
-                <%--                    </a></li>--%>
-                <%--                </c:if>--%>
+                                <c:if test="${not empty sessionScope.id}">
+                                    <li class="nav-item"><a class="nav-link" href="/profile">Xin Chào:
+                                        <c:if test="${not empty sessionScope.id}">
+
+                                            <%=session.getAttribute("fullname")%>
+                                        </c:if>
+                                    </a></li>
+                                </c:if>
 
 
             </ul>
@@ -102,14 +103,14 @@
                 </a>
             </div>
 
-            <!-- logout -->
-            <c:if test="${not empty sessionScope.id}">
-                <div>
-                    <a class="btn btn-success btn-sm ml-3" href="/logout"
-                       role="button">Logout User <span class="badge badge-light"></span>
-                    </a>
-                </div>
-            </c:if>
+<%--            <!-- logout -->--%>
+<%--            <c:if test="${not empty sessionScope.id}">--%>
+<%--                <div>--%>
+<%--                    <a class="btn btn-success btn-sm ml-3" href="/logout"--%>
+<%--                       role="button">Logout User <span class="badge badge-light"></span>--%>
+<%--                    </a>--%>
+<%--                </div>--%>
+<%--            </c:if>--%>
 
 
             <%-- <!-- Session  -->

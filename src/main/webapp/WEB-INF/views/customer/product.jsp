@@ -66,43 +66,47 @@
                     <%--                        <a href="/category/${category.categoryId}">a</a>--%>
                     <%--                    </c:forEach>--%>
 
-<%--                    <select name="categoryId_forProduct">--%>
-                        <c:forEach items="${categories}" var="category">
-                            <form action="/category/${category.categoryId}"  method="get">
-                             <a  href="/category/${category.categoryId}">  <option  value="${category.categoryId}">${category.name}</option></a>
-                            </form>
-                        </c:forEach>
-<%--                    </select>--%>
-<%--                    <input type="submit" value="Submit">--%>
+                    <%--                    <select name="categoryId_forProduct">--%>
+                    <c:forEach items="${categories}" var="category">
+                        <form action="/category/${category.categoryId}" method="get">
+                            <a href="/category/${category.categoryId}">
+                                <option value="${category.categoryId}">${category.name}</option>
+                            </a>
+                        </form>
+                    </c:forEach>
+                    <%--                    </select>--%>
+                    <%--                    <input type="submit" value="Submit">--%>
 
-<%--                    <select>--%>
-<%--                        <c:forEach items="${categories}" var="category">--%>
-<%--                            <option value="${category.categoryId}">${category.name}</option>--%>
-<%--                        </c:forEach>--%>
-<%--                    </select>--%>
+                    <%--                    <select>--%>
+                    <%--                        <c:forEach items="${categories}" var="category">--%>
+                    <%--                            <option value="${category.categoryId}">${category.name}</option>--%>
+                    <%--                        </c:forEach>--%>
+                    <%--                    </select>--%>
 
-<%--                    <ul class="list-group category_block">--%>
-<%--                        &lt;%&ndash;                        <c:forEach items="${categorys}" var="categorys">&ndash;%&gt;--%>
-<%--                        &lt;%&ndash;                        <div>&ndash;%&gt;--%>
-<%--&lt;%&ndash;                        <li class="list-group-item"><a href="category.html">aaaa</a></li>&ndash;%&gt;--%>
+                    <%--                    <ul class="list-group category_block">--%>
+                    <%--                        &lt;%&ndash;                        <c:forEach items="${categorys}" var="categorys">&ndash;%&gt;--%>
+                    <%--                        &lt;%&ndash;                        <div>&ndash;%&gt;--%>
+                    <%--&lt;%&ndash;                        <li class="list-group-item"><a href="category.html">aaaa</a></li>&ndash;%&gt;--%>
 
-<%--                        &lt;%&ndash;                        </div>&ndash;%&gt;--%>
-<%--                        &lt;%&ndash;                        </c:forEach>&ndash;%&gt;--%>
-<%--                    </ul>--%>
+                    <%--                        &lt;%&ndash;                        </div>&ndash;%&gt;--%>
+                    <%--                        &lt;%&ndash;                        </c:forEach>&ndash;%&gt;--%>
+                    <%--                    </ul>--%>
                 </div>
 
 
-                <div class="card bg-light mb-3">
-                    <div class="card-header bg-success text-white text-uppercase">Last product</div>
-                    <div class="card-body">
-                        <img class="img-fluid" src="https://dummyimage.com/600x400/55595c/fff"/>
-                        <h5 class="card-title">Product title</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of
-                            the
-                            card's content.</p>
-                        <p class="bloc_left_price">99.00 $</p>
-                    </div>
-                </div>
+<%--                <div class="card bg-light mb-3">--%>
+<%--                    <div class="card-header bg-success text-white text-uppercase">Last product</div>--%>
+<%--                    <div class="card-body">--%>
+<%--                        <img class="img-fluid" src="https://dummyimage.com/600x400/55595c/fff"/>--%>
+<%--                        <h5 class="card-title">Product title</h5>--%>
+<%--                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of--%>
+<%--                            the--%>
+<%--                            card's content.</p>--%>
+<%--                        <p class="bloc_left_price">99.00 $</p>--%>
+<%--                    </div>--%>
+<%--                </div>--%>
+<%--                --%>
+
             </div>
 
 
@@ -112,26 +116,49 @@
 
                         <div class="col-12 col-md-6 col-lg-4">
                             <div class="card">
-                                <img class="card-img-top" src="https://dummyimage.com/600x400/55595c/fff"
-                                     alt="Card image cap">
+                                    <%--                                <img class="card-img-top" src="https://dummyimage.com/600x400/55595c/fff"--%>
+                                    <%--                                     alt="Card image cap">--%>
+
+                                <img src="${product.image}"
+                                     alt="Hình ảnh sản phẩm" title="" width="150"
+                                     height="150">
+
+
                                 <div class="card-body">
-                                    <h4 class="card-title"><a href="product/detail/${product.productId}"
+                                    <h4 class="card-title"><a href="/product/detail/${product.productId}"
                                                               title="View Product">${product.name}</a>
                                     </h4>
+
+
                                     <p class="card-text">${product.description}</p>
+<%--                                    <p class="card-text">${fn:length(product.description) gt 200 ? fn:substring(product.description, 0, 200) + "..." : product.description}</p>--%>
+
+
+
+
+
                                     <div class="row">
                                         <div class="col">
                                             <p class="bloc_left_price">Giá bán: ${product.price} VNĐ</p>
                                         </div>
+
                                         <div class="col">
-                                            <a <c:if test="${not empty sessionScope.id}">
-                                                href="/cart/add/${product.productId}"
-                                            </c:if>
-                                                    <c:if test="${ empty sessionScope.id}">
-                                                        href="/login"
-                                                    </c:if>
-                                                    class="btn btn-success btn-block">Thêm giỏ hàng</a>
+                                            <c:choose>
+                                                <c:when test="${product.quantity > 0}">
+                                                    <a href="<c:if test='${not empty sessionScope.id}'>
+                                                    /cart/add/${product.productId}</c:if>
+                                                          <c:if test='${empty sessionScope.id}'>
+                                                              /login</c:if>"
+                                                       class="btn btn-success btn-block">Thêm giỏ hàng</a>
+                                                </c:when>
+                                                <c:otherwise>
+                                                    <button disabled class="btn btn-danger btn-block">Hết hàng
+                                                    </button>
+                                                </c:otherwise>
+                                            </c:choose>
                                         </div>
+
+
                                     </div>
                                 </div>
                             </div>
@@ -140,37 +167,37 @@
                     </c:forEach>
 
 
-                    <div class="col-12">
-                        <nav aria-label="...">
-                            <ul class="pagination">
-                                <li class="page-item disabled">
-                                    <a class="page-link" href="#" tabindex="-1">Previous</a>
-                                </li>
-                                <li class="page-item"><a class="page-link" href="#">1</a></li>
-                                <li class="page-item active">
-                                    <a class="page-link" href="#">2 <span class="sr-only">(current)</span></a>
-                                </li>
-                                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                <li class="page-item">
-                                    <a class="page-link" href="#">Next</a>
-                                </li>
-                            </ul>
-                        </nav>
+                    <%--                    <div class="col-12">--%>
+                    <%--                        <nav aria-label="...">--%>
+                    <%--                            <ul class="pagination">--%>
+                    <%--                                <li class="page-item disabled">--%>
+                    <%--                                    <a class="page-link" href="#" tabindex="-1">Previous</a>--%>
+                    <%--                                </li>--%>
+                    <%--                                <li class="page-item"><a class="page-link" href="#">1</a></li>--%>
+                    <%--                                <li class="page-item active">--%>
+                    <%--                                    <a class="page-link" href="#">2 <span class="sr-only">(current)</span></a>--%>
+                    <%--                                </li>--%>
+                    <%--                                <li class="page-item"><a class="page-link" href="#">3</a></li>--%>
+                    <%--                                <li class="page-item">--%>
+                    <%--                                    <a class="page-link" href="#">Next</a>--%>
+                    <%--                                </li>--%>
+                    <%--                            </ul>--%>
+                    <%--                        </nav>--%>
 
-                        <nav aria-label="Page navigation">
-                            <ul class="pagination">
-                                <c:forEach begin="1" end="${totalPages}" var="page">
-                                    <li class="page-item ${currentPage == page ? 'active' : ''}">
-                                        <a class="page-link" href="?page=${page}">${page}</a>
-                                    </li>
-                                </c:forEach>
-                            </ul>
-                        </nav>
-                    </div>
+                    <nav aria-label="Page navigation">
+                        <ul class="pagination">
+                            <c:forEach begin="1" end="${totalPages}" var="page">
+                                <li class="page-item ${currentPage == page ? 'active' : ''}">
+                                    <a class="page-link" href="?page=${page}">${page}</a>
+                                </li>
+                            </c:forEach>
+                        </ul>
+                    </nav>
                 </div>
             </div>
-
         </div>
+
+    </div>
     </div>
 </section>
 
