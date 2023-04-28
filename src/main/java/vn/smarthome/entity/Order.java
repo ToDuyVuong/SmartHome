@@ -71,7 +71,4 @@ public class Order {
             return value;
         }
     }
-
-    Status value =Status.PENDING;
-    Status nextValue = Status.values()[value.ordinal() +1];
 }

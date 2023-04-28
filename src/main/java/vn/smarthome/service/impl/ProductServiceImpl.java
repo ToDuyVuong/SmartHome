@@ -52,10 +52,12 @@ public class ProductServiceImpl implements IProductService {
     public List<Product> findByNameContaining(String name) {
         return productRepository.findByNameContaining(name);
     }
+
     @Override
     public List<Product> findByName(String name) {
         return productRepository.findByName(name);
     }
+
     @Override
     public List<Product> findByPrice(Long price) {
         return productRepository.findByPrice(price);
@@ -114,6 +116,7 @@ public class ProductServiceImpl implements IProductService {
         Pageable pageable = PageRequest.of(pageNumber - 1, pageSize, sort);
         return productRepository.findAll(pageable);
     }
+
     @Override
     public List<Product> findByCategoryCategoryId(Integer categoryId) {
         return productRepository.findByCategoryCategoryId(categoryId);
@@ -126,36 +129,32 @@ public class ProductServiceImpl implements IProductService {
 
     @Override
     public Product saveOrUpdate(Product product) {
-        if (product.getProductId() == null) {
-            // This is a new product, so save it
-            return productRepository.save(product);
+        // This product already exists, so update it
+        Optional<Product> existingProduct = productRepository.findById(product.getProductId());
+        if (existingProduct.isPresent()) {
+            Product updatedProduct = existingProduct.get();
+            updatedProduct.setName(product.getName());
+            updatedProduct.setDescription(product.getDescription());
+            updatedProduct.setImage(product.getImage());
+            updatedProduct.setPrice(product.getPrice());
+            updatedProduct.setQuantity(product.getQuantity());
+            updatedProduct.setCategory(product.getCategory());
+            return productRepository.save(updatedProduct);
         } else {
-            // This product already exists, so update it
-            Optional<Product> existingProduct = productRepository.findById(product.getProductId());
-            if (existingProduct.isPresent()) {
-                Product updatedProduct = existingProduct.get();
-                updatedProduct.setName(product.getName());
-                updatedProduct.setDescription(product.getDescription());
-                updatedProduct.setImage(product.getImage());
-                updatedProduct.setPrice(product.getPrice());
-                updatedProduct.setQuantity(product.getQuantity());
-                updatedProduct.setCategory(product.getCategory());
-                return productRepository.save(updatedProduct);
-            } else {
-                // Product not found, throw an exception or handle the error in some other way
-                throw new RuntimeException("Product not found");
-            }
+            // Product not found, throw an exception or handle the error in some other way
+            throw new RuntimeException("Product not found");
         }
     }
+
     @Override
     @Query("SELECT p FROM Product p WHERE p.category.categoryId = :id")
-    public List<Product> listProductByCategoryId(int id){
+    public List<Product> listProductByCategoryId(int id) {
         return productRepository.listProductByCategoryId(id);
     }
 
     @Override
     @Transactional
-    public void updateProductQuantityToZeroById(int id){
+    public void updateProductQuantityToZeroById(int id) {
         productRepository.updateProductQuantityToZeroById(id);
     }
 }

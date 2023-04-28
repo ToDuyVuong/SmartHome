@@ -136,7 +136,11 @@
                                     <thead>
                                     <tr>
                                         <th>OrderId</th>
-                                        <th>CustomerId</th>
+                                        <th>Customer Name</th>
+                                        <th>Order Date</th>
+                                        <th>Note</th>
+                                        <th>Phone</th>
+                                        <th>Ship To</th>
                                         <th>Detail</th>
                                         <th>Status</th>
                                         <th>
@@ -148,7 +152,11 @@
                                         <tbody>
                                         <tr>
                                             <td>${t.orderId}</td>
-                                            <td>${t.customer.customerId}</td>
+                                            <td>${t.customer.fullname}</td>
+                                            <td>${t.date}</td>
+                                            <td>${t.note}</td>
+                                            <td>${t.phone}</td>
+                                            <td>${t.shipTo}</td>
                                             <td><a href="/admin/orderDetail/${t.orderId}">order's detail</a></td>
                                             <td>${t.status}</td>
                                             <td>

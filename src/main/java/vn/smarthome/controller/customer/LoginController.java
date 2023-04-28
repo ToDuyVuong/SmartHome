@@ -72,8 +72,6 @@ public class LoginController {
         else{
             try {
                 Customer Customer = iLoginServiceCustomer.findByUsername(username);
-                // Cach 2 : copy cac thuoc tinh tinh us vao User
-                // BeanUtils.copyProperties(us, User);
 
                 if (result.hasErrors()) {
                     model.addAttribute("message", result.getAllErrors().toString());
@@ -92,7 +90,6 @@ public class LoginController {
                     model.addAttribute("message", "Tài khoản không tồn tại!");
                     return "customer/login";
                 } else if (password.equals(Customer.getPassword())) {
-//				System.out.println("co user " + Customer.getFullname());
                     model.addAttribute("message", "Xin chào, đây là trang của tôi!co user" + Customer.getFullname());
 
                     session.setAttribute("id", Customer.getCustomerId());
@@ -103,8 +100,7 @@ public class LoginController {
                     return "redirect:/"; // = return "index";
                 } else {
 
-                    System.out
-                            .println("Sai PassWord nhap-" + passWord + "-user-" + Customer.getPassword().toString() + "-");
+                    System.out.println("Sai PassWord nhap-" + passWord + "-user-" + Customer.getPassword().toString() + "-");
                     model.addAttribute("message", "Sai mật khẩu!");
                     return "customer/login";
                 }
@@ -113,8 +109,6 @@ public class LoginController {
                 return "customer/login";
             }
         }
-        // Cach 1 : Tim theo userName
-
     }
 
 

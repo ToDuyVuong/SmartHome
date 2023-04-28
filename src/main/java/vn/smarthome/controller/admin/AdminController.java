@@ -36,17 +36,6 @@ public class AdminController {
     IOrderService orderService;
     @Autowired
     IOrderItemService orderItemService;
-//    @RequestMapping(value = {"/", "/*"})
-//    public ModelAndView adminPages(HttpServletRequest request) {
-//        HttpSession adminsession = request.getSession(false); // don't create a new session if one doesn't exist
-//        if (adminsession != null && adminsession.getAttribute("isAdmin") != null && (Boolean) adminsession.getAttribute("isAdmin")) {
-//            // User is logged in as an admin, allow access to admin pages
-//            return new ModelAndView("admin/adminpage");
-//        } else {
-//            // User is not logged in as an admin, redirect to login page
-//            return new ModelAndView("redirect:/loginadmin");
-//        }
-//    }
     @RequestMapping("/listCategory")
     public ModelAndView ListCategory(ModelMap model) {
         List<Category> categories = categoryService.findAll();
@@ -82,13 +71,13 @@ public class AdminController {
         Optional<Category> category = categoryService.findById(Integer.valueOf(id));
         if (category.isPresent()) {
             Category updatedCategory = category.get();
-            updatedCategory.setName(name);
-            updatedCategory.setDescription(description);
+            if(!name.isEmpty()){
+                updatedCategory.setName(name);
+            }
+            if(!description.isEmpty()){
+                updatedCategory.setDescription(description);
+            }
             categoryService.saveOrUpdate(updatedCategory);
-//            // set success message in the request attribute
-//            request.setAttribute("successMessage", "Category updated successfully.");
-//        } else {
-//            request.setAttribute("errorMessage", "Category not found.");
         }
         return new ModelAndView("redirect:/admin/listcategory", model);
     }
@@ -174,18 +163,30 @@ public class AdminController {
 
         Optional<Product> product = productService.findById(Integer.valueOf(productId));
 
+//        request.setAttribute("detail", product);
         if (product.isPresent()) {
             Product updatedProduct = product.get();
-            updatedProduct.setName(name);
-            updatedProduct.setDescription(description);
-            updatedProduct.setImage(image);
-            updatedProduct.setPrice(Long.parseLong(price));
-            updatedProduct.setQuantity(Integer.parseInt(quantity));
-
-            Optional<Category> category = categoryService.findById(Integer.valueOf(categoryId));
-            if (category.isPresent()) {
-                Category categoryObj = category.get();
-                updatedProduct.setCategory(categoryObj);
+            if (!name.isEmpty()) {
+                updatedProduct.setName(name);
+            }
+            if (!description.isEmpty()) {
+                updatedProduct.setDescription(description);
+            }
+            if (!image.isEmpty()) {
+                updatedProduct.setImage(image);
+            }
+            if (!price.isEmpty()) {
+                updatedProduct.setPrice(Long.parseLong(price));
+            }
+            if (!quantity.isEmpty()) {
+                updatedProduct.setQuantity(Integer.parseInt(quantity));
+            }
+            if (!categoryId.isEmpty()) {
+                Optional<Category> category = categoryService.findById(Integer.valueOf(categoryId));
+                if (category.isPresent()) {
+                    Category categoryObj = category.get();
+                    updatedProduct.setCategory(categoryObj);
+                }
             }
 
             productService.saveOrUpdate(updatedProduct);
@@ -281,6 +282,8 @@ public class AdminController {
             Order.Status value = updatedOrder.getStatus();
             if(value.ordinal() < 3)
                 updatedOrder.setStatus(Order.Status.values()[value.ordinal() +1]);
+            if(value.ordinal() == 3)
+                updatedOrder.setStatus(Order.Status.values()[value.ordinal() -3]);
         }
         orderService.saveOrUpdate(updatedOrder);
         return new ModelAndView("redirect:/admin/listOrder", model);

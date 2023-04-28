@@ -124,25 +124,6 @@
                 </ul>
             </nav>
             <div class="container-fluid  ">
-<%--                <div class="row ">--%>
-<%--                    <!-- Earnings (Monthly) Card Example -->--%>
-<%--                    <div class="col-xl-3 col-md-6 mb-4">--%>
-<%--                        <div class="card border-left-primary shadow h-100 py-2">--%>
-<%--                            <div class="card-body">--%>
-<%--                                <div class="row no-gutters align-items-center">--%>
-<%--                                    <div class="col mr-2">--%>
-<%--                                        <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">--%>
-<%--                                            Tổng số sản phẩm--%>
-<%--                                        </div>--%>
-<%--                                        <div class="h5 mb-0 font-weight-bold text-gray-800"> ${total}</div>--%>
-<%--                                    </div>--%>
-<%--                                    <div class="col-auto">--%>
-<%--                                    </div>--%>
-<%--                                </div>--%>
-<%--                            </div>--%>
-<%--                        </div>--%>
-<%--                    </div>--%>
-<%--                </div>--%>
                 <div class="container-fluid">
                     <!-- Page Heading -->
                     <h1 class="h3 mb-2 text-gray-800">Danh sách sản phẩm</h1>
@@ -210,44 +191,6 @@
                                         </tbody>
                                     </c:forEach>
                                 </table>
-<%--                                <div class="col-sm-12 col-md-7">--%>
-<%--                                    <div class="dataTables_paginate paging_simple_numbers" id="dataTable_paginate">--%>
-<%--                                        <ul class="pagination">--%>
-<%--                                            <c:if test="${page != 1}">--%>
-<%--                                                <li class="paginate_button page-item" id="dataTable_previous">--%>
-<%--                                                    <a href="${pageContext.request.contextPath}/Admin/Product/ShowProduct?keyword=<%= request.getParameter("keyword") != null ? request.getParameter("keyword") :--%>
-<%--                                                    ""%>&page=${page - 1 }" aria-controls="dataTable" data-dt-idx="0"--%>
-<%--                                                       tabindex="0" class="page-link">Previous</a>--%>
-<%--                                                </li>--%>
-<%--                                            </c:if>--%>
-<%--                                            <c:forEach var="i" begin="1" end="${totalpage}">--%>
-<%--                                                <c:choose>--%>
-<%--                                                    <c:when test="${ page == i}">--%>
-<%--                                                        <li class="paginate_button page-item active">--%>
-<%--                                                            <a href="${pageContext.request.contextPath}/Admin/Product/ShowProduct?keyword=<%= request.getParameter("keyword") != null ? request.getParameter("keyword") :--%>
-<%--                                                            ""%>&page=${i}" aria-controls="dataTable" tabindex="0"--%>
-<%--                                                               class="page-link">${ i}</a>--%>
-<%--                                                        </li>--%>
-<%--                                                    </c:when>--%>
-<%--                                                    <c:otherwise>--%>
-<%--                                                        <li class="paginate_button page-item">--%>
-<%--                                                            <a href="${pageContext.request.contextPath}/Admin/Product/ShowProduct?keyword=<%= request.getParameter("keyword") != null ? request.getParameter("keyword") :--%>
-<%--                                                            ""%>&page=${i}" aria-controls="dataTable" tabindex="0"--%>
-<%--                                                               class="page-link">${ i}</a>--%>
-<%--                                                        </li>--%>
-<%--                                                    </c:otherwise>--%>
-<%--                                                </c:choose>--%>
-<%--                                            </c:forEach>--%>
-<%--                                            <c:if test="${page < totalpage}">--%>
-<%--                                                <li class="paginate_button page-item next" id="dataTable_next">--%>
-<%--                                                    <a href="${pageContext.request.contextPath}/Admin/Product/ShowProduct?keyword=<%= request.getParameter("keyword") != null ? request.getParameter("keyword") :--%>
-<%--                                                    ""%>&page=${page + 1}" aria-controls="dataTable" tabindex="0"--%>
-<%--                                                       class="page-link">Next</a>--%>
-<%--                                                </li>--%>
-<%--                                            </c:if>--%>
-<%--                                        </ul>--%>
-<%--                                    </div>--%>
-<%--                                </div>--%>
                             </div>
                         </div>
                     </div>
@@ -289,31 +232,31 @@
                 <div class="modal-body">
                     <div class="form-group">
                         <label>Id</label>
-                        <input name="id_edit" type="text" class="form-control" required>
+                        <input name="id_edit" type="text" class="form-control" >
                     </div>
                     <div class="form-group">
                         <label>Name</label>
-                        <input name="name_edit" type="text" class="form-control" required>
+                        <input name="name_edit" type="text" class="form-control">
                     </div>
                     <div class="form-group">
                         <label>Description</label>
-                        <input name="description_edit" type="text" class="form-control" required>
+                        <input name="description_edit" type="text" class="form-control">
                     </div>
                     <div class="form-group">
                         <label>Image</label>
-                        <input name="image_edit" type="text" class="form-control" required>
+                        <input name="image_edit" type="text" class="form-control">
                     </div>
                     <div class="form-group">
                         <label>Price</label>
-                        <input name="price_edit" type="text" class="form-control" required>
+                        <input name="price_edit" type="text" class="form-control">
                     </div>
                     <div class="form-group">
                         <label>Quantity</label>
-                        <input name="quantity_edit" type="text" class="form-control" required>
+                        <input name="quantity_edit" type="number" class="form-control">
                     </div>
                     <div class="form-group">
                         <label>Category ID</label>
-                        <input name="categoryid_edit" type="text" class="form-control" required>
+                        <input name="categoryid_edit" type="text" class="form-control">
                     </div>
                     <div class="modal-footer">
                         <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">

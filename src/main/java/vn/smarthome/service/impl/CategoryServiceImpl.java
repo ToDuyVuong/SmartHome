@@ -50,6 +50,7 @@ public class CategoryServiceImpl implements ICategoryService {
     public List<Category> findByNameContaining(String name) {
         return categoryRepository.findByNameContaining(name);
     }
+
     @Override
     public List<Category> findByName(String name) {
         return categoryRepository.findByName(name);
@@ -67,21 +68,16 @@ public class CategoryServiceImpl implements ICategoryService {
 
     @Override
     public Category saveOrUpdate(Category category) {
-        if (category.getCategoryId() == null) {
-            // This is a new category, so save it
-            return categoryRepository.save(category);
+        // This category already exists, so update it
+        Optional<Category> existingCategory = categoryRepository.findById(category.getCategoryId());
+        if (existingCategory.isPresent()) {
+            Category updatedCategory = existingCategory.get();
+            updatedCategory.setName(category.getName());
+            updatedCategory.setDescription(category.getDescription());
+            return categoryRepository.save(updatedCategory);
         } else {
-            // This category already exists, so update it
-            Optional<Category> existingCategory = categoryRepository.findById(category.getCategoryId());
-            if (existingCategory.isPresent()) {
-                Category updatedCategory = existingCategory.get();
-                updatedCategory.setName(category.getName());
-                updatedCategory.setDescription(category.getDescription());
-                return categoryRepository.save(updatedCategory);
-            } else {
-                // Category not found, throw an exception or handle the error in some other way
-                throw new RuntimeException("Category not found");
-            }
+            // Category not found, throw an exception or handle the error in some other way
+            throw new RuntimeException("Category not found");
         }
     }
 }

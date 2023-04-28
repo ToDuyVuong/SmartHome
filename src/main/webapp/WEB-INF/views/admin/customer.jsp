@@ -179,7 +179,6 @@
                                                                 <th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-label="Ngày sinh: activate to sort column ascending" style="width: 171.672px;">Ngày sinh</th>
                                                                 <th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-label="Giới tính: activate to sort column ascending" style="width: 171.672px;">Giới tính</th>
                                                                 <th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-label="Điện thoại: activate to sort column ascending" style="width: 171.672px;">Điện thoại</th>
-                                                                <th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-label="Xóa: activate to sort column ascending" style="width: 171.672px;">Xoá</th>
                                                             </tr>
                                                             </thead>
                                                             <c:forEach items="${listC}" var="t">
@@ -200,10 +199,6 @@
                                                                         </c:if>
                                                                     </td>
                                                                     <td>${t.phone}</td>
-                                                                    <td><a href ="/admin/deleteCustomer/${t.customerId}">
-                                                                        <button class="btn btn-danger btn sweet-confirm destroy">Xóa</button>
-                                                                    </a>
-                                                                    </td>
                                                                 </tbody>
                                                             </c:forEach>
                                                         </table>

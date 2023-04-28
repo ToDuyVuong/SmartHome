@@ -165,7 +165,7 @@
                                             <div class="dataTables_wrapper">
                                                 <div class="d-flex justify-content-end ">
                                                     <a href="#"
-                                                       class="btn btn-warning btn-icon-split align-content-center"
+                                                       class="btn btn-info btn-icon-split align-content-center"
                                                        data-target="#editDanhMuc" data-toggle="modal">
                                                         <span class="icon text-white-50">
                                                             <i class="fas fa-exclamation-triangle"></i>
@@ -177,12 +177,6 @@
                                                        style="min-width: 845px" role="grid"
                                                        aria-describedby="example_info">
                                                     <thead>
-<%--                                                    <c:if test="${not empty successMessage}">--%>
-<%--                                                        <div class="alert alert-success">${successMessage}</div>--%>
-<%--                                                    </c:if>--%>
-<%--                                                    <c:if test="${not empty errorMessage}">--%>
-<%--                                                        <div class="alert alert-danger">${errorMessage}</div>--%>
-<%--                                                    </c:if>--%>
                                                     <tr role="row">
                                                         <th class="sorting_desc" tabindex="0" aria-controls="example"
                                                             rowspan="1" colspan="1" aria-sort="descending"
@@ -199,11 +193,6 @@
                                                             aria-label="Mô tả: activate to sort column ascending"
                                                             style="width: 485.891px;">Mô tả
                                                         </th>
-                                                        <th class="sorting" tabindex="0" aria-controls="example"
-                                                            rowspan="1" colspan="1"
-                                                            aria-label="Xóa: activate to sort column ascending"
-                                                            style="width: 171.672px;">Xóa
-                                                        </th>
                                                     </tr>
                                                     </thead>
                                                     <c:forEach items="${listP}" var="o">
@@ -212,13 +201,6 @@
                                                         <td class="sorting_1">${o.categoryId}</td>
                                                         <td><a>${o.name}</a></td>
                                                         <td><a>${o.description}</a></td>
-                                                        <td>
-                                                            <a href="/admin/deleteCategory/${o.categoryId}" >
-                                                                    <button class="btn btn-danger btn sweet-confirm destroy">
-                                                                        Xóa
-                                                                    </button>
-                                                            </a>
-                                                        </td>
                                                     </tbody>
                                                     </c:forEach>
                                                 </table>
