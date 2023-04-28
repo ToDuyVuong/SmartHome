@@ -77,7 +77,7 @@ public class CheckoutController {
         order.setDate(date);
         order.setAddress(address);
         order.setPhone(phone);
-        order.setStatus(Order.Status.CANCELED);
+        order.setStatus(Order.Status.PENDING);
 
         orderService.saveOrUpdate(order);
 
