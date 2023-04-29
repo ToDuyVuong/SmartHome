@@ -194,7 +194,7 @@
                         <div class="modal-body">Bạn chọn xác nhận sẽ quay về trang chủ.</div>
                         <div class="modal-footer">
                             <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                            <a class="btn btn-primary" href="/home">Xác nhận</a>
+                            <a class="btn btn-primary" href="/logout">Xác nhận</a>
                         </div>
                     </div>
                 </div>

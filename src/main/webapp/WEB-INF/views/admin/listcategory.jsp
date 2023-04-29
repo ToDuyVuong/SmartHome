@@ -168,7 +168,7 @@
                                                        class="btn btn-info btn-icon-split align-content-center"
                                                        data-target="#editDanhMuc" data-toggle="modal">
                                                         <span class="icon text-white-50">
-                                                            <i class="fas fa-exclamation-triangle"></i>
+                                                            <i class="fas fa-edit"></i>
                                                         </span>
                                                         <span class="text">Chỉnh sửa</span>
                                                     </a>
@@ -231,7 +231,7 @@
             <div class="modal-body">Bạn chọn xác nhận sẽ quay về trang chủ.</div>
             <div class="modal-footer">
                 <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                <a class="btn btn-primary" href="/home">Xác nhận</a>
+                <a class="btn btn-primary" href="/logout">Xác nhận</a>
             </div>
         </div>
     </div>
@@ -251,15 +251,15 @@
                 <div class="modal-body">
                     <div class="form-group">
                         <label>ID</label>
-                        <input name="idcate" type="text" class="form-control" required>
+                        <input name="idcate" type="text" class="form-control">
                     </div>
                     <div class="form-group">
                         <label>Tên danh mục</label>
-                        <input name="namecate" type="text" class="form-control" required>
+                        <input name="namecate" type="text" class="form-control">
                     </div>
                     <div class="form-group">
                         <label>Mô tả</label>
-                        <input name="descriptioncate" type="text" class="form-control" required>
+                        <input name="descriptioncate" type="text" class="form-control">
                     </div>
                     <div class="modal-footer">
                         <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">

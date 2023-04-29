@@ -9,6 +9,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.View;
 import vn.smarthome.entity.*;
 import vn.smarthome.model.*;
 import vn.smarthome.service.*;
@@ -36,8 +37,15 @@ public class AdminController {
     IOrderService orderService;
     @Autowired
     IOrderItemService orderItemService;
+
     @RequestMapping("/listCategory")
-    public ModelAndView ListCategory(ModelMap model) {
+    public ModelAndView ListCategory(ModelMap model, HttpServletRequest request) {
+
+        HttpSession session = request.getSession(false);
+        if (session == null || session.getAttribute("isAdmin") == null) {
+            return new ModelAndView("redirect:/login");
+        }
+
         List<Category> categories = categoryService.findAll();
 
         if (!categories.isEmpty()) {
@@ -65,6 +73,10 @@ public class AdminController {
 
     @RequestMapping(value = "/editCategory", method = RequestMethod.POST)
     public ModelAndView editCategory(ModelMap model, HttpServletRequest request) {
+        HttpSession session = request.getSession(false);
+        if (session == null || session.getAttribute("isAdmin") == null) {
+            return new ModelAndView("redirect:/login");
+        }
         String id = request.getParameter("idcate");
         String name = request.getParameter("namecate");
         String description = request.getParameter("descriptioncate");
@@ -79,14 +91,22 @@ public class AdminController {
             }
             categoryService.saveOrUpdate(updatedCategory);
         }
-        return new ModelAndView("redirect:/admin/listcategory", model);
+        return new ModelAndView("redirect:/admin/listCategory", model);
     }
     @RequestMapping(value = "/addCategory", method = RequestMethod.GET)
-    public String addCategory() {
-        return "/admin/addcategory";
+    public ModelAndView addCategory(HttpServletRequest request) {
+        HttpSession session = request.getSession(false);
+        if (session == null || session.getAttribute("isAdmin") == null) {
+            return new ModelAndView("redirect:/login");
+        }
+        return new ModelAndView("/admin/addcategory") ;
     }
     @RequestMapping(value = "/addCategory", method = RequestMethod.POST)
     public ModelAndView addCategory(ModelMap model, HttpServletRequest request) {
+//        HttpSession session = request.getSession(false);
+//        if (session == null || session.getAttribute("isAdmin") == null) {
+//            return new ModelAndView("redirect:/login");
+//        }
         String name = request.getParameter("name");
         String description = request.getParameter("description");
         Category newCategory = new Category();
@@ -97,7 +117,11 @@ public class AdminController {
     }
 
     @RequestMapping("/listProduct")
-    public ModelAndView listProduct(ModelMap model) {
+    public ModelAndView listProduct(ModelMap model, HttpServletRequest request) {
+        HttpSession session = request.getSession(false);
+        if (session == null || session.getAttribute("isAdmin") == null) {
+            return new ModelAndView("redirect:/login");
+        }
         List<Product> products = productService.findAll();
         List<Category> categories = categoryService.findAll();
 
@@ -111,7 +135,11 @@ public class AdminController {
     }
 
     @RequestMapping("/listProduct/{cate_id}")
-    public ModelAndView listProductByCate (ModelMap model, @PathVariable("cate_id") Integer cate_id) {
+    public ModelAndView listProductByCate (ModelMap model, @PathVariable("cate_id") Integer cate_id, HttpServletRequest request) {
+        HttpSession session = request.getSession(false);
+        if (session == null || session.getAttribute("isAdmin") == null) {
+            return new ModelAndView("redirect:/login");
+        }
         List<Product> products = productService.findByCategoryCategoryId(cate_id);
         List<Category> categories = categoryService.findAll();
         model.addAttribute("categories", categories);
@@ -124,7 +152,11 @@ public class AdminController {
     }
 
     @RequestMapping("/listCustomer")
-    public ModelAndView listCustomer(ModelMap model) {
+    public ModelAndView listCustomer(ModelMap model, HttpServletRequest request) {
+        HttpSession session = request.getSession(false);
+        if (session == null || session.getAttribute("isAdmin") == null) {
+            return new ModelAndView("redirect:/login");
+        }
         List<Customer> customers = customerService.findAll();
 
         if (!customers.isEmpty()) {
@@ -137,6 +169,10 @@ public class AdminController {
 
     @RequestMapping(value = "/addProduct", method = RequestMethod.POST)
     public ModelAndView addProduct(ModelMap model, HttpServletRequest request) {
+        HttpSession session = request.getSession(false);
+        if (session == null || session.getAttribute("isAdmin") == null) {
+            return new ModelAndView("redirect:/login");
+        }
         String name = request.getParameter("name_add");
         String description = request.getParameter("description_add");
         String image = request.getParameter("image_add");
@@ -167,6 +203,10 @@ public class AdminController {
 
     @RequestMapping(value = "/editProduct", method = RequestMethod.POST)
     public ModelAndView editProduct(ModelMap model, HttpServletRequest request) {
+        HttpSession session = request.getSession(false);
+        if (session == null || session.getAttribute("isAdmin") == null) {
+            return new ModelAndView("redirect:/login");
+        }
 
         String productId = request.getParameter("id_edit");
         String name = request.getParameter("name_edit");
@@ -211,7 +251,11 @@ public class AdminController {
     }
 
     @RequestMapping("/deleteProduct/{productId}")
-    public ModelAndView deleteProduct(ModelMap model, @PathVariable("productId") Integer productId) {
+    public ModelAndView deleteProduct(ModelMap model, @PathVariable("productId") Integer productId, HttpServletRequest request) {
+        HttpSession session = request.getSession(false);
+        if (session == null || session.getAttribute("isAdmin") == null) {
+            return new ModelAndView("redirect:/login");
+        }
         Optional<Product> opt = productService.findById(productId);
 
         if (opt.isPresent()) {
@@ -247,7 +291,11 @@ public class AdminController {
 //    }
 
     @RequestMapping("/listOrder")
-    public ModelAndView listOrder(ModelMap model) {
+    public ModelAndView listOrder(ModelMap model, HttpServletRequest request) {
+        HttpSession session = request.getSession(false);
+        if (session == null || session.getAttribute("isAdmin") == null) {
+            return new ModelAndView("redirect:/login");
+        }
         List<Order> orders = orderService.findAll();
 
         if (!orders.isEmpty()) {
@@ -259,8 +307,11 @@ public class AdminController {
     }
 
     @RequestMapping(value = {"/orderDetail/{orderId}"})
-    public ModelAndView orderDetail(ModelMap model, @PathVariable("orderId") Integer orderId)
-    {
+    public ModelAndView orderDetail(ModelMap model, @PathVariable("orderId") Integer orderId, HttpServletRequest request) {
+        HttpSession session = request.getSession(false);
+        if (session == null || session.getAttribute("isAdmin") == null) {
+            return new ModelAndView("redirect:/login");
+        }
         List<OrderItem> orderItems = orderItemService.listOrderItemsByOrderId(orderId);
 
         Optional<Order> orders = orderService.findById(orderId);
@@ -288,7 +339,11 @@ public class AdminController {
     }
 
     @RequestMapping(value = {"/listOrder/{orderId}"})
-    public ModelAndView changeStatus(ModelMap model, @PathVariable("orderId") Integer orderId) {
+    public ModelAndView changeStatus(ModelMap model, @PathVariable("orderId") Integer orderId, HttpServletRequest request) {
+        HttpSession session = request.getSession(false);
+        if (session == null || session.getAttribute("isAdmin") == null) {
+            return new ModelAndView("redirect:/login");
+        }
         Optional<Order> orders = orderService.findById(orderId);
 
         Order updatedOrder = null;

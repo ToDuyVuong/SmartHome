@@ -60,6 +60,7 @@ public class LoginController {
             try {
                 Customer Customer = iLoginServiceAdmin.findByUsername(userName);
                 if(passWord.equals(Customer.getPassword())){
+                    session.setAttribute("isAdmin", true);
                     return "admin/adminpage";
                 } else {
                     model.addAttribute("message", "Sai tài khoản hoặc mật khẩu!");

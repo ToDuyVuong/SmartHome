@@ -129,20 +129,26 @@ public class ProductServiceImpl implements IProductService {
 
     @Override
     public Product saveOrUpdate(Product product) {
-        // This product already exists, so update it
-        Optional<Product> existingProduct = productRepository.findById(product.getProductId());
-        if (existingProduct.isPresent()) {
-            Product updatedProduct = existingProduct.get();
-            updatedProduct.setName(product.getName());
-            updatedProduct.setDescription(product.getDescription());
-            updatedProduct.setImage(product.getImage());
-            updatedProduct.setPrice(product.getPrice());
-            updatedProduct.setQuantity(product.getQuantity());
-            updatedProduct.setCategory(product.getCategory());
-            return productRepository.save(updatedProduct);
-        } else {
-            // Product not found, throw an exception or handle the error in some other way
-            throw new RuntimeException("Product not found");
+        if (product.getProductId() == null) {
+            // This is a new product, so save it
+            return productRepository.save(product);
+        }
+        else {
+            // This product already exists, so update it
+            Optional<Product> existingProduct = productRepository.findById(product.getProductId());
+            if (existingProduct.isPresent()) {
+                Product updatedProduct = existingProduct.get();
+                updatedProduct.setName(product.getName());
+                updatedProduct.setDescription(product.getDescription());
+                updatedProduct.setImage(product.getImage());
+                updatedProduct.setPrice(product.getPrice());
+                updatedProduct.setQuantity(product.getQuantity());
+                updatedProduct.setCategory(product.getCategory());
+                return productRepository.save(updatedProduct);
+            } else {
+                // Product not found, throw an exception or handle the error in some other way
+                throw new RuntimeException("Product not found");
+            }
         }
     }
 
