@@ -94,95 +94,85 @@
                 </div>
 
 
-<%--                <div class="card bg-light mb-3">--%>
-<%--                    <div class="card-header bg-success text-white text-uppercase">Last product</div>--%>
-<%--                    <div class="card-body">--%>
-<%--                        <img class="img-fluid" src="https://dummyimage.com/600x400/55595c/fff"/>--%>
-<%--                        <h5 class="card-title">Product title</h5>--%>
-<%--                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of--%>
-<%--                            the--%>
-<%--                            card's content.</p>--%>
-<%--                        <p class="bloc_left_price">99.00 $</p>--%>
-<%--                    </div>--%>
-<%--                </div>--%>
-<%--                --%>
+                <%--                <div class="card bg-light mb-3">--%>
+                <%--                    <div class="card-header bg-success text-white text-uppercase">Last product</div>--%>
+                <%--                    <div class="card-body">--%>
+                <%--                        <img class="img-fluid" src="https://dummyimage.com/600x400/55595c/fff"/>--%>
+                <%--                        <h5 class="card-title">Product title</h5>--%>
+                <%--                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of--%>
+                <%--                            the--%>
+                <%--                            card's content.</p>--%>
+                <%--                        <p class="bloc_left_price">99.00 $</p>--%>
+                <%--                    </div>--%>
+                <%--                </div>--%>
+                <%--                --%>
 
             </div>
 
 
             <div class="col">
                 <div class="row">
-                    <c:forEach items="${products}" var="product">
 
-                        <div class="col-12 col-md-6 col-lg-4">
-                            <div class="card">
-                                    <%--                                <img class="card-img-top" src="https://dummyimage.com/600x400/55595c/fff"--%>
-                                    <%--                                     alt="Card image cap">--%>
+                    <div class="col">
+                        <div class="row mt-4">
+                            <c:forEach items="${products}" var="product">
 
-                                <img src="${product.image}"
-                                     alt="Hình ảnh sản phẩm" title="" width="150"
-                                     height="150">
+<%--                                <div class="col-12 col-md-6 col-lg-4">--%>
+                                <div class="col-12 col-md-6 col-lg-4 mb-4">
+                                    <div class="card">
 
-
-                                <div class="card-body">
-                                    <h4 class="card-title"><a href="/product/detail/${product.productId}"
-                                                              title="View Product">${product.name}</a>
-                                    </h4>
+                                        <img src="${product.image}"
+                                             alt="Hình ảnh sản phẩm" title="" width="250"
+                                             height="150" class="mx-auto" style="margin-top: 10px;">
 
 
-                                    <p class="card-text">${product.description}</p>
-<%--                                    <p class="card-text">${fn:length(product.description) gt 200 ? fn:substring(product.description, 0, 200) + "..." : product.description}</p>--%>
+                                        <div class="card-body">
 
+                                            <h4 class="card-title"><a href="/product/detail/${product.productId}"
+                                                                      title="${product.name}">${product.name.substring(0, 40)}</a>
+                                            </h4>
+                                            <p class="card-text"
+                                               id="description-${product.productId}">${product.description}</p>
 
+                                            <div class="row">
+                                                <div class="col">
+                                                    <p class="bloc_left_price">Giá bán: ${product.price} VNĐ</p>
+                                                </div>
 
-
-
-                                    <div class="row">
-                                        <div class="col">
-                                            <p class="bloc_left_price">Giá bán: ${product.price} VNĐ</p>
-                                        </div>
-
-                                        <div class="col">
-                                            <c:choose>
-                                                <c:when test="${product.quantity > 0}">
-                                                    <a href="<c:if test='${not empty sessionScope.id}'>
+                                                <div class="col">
+                                                    <c:choose>
+                                                        <c:when test="${product.quantity > 0}">
+                                                            <a href="<c:if test='${not empty sessionScope.id}'>
                                                     /cart/add/${product.productId}</c:if>
                                                           <c:if test='${empty sessionScope.id}'>
                                                               /login</c:if>"
-                                                       class="btn btn-success btn-block">Thêm giỏ hàng</a>
-                                                </c:when>
-                                                <c:otherwise>
-                                                    <button disabled class="btn btn-danger btn-block">Hết hàng
-                                                    </button>
-                                                </c:otherwise>
-                                            </c:choose>
+                                                               class="btn btn-success btn-block">Thêm giỏ hàng</a>
+                                                        </c:when>
+                                                        <c:otherwise>
+                                                            <button disabled class="btn btn-danger btn-block">Hết hàng
+                                                            </button>
+                                                        </c:otherwise>
+                                                    </c:choose>
+                                                </div>
+
+
+                                            </div>
                                         </div>
-
-
                                     </div>
                                 </div>
-                            </div>
+
+                                <script>
+                                    var text = document.getElementById("description-${product.productId}").innerHTML;
+                                    var maxLength = 100;
+                                    var trimmedString = text.substr(0, maxLength);
+                                    trimmedString = trimmedString.substr(0, Math.min(trimmedString.length, trimmedString.lastIndexOf(" ")))
+                                    document.getElementById("description-${product.productId}").innerHTML = trimmedString + "...";
+                                </script>
+
+                            </c:forEach>
                         </div>
+                    </div>
 
-                    </c:forEach>
-
-
-                    <%--                    <div class="col-12">--%>
-                    <%--                        <nav aria-label="...">--%>
-                    <%--                            <ul class="pagination">--%>
-                    <%--                                <li class="page-item disabled">--%>
-                    <%--                                    <a class="page-link" href="#" tabindex="-1">Previous</a>--%>
-                    <%--                                </li>--%>
-                    <%--                                <li class="page-item"><a class="page-link" href="#">1</a></li>--%>
-                    <%--                                <li class="page-item active">--%>
-                    <%--                                    <a class="page-link" href="#">2 <span class="sr-only">(current)</span></a>--%>
-                    <%--                                </li>--%>
-                    <%--                                <li class="page-item"><a class="page-link" href="#">3</a></li>--%>
-                    <%--                                <li class="page-item">--%>
-                    <%--                                    <a class="page-link" href="#">Next</a>--%>
-                    <%--                                </li>--%>
-                    <%--                            </ul>--%>
-                    <%--                        </nav>--%>
 
                     <nav aria-label="Page navigation">
                         <ul class="pagination">
