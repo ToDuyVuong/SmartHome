@@ -91,8 +91,8 @@
                     <i class="fa fa-heart"></i> Sản phẩm hàng đầu
                 </div>
                 <img src="${bestproduct.image}"
-                     alt="Hình ảnh sản phẩm" title="" width="150"
-                     height="150">
+                     alt="Hình ảnh sản phẩm" title="" width="250"
+                     height="150" class="mx-auto" style="margin-top: 10px;">
                 <div class="card-body">
                     <h4 class="card-title"><a href="/product/detail/${bestproduct.productId}"
                                               title="View Product">${bestproduct.name}</a>
@@ -139,15 +139,23 @@
                             <div class="col-sm">
                                 <div class="card">
                                     <img src="${product.image}"
-                                         alt="Hình ảnh sản phẩm" title="" width="150"
-                                         height="150">
+                                         alt="Hình ảnh sản phẩm" title="" width="180"
+                                         height="150" class="mx-auto" style="margin-top: 10px;">
                                     <div class="card-body">
 
                                         <h4 class="card-title"><a href="/product/detail/${product.productId}"
-                                                                  title="View Product">${product.name}</a>
+                                                                  title="${product.name}">${product.name.substring(0, 15)}</a>
                                         </h4>
 
-                                        <p class="card-text">${product.description}</p>
+
+                                            <%--                                        <h4 class="card-title"><a href="/product/detail/${product.productId}"--%>
+                                            <%--                                                                  title="View Product">${product.name}</a>--%>
+                                            <%--                                        </h4>--%>
+
+                                            <%--                                        <p class="card-text">${product.description}</p>--%>
+                                            <%--                                        <p class="card-text" id="description">${product.description}</p>--%>
+                                        <p class="card-text"
+                                           id="description-${product.productId}">${product.description}</p>
                                         <div class="row">
                                             <div class="col">
                                                 <p class="bloc_left_price">Giá bán: ${product.price} VNĐ</p>
@@ -171,6 +179,13 @@
                                     </div>
                                 </div>
                             </div>
+                            <script>
+                                var text = document.getElementById("description-${product.productId}").innerHTML;
+                                var maxLength = 100;
+                                var trimmedString = text.substr(0, maxLength);
+                                trimmedString = trimmedString.substr(0, Math.min(trimmedString.length, trimmedString.lastIndexOf(" ")))
+                                document.getElementById("description-${product.productId}").innerHTML = trimmedString + "...";
+                            </script>
 
                         </c:forEach>
 
@@ -199,14 +214,21 @@
                                 <div class="card">
                                     <img src="${product.image}"
                                          alt="Hình ảnh sản phẩm" title="" width="150"
-                                         height="150">
+                                         height="150" class="mx-auto" style="margin-top: 10px;">
                                     <div class="card-body">
 
+                                            <%--                                        <h4 class="card-title"><a href="/product/detail/${product.productId}"--%>
+                                            <%--                                                                  title="View Product">${product.name}</a>--%>
+                                            <%--                                        </h4>--%>
+
                                         <h4 class="card-title"><a href="/product/detail/${product.productId}"
-                                                                  title="View Product">${product.name}</a>
+                                                                  title="${product.name}">${product.name.substring(0, 15)}</a>
                                         </h4>
 
-                                        <p class="card-text">${product.description}</p>
+                                            <%--                                        <p class="card-text">${product.description}</p>--%>
+                                        <p class="card-text"
+                                           id="description-${product.productId}-best">${product.description}</p>
+
                                         <div class="row">
                                             <div class="col">
                                                 <p class="bloc_left_price">Giá bán: ${product.price} VNĐ</p>
@@ -231,6 +253,14 @@
                                 </div>
                             </div>
 
+                            <script>
+                                var text = document.getElementById("description-${product.productId}-best").innerHTML;
+                                var maxLength = 100;
+                                var trimmedString = text.substr(0, maxLength);
+                                trimmedString = trimmedString.substr(0, Math.min(trimmedString.length, trimmedString.lastIndexOf(" ")))
+                                document.getElementById("description-${product.productId}-best").innerHTML = trimmedString + "...";
+                            </script>
+
                         </c:forEach>
                     </div>
                 </div>
@@ -239,6 +269,14 @@
     </div>
 </div>
 
+
+<%--<script>--%>
+<%--    var text = document.getElementById("description").innerHTML;--%>
+<%--    var maxLength = 20;--%>
+<%--    var trimmedString = text.substr(0, maxLength);--%>
+<%--    trimmedString = trimmedString.substr(0, Math.min(trimmedString.length, trimmedString.lastIndexOf(" ")))--%>
+<%--    document.getElementById("description").innerHTML = trimmedString + "...";--%>
+<%--</script>--%>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
