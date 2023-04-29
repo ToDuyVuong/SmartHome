@@ -117,7 +117,7 @@
 <%--                                                                                                 height="150">--%>
                                         </a>
                                     </td>
-                                    <td>${item.products.name} <br>
+                                    <td id="description-${item.products.productId}"><b>${item.products.name}</b> <br >
                                         Thông tin sản phẩm: ${item.products.description}</td>
                                     <td>
                                         <div class="quantity d-flex justify-content-center align-items-center text-center">
@@ -146,6 +146,16 @@
                                            data-original-title="Remove">×</a>
                                     </td>
                                 </tr>
+
+
+
+                                <script>
+                                    var text = document.getElementById("description-${item.products.productId}").innerHTML;
+                                    var maxLength = 250;
+                                    var trimmedString = text.substr(0, maxLength);
+                                    trimmedString = trimmedString.substr(0, Math.min(trimmedString.length, trimmedString.lastIndexOf(" ")))
+                                    document.getElementById("description-${item.products.productId}").innerHTML = trimmedString + "...";
+                                </script>
                             </c:forEach>
 
                             </tbody>
@@ -172,10 +182,10 @@
                                                     Tổng số sản phẩm
                                                     <span id="sum-item-cart"></span>
                                                 </li>
-                                                <li class="list-group-item d-flex justify-content-between align-items-center px-0">
-                                                    Vận chuyển
-                                                    <span>Miễn phí</span>
-                                                </li>
+<%--                                                <li class="list-group-item d-flex justify-content-between align-items-center px-0">--%>
+<%--                                                    Vận chuyển--%>
+<%--                                                    <span>Miễn phí</span>--%>
+<%--                                                </li>--%>
                                                 <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 mb-3">
                                                     <div>
                                                         <strong>Tổng đơn</strong>

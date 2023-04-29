@@ -8,6 +8,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 import vn.smarthome.entity.*;
 import vn.smarthome.service.*;
+import vn.smarthome.shippingstrategy.GiaoHangCoBanShipping;
+import vn.smarthome.shippingstrategy.GiaoHangHoaTocShipping;
+import vn.smarthome.shippingstrategy.GiaoHangNhanhShipping;
+import vn.smarthome.shippingstrategy.IShipping;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -59,6 +63,31 @@ public class CheckoutController {
                 totalPrice += cartItem.getQuantity() * cartItem.getProducts().getPrice();
             }
         }
+
+        // Lấy phương thức vận chuyển đã chọn từ request
+        String shippingMethod = request.getParameter("shipping-method");
+        String ship = "Giao Hang Co Ban";
+        if(shippingMethod == null){
+            shippingMethod = "basic";
+        }
+        System.out.println("shippingMethod: " + shippingMethod);
+        IShipping shippingStrategy;
+        switch (shippingMethod) {
+            case "fast":
+                shippingStrategy = new GiaoHangNhanhShipping();
+                ship = "Giao Hang Nhanh";
+                break;
+            case "express":
+                shippingStrategy = new GiaoHangHoaTocShipping();
+                ship = "Giao Hang Hoa Toc";
+                break;
+            default:
+                shippingStrategy = new GiaoHangCoBanShipping();
+                break;
+        }
+        long shippingCost = shippingStrategy.calculateShippingCost(totalPrice);
+
+
         Optional<Customer> opt = customerService.findById(id);
         if (opt.isEmpty()) {
             model.addAttribute("error", "Customer not found");
@@ -71,14 +100,14 @@ public class CheckoutController {
         String date = formatter.format(new Date());
 
         order.setCustomer(customer);
-        order.setTotalPrice(totalPrice);
+        order.setTotalPrice(totalPrice + shippingCost);
         order.setTotalQuantity(totalQuantity);
         order.setNote(note);
         order.setDate(date);
         order.setAddress(address);
         order.setPhone(phone);
         order.setStatus(Order.Status.PENDING);
-
+        order.setShipTo(ship);
         orderService.saveOrUpdate(order);
 
         for (CartItem cartItem : selectedCartItems) {
@@ -96,10 +125,17 @@ public class CheckoutController {
             cartItemService.delete(cartItem);
         }
 
+
+
+
+
+        // Thêm phí vận chuyển và phương thức vận chuyển vào model
+        model.addAttribute("shippingcost", shippingCost);
+        model.addAttribute("shippingmethod", ship);
         model.addAttribute("order", order);
         model.addAttribute("customer", customer);
         model.addAttribute("totalQuantity", totalQuantity);
-        model.addAttribute("totalPrice", totalPrice);
+        model.addAttribute("totalPrice", totalPrice + shippingCost);
         model.addAttribute("selectedCartItems", selectedCartItems);
         model.addAttribute("note", note);
         model.addAttribute("address", address);

@@ -229,7 +229,7 @@
                                                         Hình thức vận chuyển:</b></label>
                                                     <div class="col-auto">
                                                         <select class="form-control" id="shipping-method"
-                                                                name="shipping-method" disabled>
+                                                                name="shipping-method" <%--disabled--%>>
                                                             <option value="basic">Cơ bản</option>
                                                             <option value="fast">Giao hàng nhanh</option>
                                                             <option value="express">Hỏa tốc</option>
@@ -255,8 +255,6 @@
 
                             <div class="col-md-5">
                                 <div class="card border-0 ">
-                                    <%--                            <form method="post" action="checkout" id="order-form">--%>
-
                                     <div class="card-header card-2">
                                         <p class="card-text text-muted mt-md-4  mb-2 space text-center"><b
                                                 style="font-family: Arial, sans-serif; font-weight: bold; font-size: 25px; color: #17c4be;">Danh
@@ -270,15 +268,10 @@
                                                 <input type="checkbox" class="form-check-input"
                                                        style="display:none;" value="${item.cartItemId}"
                                                        id="checkProductToCart" name="${item.cartItemId}" checked>
-                                                    <%--                                                <>--%>
                                             </div>
                                             <div class="row  justify-content-between">
                                                 <div class="col-auto col-md-7">
                                                     <div class="media flex-column flex-sm-row">
-
-
-                                                            <%--                                                        <img class=" img-fluid" src="https://i.imgur.com/6oHix28.jpg"--%>
-                                                            <%--                                                             width="62" height="62">--%>
 
                                                         <img src="${item.products.image}"
                                                              alt="Hình ảnh sản phẩm" title="" width="150"
@@ -287,9 +280,13 @@
                                                         <div class="media-body  my-auto">
                                                             <div class="row ">
                                                                 <div class="col-auto"><p class="mb-0">
-                                                                    <b>${item.products.name}</b></p>
-                                                                    <small class="text-muted">
+                                                                    <b >${item.products.name.substring(0, 45)}</b></p>
+                                                                    <small class="text-muted"
+                                                                           id="description-${item.products.productId}">
                                                                             ${item.products.description}</small>
+
+
+
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -300,6 +297,16 @@
                                                 <div class=" pl-0 flex-sm-col col-auto  my-auto "><p>
                                                     <b>${item.quantity * item.products.price} VNĐ</b></p></div>
                                             </div>
+
+
+
+                                            <script>
+                                                var text = document.getElementById("description-${item.products.productId}").innerHTML;
+                                                var maxLength = 100;
+                                                var trimmedString = text.substr(0, maxLength);
+                                                trimmedString = trimmedString.substr(0, Math.min(trimmedString.length, trimmedString.lastIndexOf(" ")))
+                                                document.getElementById("description-${item.products.productId}").innerHTML = trimmedString + "...";
+                                            </script>
                                             <hr class="my-2">
                                         </c:forEach>
                                         <div>
@@ -320,7 +327,7 @@
                                                         </div>
                                                         <div class="flex-sm-col col-auto"><p class="mb-1"><b
                                                                 id="total-order"
-                                                                class="total-order">${ total} </b><b>VNĐ</b>
+                                                                class="total-order">${total} </b><b>VNĐ</b>
                                                         </p>
                                                         </div>
                                                     </div>
@@ -482,9 +489,9 @@
     let shippingFeeElem2 = document.getElementById('shipping-fee-2');
     let totalValueElem = document.getElementById('total-value');
     let totalOrder = parseInt(document.getElementById("total-order").textContent);
-    let basicShippingFee = 0;
+    let basicShippingFee = 20000
     let fastShippingFee = 30000;
-    let expressShippingFee = 60000;
+    let expressShippingFee = 50000;
 
     function updateTotalPrice() {
         let shippingFee = basicShippingFee;
@@ -495,7 +502,7 @@
         }
         // Cập nhật phí vận chuyển vào HTML
 
-        if (totalOrder > 1000) {
+        if (totalOrder > 300000 && shippingMethodElem.value === 'basic') {
             shippingFee = 0;
         }
         let total = parseInt(totalOrder) + parseInt(shippingFee);

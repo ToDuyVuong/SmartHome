@@ -152,6 +152,8 @@
 
                                     <%--                                    <hr class="mt-0">--%>
 
+
+
                                     <div cclass="col-5">
                                         <div>
 
@@ -161,35 +163,68 @@
                                                     Vận chuyển</b></p>
                                                 </div>
                                             </div>
-                                            <form>
+
 
                                                 <div class="form-group row justify-content-between">
-                                                    <label for="shipping-method" class="col-auto col-form-label">
-                                                        <b>Hình thức vận chuyển:</b></label>
-                                                    <div class="col-auto">
-                                                        <select class="form-control" disabled id="shipping-method"
-                                                                name="shipping-method">
-                                                            <option value="basic">Cơ bản</option>
-                                                            <option value="fast">Giao hàng nhanh</option>
-                                                            <option value="express">Hỏa tốc</option>
-                                                        </select>
-                                                    </div>
+                                                    <label  class="col-auto col-form-label">
+                                                        <b>Hình thức vận chuyển:</b> ${shippingmethod}</label>
+
                                                 </div>
 
-                                            </form>
-                                            <div class="form-group row justify-content-between">
-                                                <label for="shipping-method" class="col-auto col-form-label">
-                                                    <b>Phí vận chuyển:</b></label>
-                                                <div class="flex-sm-col col-auto">
-                                                    <b><p class="mb-1" id="shipping-fee"></p></b>
-                                                </div>
-                                            </div>
+<%--                                            <div class="form-group row justify-content-between">--%>
+<%--                                                <label  class="col-auto col-form-label">--%>
+<%--                                                    <b>Phí vận chuyển:</b> ${shippingcost}</label>--%>
+<%--                                                <div class="flex-sm-col col-auto">--%>
+<%--                                                    <b><p class="mb-1" id="shipping-fee"></p></b>--%>
+<%--                                                </div>--%>
+<%--                                            </div>--%>
 
 
                                             <br>
 
                                         </div>
                                     </div>
+
+
+
+<%--                                    <div cclass="col-5">--%>
+<%--                                        <div>--%>
+
+<%--                                            <div class="row mt-4">--%>
+<%--                                                <div class="col"><p><b--%>
+<%--                                                        style="font-family: Arial, sans-serif; font-weight: bold; font-size: 25px; color: #17c4be;">--%>
+<%--                                                    Vận chuyển</b></p>--%>
+<%--                                                </div>--%>
+<%--                                            </div>--%>
+<%--                                            <form>--%>
+
+<%--                                                <div class="form-group row justify-content-between">--%>
+<%--                                                    <label for="shipping-method" class="col-auto col-form-label">--%>
+<%--                                                        <b>Hình thức vận chuyển:</b></label>--%>
+<%--                                                    <div class="col-auto">--%>
+<%--                                                        <select class="form-control" disabled id="shipping-method"--%>
+<%--                                                                name="shipping-method">--%>
+<%--                                                            <option value="basic">Cơ bản</option>--%>
+<%--                                                            <option value="fast">Giao hàng nhanh</option>--%>
+<%--                                                            <option value="express">Hỏa tốc</option>--%>
+<%--                                                        </select>--%>
+<%--                                                    </div>--%>
+<%--                                                </div>--%>
+
+<%--                                            </form>--%>
+<%--                                            <div class="form-group row justify-content-between">--%>
+<%--                                                <label for="shipping-method" class="col-auto col-form-label">--%>
+<%--                                                    <b>Phí vận chuyển:</b></label>--%>
+<%--                                                <div class="flex-sm-col col-auto">--%>
+<%--                                                    <b><p class="mb-1" id="shipping-fee"></p></b>--%>
+<%--                                                </div>--%>
+<%--                                            </div>--%>
+
+
+<%--                                            <br>--%>
+
+<%--                                        </div>--%>
+<%--                                    </div>--%>
 
 
                                 </div>
@@ -273,7 +308,7 @@
                                                         </div>
                                                         <div class="flex-sm-col col-auto"><p class="mb-1"><b
                                                                 id="total-order"
-                                                                class="total-order">${totalPrice} </b><b>VNĐ</b>
+                                                                class="total-order">${totalPrice - shippingcost} </b><b>VNĐ</b>
                                                         </p>
                                                         </div>
                                                     </div>
@@ -281,7 +316,7 @@
                                                         <div class="col-4"><p class="mb-1 tex"><b>Thuế VAT 10%:</b></p>
                                                         </div>
                                                         <div class="flex-sm-col col-auto"><p class="mb-1">
-                                                            <b>${Math.floor(total * 0.1)} VNĐ</b></p></div>
+                                                            <b>${Math.floor((totalPrice - shippingcost) * 0.1)} VNĐ</b></p></div>
                                                     </div>
                                                     <div class="row justify-content-between">
                                                         <div class="col-4"><p class="mb-1 text-danger"><b>Khuyển
@@ -290,14 +325,14 @@
                                                         </div>
                                                         <div class="flex-sm-col col-auto"><p class="mb-1 text-danger">
                                                             <b>
-                                                                - ${Math.floor(total * 0.1)} VNĐ</b></p></div>
+                                                                - ${Math.floor((totalPrice - shippingcost) * 0.1)} VNĐ</b></p></div>
                                                     </div>
                                                     <div class="row justify-content-between">
-                                                        <div class="col"><p class="mb-1"><b>Phí vận chuyển:</b></p>
+                                                        <div class="col"><p class="mb-1"><b>Phí vận chuyển:</b> </p>
                                                         </div>
                                                         <div class="flex-sm-col col-auto"><b><p
                                                                 class="mb-1 shipping-fee-2"
-                                                                id="shipping-fee-2"></p></b>
+                                                                id="shipping-fee-2"> ${shippingcost} VNĐ</p></b>
                                                         </div>
                                                     </div>
                                                     <div class="row justify-content-between">
@@ -307,7 +342,7 @@
                                                         </div>
                                                         <div class="flex-sm-col col-auto"><p class="mb-1  text-danger ">
                                                             <b id="total-price" value="total-price">
-                                                            </b><b> VNĐ</b></p>
+                                                            </b><b>${totalPrice} VNĐ</b></p>
                                                         </div>
                                                     </div>
                                                     <hr class="my-0">
@@ -391,49 +426,49 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 
-<input type="hidden" id="total-value" name="total" value="">
-<script>
-    let totalPriceElem = document.getElementById('total-price');
-    let shippingMethodElem = document.getElementById('shipping-method');
-    let shippingFeeElem = document.getElementById('shipping-fee');
-    let shippingFeeElem2 = document.getElementById('shipping-fee-2');
-    let totalValueElem = document.getElementById('total-value');
-    let totalOrder = parseInt(document.getElementById("total-order").textContent);
-    let basicShippingFee = 0;
-    let fastShippingFee = 30000;
-    let expressShippingFee = 60000;
+<%--<input type="hidden" id="total-value" name="total" value="">--%>
+<%--<script>--%>
+<%--    let totalPriceElem = document.getElementById('total-price');--%>
+<%--    let shippingMethodElem = document.getElementById('shipping-method');--%>
+<%--    let shippingFeeElem = document.getElementById('shipping-fee');--%>
+<%--    let shippingFeeElem2 = document.getElementById('shipping-fee-2');--%>
+<%--    let totalValueElem = document.getElementById('total-value');--%>
+<%--    let totalOrder = parseInt(document.getElementById("total-order").textContent);--%>
+<%--    let basicShippingFee = 0;--%>
+<%--    let fastShippingFee = 30000;--%>
+<%--    let expressShippingFee = 60000;--%>
 
-    function updateTotalPrice() {
-        let shippingFee = basicShippingFee;
-        if (shippingMethodElem.value === 'fast') {
-            shippingFee = fastShippingFee;
-        } else if (shippingMethodElem.value === 'express') {
-            shippingFee = expressShippingFee;
-        }
-        // Cập nhật phí vận chuyển vào HTML
+<%--    function updateTotalPrice() {--%>
+<%--        let shippingFee = basicShippingFee;--%>
+<%--        if (shippingMethodElem.value === 'fast') {--%>
+<%--            shippingFee = fastShippingFee;--%>
+<%--        } else if (shippingMethodElem.value === 'express') {--%>
+<%--            shippingFee = expressShippingFee;--%>
+<%--        }--%>
+<%--        // Cập nhật phí vận chuyển vào HTML--%>
 
-        if (totalOrder > 100000) {
-            shippingFee = 0;
-        }
-        let total = parseInt(totalOrder) + parseInt(shippingFee);
-        totalPriceElem.innerHTML = total;
-        totalValueElem.value = total;
+<%--        if (totalOrder > 100000) {--%>
+<%--            shippingFee = 0;--%>
+<%--        }--%>
+<%--        let total = parseInt(totalOrder) + parseInt(shippingFee);--%>
+<%--        totalPriceElem.innerHTML = total;--%>
+<%--        totalValueElem.value = total;--%>
 
-        shippingFeeElem.innerHTML = shippingFee + ` VNĐ`;
-        shippingFeeElem2.innerHTML = shippingFee + ` VNĐ`;
-
-
-    }
-
-    shippingMethodElem.addEventListener('change', updateTotalPrice);
+<%--        shippingFeeElem.innerHTML = shippingFee + ` VNĐ`;--%>
+<%--        shippingFeeElem2.innerHTML = shippingFee + ` VNĐ`;--%>
 
 
-    shippingFeeElem.innerHTML = basicShippingFee + ` VNĐ`;
+<%--    }--%>
 
-    updateTotalPrice();
+<%--    shippingMethodElem.addEventListener('change', updateTotalPrice);--%>
 
 
-</script>
+<%--    shippingFeeElem.innerHTML = basicShippingFee + ` VNĐ`;--%>
+
+<%--    updateTotalPrice();--%>
+
+
+<%--</script>--%>
 
 
 </body>

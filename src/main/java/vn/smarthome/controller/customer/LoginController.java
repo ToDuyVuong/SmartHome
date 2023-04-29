@@ -16,11 +16,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
-import vn.smarthome.LoginFactory.LoginFactory;
-import vn.smarthome.LoginFactory.RoleType;
+import vn.smarthome.loginfactory.LoginFactory;
+import vn.smarthome.loginfactory.RoleType;
 import vn.smarthome.entity.Customer;
 import vn.smarthome.model.CustomerModel;
-import vn.smarthome.service.ICustomerService;
 import vn.smarthome.service.ILoginService;
 import vn.smarthome.service.impl.CustomerLoginImpl;
 

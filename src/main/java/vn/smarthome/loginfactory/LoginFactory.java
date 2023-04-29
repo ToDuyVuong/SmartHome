@@ -1,4 +1,4 @@
-package vn.smarthome.LoginFactory;
+package vn.smarthome.loginfactory;
 
 import vn.smarthome.service.ILoginService;
 import vn.smarthome.service.impl.AdminLoginImpl;

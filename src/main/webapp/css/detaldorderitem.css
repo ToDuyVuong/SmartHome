@@ -1,4 +1,10 @@
+.total-price p {
+    font-weight: bold;
+}
 
+.total-price span {
+    color: black;
+}
 .gradient-custom {
     /* fallback for old browsers */
     background: #cd9cf2;

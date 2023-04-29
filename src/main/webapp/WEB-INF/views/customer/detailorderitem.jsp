@@ -57,15 +57,19 @@
                                                 <img src="${item.product.image}"
                                                      alt="Hình ảnh sản phẩm" title="" width="150"
                                                      height="150">
+                                            </div>
+                                            <div class="col-md-2 text-center d-flex justify-content-center align-items-center">
+                                                <p class="text-muted mb-0"  title="${product.name}">${item.product.name.substring(0, 40)}</p>
+                                            </div>
 
-                                                    <%--                                                <img src="https://mdbcdn.b-cdn.net/img/Photos/Horizontal/E-commerce/Products/13.webp"--%>
-                                                    <%--                                                     class="img-fluid" alt="Phone">--%>
-                                            </div>
+
+
+
                                             <div class="col-md-2 text-center d-flex justify-content-center align-items-center">
-                                                <p class="text-muted mb-0">${item.product.name}</p>
-                                            </div>
-                                            <div class="col-md-2 text-center d-flex justify-content-center align-items-center">
-                                                <p class="text-muted mb-0 small">${item.product.description}</p>
+                                                <p class="text-muted mb-0 small"
+                                                   id="description-${item.product.description}">
+                                                        ${item.product.description}</p>
+
                                             </div>
                                             <div class="col-md-2 text-center d-flex justify-content-center align-items-center">
                                                 <p class="text-muted mb-0 small">Số lượng: ${item.quantity}</p>
@@ -81,34 +85,46 @@
                                     </div>
                                 </div>
                             </form>
+
+                            <script>
+                                var text = document.getElementById("description-${item.product.description}").innerHTML;
+                                var maxLength = 125;
+                                var trimmedString = text.substr(0, maxLength);
+                                trimmedString = trimmedString.substr(0, Math.min(trimmedString.length, trimmedString.lastIndexOf(" ")))
+                                document.getElementById("description-${item.product.description}").innerHTML = trimmedString + "...";
+                            </script>
                         </c:forEach>
 
 
                         <div class="d-flex justify-content-between pt-2">
-                            <p class="fw-bold mb-0">Chi tiết đơn hàng</p>
+                            <p class="text-muted mb-0">Mã đơn : ${order.orderId}</p>
                             <p class="text-muted mb-0"><span
                                     class="fw-bold me-4">Tổng sản phẩm:</span> ${order.totalQuantity}</p>
                         </div>
 
                         <div class="d-flex justify-content-between pt-2">
-                            <p class="text-muted mb-0">Mã đơn : ${order.orderId}</p>
+                            <p class="text-muted mb-0">Ngày đặt hàng : ${order.date}</p>
                             <p class="text-muted mb-0"><span class="fw-bold me-4">Giảm giá: </span>
-                                -${order.totalPrice * 0.1}</p>
+                                -${(order.totalPrice-shippingcost) * 0.1}</p>
                         </div>
 
                         <div class="d-flex justify-content-between">
-                            <p class="text-muted mb-0">Ngày đặt hàng : ${order.date}</p>
+                            <p class="text-muted mb-0">Mã giảm giá: Không</p>
                             <p class="text-muted mb-0"><span
-                                    class="fw-bold me-4">Thuế VAT 10%: </span> ${order.totalPrice * 0.1}</p>
+                                    class="fw-bold me-4">Thuế VAT 10%: </span> ${(order.totalPrice-shippingcost) * 0.1}</p>
                         </div>
 
                         <div class="d-flex justify-content-between mb-5">
-                            <p class="text-muted mb-0">Mã giảm giá: Không</p>
-                            <%--                            <p class="text-muted mb-0"><span class="fw-bold me-4">Phí vận chuyển</span> ${order.d}</p>--%>
+                            <p class="text-muted mb-0">Hình thức vận chuyển: ${order.shipTo}</p>
                             <p class="text-muted mb-0"><span class="fw-bold me-4">Phí vận chuyển: </span>
-                                <%--                                ${order.totalQuantity > 0 ? 'Miễn phí' : '18,000đ'}--%>
-                                Miễn phí
+                                ${shippingcost} VNĐ
                             </p>
+                        </div>
+
+
+                        <div class="d-flex justify-content-between total-price">
+                            <p class="text-muted mb-0" style="color: black">Tổng tiền hàng:</p>
+                            <p class="text-muted mb-0"><span class="fw-bold me-4">${order.totalPrice - shippingcost} VNĐ</span></p>
                         </div>
                     </div>
                     <div class="card-footer border-0 px-4 py-5"

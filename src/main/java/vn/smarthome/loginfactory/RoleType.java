@@ -1,4 +1,4 @@
-package vn.smarthome.LoginFactory;
+package vn.smarthome.loginfactory;
 
 public enum RoleType {
     admin, customer;
