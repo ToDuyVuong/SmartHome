@@ -32,33 +32,6 @@
     <div class="row">
         <div class="col">
 
-
-            <%--            <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">--%>
-            <%--                <ol class="carousel-indicators">--%>
-            <%--                    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>--%>
-            <%--                    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>--%>
-            <%--                    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>--%>
-            <%--                </ol>--%>
-            <%--                <div class="carousel-inner">--%>
-            <%--                    <c:forEach items="${products}" var="product">--%>
-            <%--                    <div class="carousel-item active">--%>
-            <%--                        <img src="${bestproduct.image}"--%>
-            <%--                             alt="Hình ảnh sản phẩm" title="" >--%>
-            <%--                    </div>--%>
-            <%--                    </c:forEach>--%>
-
-            <%--                </div>--%>
-
-
-            <%--                <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">--%>
-            <%--                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>--%>
-            <%--                    <span class="sr-only">Previous</span>--%>
-            <%--                </a>--%>
-            <%--                <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">--%>
-            <%--                    <span class="carousel-control-next-icon" aria-hidden="true"></span>--%>
-            <%--                    <span class="sr-only">Next</span>--%>
-            <%--                </a>--%>
-            <%--            </div>--%>
             <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
                 <ol class="carousel-indicators">
                     <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
@@ -146,14 +119,6 @@
                                         <h4 class="card-title"><a href="/product/detail/${product.productId}"
                                                                   title="${product.name}">${product.name.substring(0, 15)}</a>
                                         </h4>
-
-
-                                            <%--                                        <h4 class="card-title"><a href="/product/detail/${product.productId}"--%>
-                                            <%--                                                                  title="View Product">${product.name}</a>--%>
-                                            <%--                                        </h4>--%>
-
-                                            <%--                                        <p class="card-text">${product.description}</p>--%>
-                                            <%--                                        <p class="card-text" id="description">${product.description}</p>--%>
                                         <p class="card-text"
                                            id="description-${product.productId}">${product.description}</p>
                                         <div class="row">
@@ -217,15 +182,10 @@
                                          height="150" class="mx-auto" style="margin-top: 10px;">
                                     <div class="card-body">
 
-                                            <%--                                        <h4 class="card-title"><a href="/product/detail/${product.productId}"--%>
-                                            <%--                                                                  title="View Product">${product.name}</a>--%>
-                                            <%--                                        </h4>--%>
-
                                         <h4 class="card-title"><a href="/product/detail/${product.productId}"
                                                                   title="${product.name}">${product.name.substring(0, 15)}</a>
                                         </h4>
 
-                                            <%--                                        <p class="card-text">${product.description}</p>--%>
                                         <p class="card-text"
                                            id="description-${product.productId}-best">${product.description}</p>
 
@@ -268,15 +228,6 @@
         </div>
     </div>
 </div>
-
-
-<%--<script>--%>
-<%--    var text = document.getElementById("description").innerHTML;--%>
-<%--    var maxLength = 20;--%>
-<%--    var trimmedString = text.substr(0, maxLength);--%>
-<%--    trimmedString = trimmedString.substr(0, Math.min(trimmedString.length, trimmedString.lastIndexOf(" ")))--%>
-<%--    document.getElementById("description").innerHTML = trimmedString + "...";--%>
-<%--</script>--%>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"

@@ -59,14 +59,6 @@
                     <div class="card-header bg-primary text-white">
                         <i class="fa fa-list"></i> Loại sản phẩm
                     </div>
-
-
-                    <%--                    <c:forEach items="${categories}" var="category">--%>
-                    <%--                        <p>${category.name}</p>--%>
-                    <%--                        <a href="/category/${category.categoryId}">a</a>--%>
-                    <%--                    </c:forEach>--%>
-
-                    <%--                    <select name="categoryId_forProduct">--%>
                     <c:forEach items="${categories}" var="category">
                         <form action="/category/${category.categoryId}" method="get">
                             <a href="/category/${category.categoryId}">
@@ -74,38 +66,7 @@
                             </a>
                         </form>
                     </c:forEach>
-                    <%--                    </select>--%>
-                    <%--                    <input type="submit" value="Submit">--%>
-
-                    <%--                    <select>--%>
-                    <%--                        <c:forEach items="${categories}" var="category">--%>
-                    <%--                            <option value="${category.categoryId}">${category.name}</option>--%>
-                    <%--                        </c:forEach>--%>
-                    <%--                    </select>--%>
-
-                    <%--                    <ul class="list-group category_block">--%>
-                    <%--                        &lt;%&ndash;                        <c:forEach items="${categorys}" var="categorys">&ndash;%&gt;--%>
-                    <%--                        &lt;%&ndash;                        <div>&ndash;%&gt;--%>
-                    <%--&lt;%&ndash;                        <li class="list-group-item"><a href="category.html">aaaa</a></li>&ndash;%&gt;--%>
-
-                    <%--                        &lt;%&ndash;                        </div>&ndash;%&gt;--%>
-                    <%--                        &lt;%&ndash;                        </c:forEach>&ndash;%&gt;--%>
-                    <%--                    </ul>--%>
                 </div>
-
-
-                <%--                <div class="card bg-light mb-3">--%>
-                <%--                    <div class="card-header bg-success text-white text-uppercase">Last product</div>--%>
-                <%--                    <div class="card-body">--%>
-                <%--                        <img class="img-fluid" src="https://dummyimage.com/600x400/55595c/fff"/>--%>
-                <%--                        <h5 class="card-title">Product title</h5>--%>
-                <%--                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of--%>
-                <%--                            the--%>
-                <%--                            card's content.</p>--%>
-                <%--                        <p class="bloc_left_price">99.00 $</p>--%>
-                <%--                    </div>--%>
-                <%--                </div>--%>
-                <%--                --%>
 
             </div>
 
