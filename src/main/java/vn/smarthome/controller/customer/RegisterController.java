@@ -51,7 +51,7 @@ public class RegisterController {
                                 HttpServletRequest request) {
 
         if (result.hasErrors()) {
-            session.setAttribute("messageRegister", "Nhập thiếu thông tin!!!   Hãy nhập đủ thông tim.");
+            session.setAttribute("messageRegister", "Nhập thiếu thông tin!!!   Hãy nhập đủ thông tin.");
             return new ModelAndView("redirect:/register");
         }
 

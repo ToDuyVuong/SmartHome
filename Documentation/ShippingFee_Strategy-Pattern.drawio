@@ -1,0 +1,37 @@
+<mxfile host="Electron" modified="2023-04-29T06:54:52.968Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/21.1.2 Chrome/106.0.5249.199 Electron/21.4.3 Safari/537.36" etag="_O7yP9bS8Cl9aMxkKeyp" version="21.1.2" type="device">
+  <diagram name="Page-1" id="sD1TbueXaAREkULd9Du2">
+    <mxGraphModel dx="863" dy="505" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="h-GWfNw17PR0JSdMFJzE-2" value="«interface»&lt;br&gt;&lt;b&gt;ShippingFeeStrategy&lt;/b&gt;&lt;br&gt;&lt;b&gt;______________________________________________&lt;/b&gt;&lt;br&gt;&lt;div style=&quot;&quot;&gt;&lt;b&gt;&amp;nbsp; &amp;nbsp; double calculateShippingCost(&lt;/b&gt;&lt;b style=&quot;background-color: initial;&quot;&gt;double weight&lt;/b&gt;&lt;b style=&quot;background-color: initial;&quot;&gt;);&lt;/b&gt;&lt;/div&gt;&lt;div style=&quot;font-weight: bold;&quot;&gt;&lt;br&gt;&lt;/div&gt;" style="html=1;whiteSpace=wrap;verticalAlign=top;align=center;" vertex="1" parent="1">
+          <mxGeometry x="255" y="200" width="310" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="h-GWfNw17PR0JSdMFJzE-19" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;dashed=1;endArrow=block;endFill=0;endSize=12;" edge="1" parent="1" source="h-GWfNw17PR0JSdMFJzE-6" target="h-GWfNw17PR0JSdMFJzE-2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="h-GWfNw17PR0JSdMFJzE-6" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;FastShippingFee&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;div style=&quot;height:2px;&quot;&gt;&lt;/div&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="100" y="390" width="140" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="h-GWfNw17PR0JSdMFJzE-20" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;dashed=1;endArrow=block;endFill=0;endSize=12;" edge="1" parent="1" source="h-GWfNw17PR0JSdMFJzE-8" target="h-GWfNw17PR0JSdMFJzE-2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="h-GWfNw17PR0JSdMFJzE-8" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;ExpressShippingFee&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;div style=&quot;height:2px;&quot;&gt;&lt;/div&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="260" y="390" width="140" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="h-GWfNw17PR0JSdMFJzE-22" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;dashed=1;endArrow=block;endFill=0;endSize=12;" edge="1" parent="1" source="h-GWfNw17PR0JSdMFJzE-9" target="h-GWfNw17PR0JSdMFJzE-2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="h-GWfNw17PR0JSdMFJzE-9" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;StandardShippingFee&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;div style=&quot;height:2px;&quot;&gt;&lt;/div&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="420" y="390" width="140" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="h-GWfNw17PR0JSdMFJzE-21" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;dashed=1;endArrow=block;endFill=0;endSize=12;" edge="1" parent="1" source="h-GWfNw17PR0JSdMFJzE-10" target="h-GWfNw17PR0JSdMFJzE-2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="h-GWfNw17PR0JSdMFJzE-10" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;FreeShipping&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;div style=&quot;height:2px;&quot;&gt;&lt;/div&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="580" y="390" width="140" height="60" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
