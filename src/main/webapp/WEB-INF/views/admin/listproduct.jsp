@@ -1,4 +1,3 @@
-<%--<jsp:useBean id="authUser" scope="session" type="Model.User"/>--%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=utf-8"
          pageEncoding="utf-8" %>
@@ -135,7 +134,7 @@
 
                     </div>
                     <div class="d-flex justify-content-end ">
-                        <div class="btn-group mr-4" role="group" aria-label="Button group with nested dropdown">
+                        <div class="btn-group mr-4 mb-2" role="group" aria-label="Button group with nested dropdown">
 
                             <div class="btn-group" role="group">
                                 <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown"
@@ -151,7 +150,7 @@
                             </div>
                         </div>
                         <a href="#"
-                           class="btn btn-success btn-icon-split align-content-center"
+                           class="btn btn-success btn-icon-split align-content-center mb-2"
                            data-target="#addProduct" data-toggle="modal">
                                         <span class="icon text-white-50">
                                             <i class="fas fa-plus"></i>
@@ -160,14 +159,6 @@
                         </a>
                         <div class="col-auto">
                         </div>
-                        <a href="#"
-                           class="btn btn-info btn-icon-split align-content-center"
-                           data-target="#editProduct" data-toggle="modal">
-                                        <span class="icon text-white-50">
-                                            <i class="fas fa-edit"></i>
-                                        </span>
-                            <span class="text">Chỉnh sửa</span>
-                        </a>
                     </div>
                     <div class="card shadow mb-4">
                         <div class="card-body">
@@ -184,6 +175,9 @@
                                         <th>Category ID</th>
                                         <th>
                                             <div class="d-flex justify-content-sm-center">Xoá</div>
+                                        </th>
+                                        <th>
+                                            <div class="d-flex justify-content-sm-center">Chỉnh sửa</div>
                                         </th>
                                     </tr>
                                     </thead>
@@ -205,6 +199,17 @@
                                                             <i class="fas fa-trash"></i>
                                                         </span>
                                                         <span class="text">Xoá</span>
+                                                    </a>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="d-flex justify-content-sm-center">
+                                                    <a href="/admin/editProduct/${t.productId}"
+                                                       class="btn btn-info btn-icon-split ">
+                                                        <span class="icon text-white-50 ">
+                                                            <i class="fas fa-edit"></i>
+                                                        </span>
+                                                        <span class="text">Edit</span>
                                                     </a>
                                                 </div>
                                             </td>
@@ -236,55 +241,6 @@
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
-</div>
-<div class="modal fade" id="editProduct" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-     aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id=>Sửa thông tin sản phẩm</h5>
-                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">×</span>
-                </button>
-            </div>
-            <form action="editProduct" method="post">
-                <div class="modal-body">
-                    <div class="form-group">
-                        <label>Id</label>
-                        <input name="id_edit" type="text" class="form-control">
-                    </div>
-                    <div class="form-group">
-                        <label>Name</label>
-                        <input name="name_edit" type="text" class="form-control">
-                    </div>
-                    <div class="form-group">
-                        <label>Description</label>
-                        <input name="description_edit" type="text" class="form-control">
-                    </div>
-                    <div class="form-group">
-                        <label>Image</label>
-                        <input name="image_edit" type="text" class="form-control">
-                    </div>
-                    <div class="form-group">
-                        <label>Price</label>
-                        <input name="price_edit" type="text" class="form-control">
-                    </div>
-                    <div class="form-group">
-                        <label>Quantity</label>
-                        <input name="quantity_edit" type="number" class="form-control">
-                    </div>
-                    <div class="form-group">
-                        <label>Category ID</label>
-                        <input name="categoryid_edit" type="text" class="form-control">
-                    </div>
-                    <div class="modal-footer">
-                        <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-                        <input type="submit" class="btn btn-success" value="Sửa">
-                    </div>
-                </div>
-            </form>
         </div>
     </div>
 </div>

@@ -56,23 +56,25 @@ public class AdminController {
         return new ModelAndView("admin/listcategory", model);
     }
 
-//    @RequestMapping("/deleteCategory/{categoryId}")
-//    public ModelAndView deleteCategory(ModelMap model, @PathVariable("categoryId") Integer categoryId) {
-//        Optional<Category> opt = categoryService.findById(categoryId);
-//        List<Product> products = productService.listProductByCategoryId(categoryId);
-//        if (!products.isEmpty()) {
-//            for (Product product : products) {
-//                productService.deleteProductByProductId(product.getProductId());
-//            }
-//        }
-//        if (opt.isPresent()) {
-//            categoryService.deleteCategoryByCategoryId(categoryId);
-//        }
-//        return new ModelAndView("redirect:/admin/listCategory", model);
-//    }
+    @RequestMapping(value = "/editCategory/{categoryId}")
+    public ModelAndView editCategory(ModelMap model, HttpServletRequest request, @PathVariable("categoryId") Integer categoryId) {
+        HttpSession session = request.getSession(false);
+        if (session == null || session.getAttribute("isAdmin") == null) {
+            return new ModelAndView("redirect:/login");
+        }
+        Optional<Category> category = categoryService.findById(categoryId);
 
-    @RequestMapping(value = "/editCategory", method = RequestMethod.POST)
-    public ModelAndView editCategory(ModelMap model, HttpServletRequest request) {
+        if (category.isPresent()) {
+            Category entity = category.get();
+            CategoryModel categoryModel = new CategoryModel();
+            BeanUtils.copyProperties(entity, categoryModel);
+            model.addAttribute("cate", categoryModel);
+        }
+        return new ModelAndView("/admin/editcategory", model);
+    }
+
+    @RequestMapping(value = "/editCategory/saveEditCategory", method = RequestMethod.POST)
+    public ModelAndView saveEditCategory(ModelMap model, HttpServletRequest request) {
         HttpSession session = request.getSession(false);
         if (session == null || session.getAttribute("isAdmin") == null) {
             return new ModelAndView("redirect:/login");
@@ -103,10 +105,7 @@ public class AdminController {
     }
     @RequestMapping(value = "/addCategory", method = RequestMethod.POST)
     public ModelAndView addCategory(ModelMap model, HttpServletRequest request) {
-//        HttpSession session = request.getSession(false);
-//        if (session == null || session.getAttribute("isAdmin") == null) {
-//            return new ModelAndView("redirect:/login");
-//        }
+
         String name = request.getParameter("name");
         String description = request.getParameter("description");
         Category newCategory = new Category();
@@ -201,8 +200,25 @@ public class AdminController {
         return new ModelAndView("redirect:/admin/listProduct", model);
     }
 
-    @RequestMapping(value = "/editProduct", method = RequestMethod.POST)
-    public ModelAndView editProduct(ModelMap model, HttpServletRequest request) {
+    @RequestMapping(value = "/editProduct/{productId}")
+    public ModelAndView editProduct(ModelMap model, HttpServletRequest request, @PathVariable("productId") Integer productId) {
+        HttpSession session = request.getSession(false);
+        if (session == null || session.getAttribute("isAdmin") == null) {
+            return new ModelAndView("redirect:/login");
+        }
+        Optional<Product> product = productService.findById(productId);
+
+        if (product.isPresent()) {
+            Product entity = product.get();
+            ProductModel productModel = new ProductModel();
+            BeanUtils.copyProperties(entity, productModel);
+            model.addAttribute("product", productModel);
+        }
+        return new ModelAndView("/admin/editproduct", model);
+    }
+
+    @RequestMapping(value = "/editProduct/saveEditProduct", method = RequestMethod.POST)
+    public ModelAndView saveEditProduct(ModelMap model, HttpServletRequest request) {
         HttpSession session = request.getSession(false);
         if (session == null || session.getAttribute("isAdmin") == null) {
             return new ModelAndView("redirect:/login");
@@ -218,7 +234,6 @@ public class AdminController {
 
         Optional<Product> product = productService.findById(Integer.valueOf(productId));
 
-//        request.setAttribute("detail", product);
         if (product.isPresent()) {
             Product updatedProduct = product.get();
             if (!name.isEmpty()) {
@@ -266,29 +281,6 @@ public class AdminController {
         return new ModelAndView("redirect:/admin/listProduct", model);
     }
 
-
-//    @RequestMapping("/deleteCustomer/{customerId}")
-//    public ModelAndView deleteCustomer(ModelMap model, @PathVariable("customerId") Integer customerId) {
-//        Optional<Customer> opt = customerService.findById(customerId);
-//        // Delete the customer's cart
-//        Cart cart = cartService.getCartByCustomerId(customerId);
-//        if (cart != null) {
-//            cartService.deleteById(cart.getCartId());
-//        }
-//
-//        // Delete the customer's orders
-//        List<Order> orders = orderService.listOrderByCustomerId(customerId);
-//        if (!orders.isEmpty()) {
-//            for (Order order : orders) {
-//                orderService.deleteById(order.getOrderId());
-//            }
-//        }
-//
-//        if (opt.isPresent()) {
-//            customerService.deleteCustomerByCustomerId(customerId);
-//        }
-//        return new ModelAndView("redirect:/admin/listCustomer", model);
-//    }
 
     @RequestMapping("/listOrder")
     public ModelAndView listOrder(ModelMap model, HttpServletRequest request) {

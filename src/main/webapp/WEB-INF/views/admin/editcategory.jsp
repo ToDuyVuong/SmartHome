@@ -1,12 +1,12 @@
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
 <%@ page language="java" contentType="text/html; charset=utf-8"
-         pageEncoding="utf-8" %>
+         pageEncoding="utf-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
+
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -16,14 +16,13 @@
     <title>Admin Smart Home</title>
 
     <!-- Custom fonts for this template-->
-    <link href="${pageContext.request.contextPath}/TemplateAdmin/vendor/fontawesome-free/css/all.min.css"
-          rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/TemplateAdmin/vendor/fontawesome-free/css/all.min.css" >
     <link
             href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
             rel="stylesheet">
 
     <!-- Custom styles for this template-->
-    <link href="${pageContext.request.contextPath}/TemplateAdmin/css/sb-admin-2.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/TemplateAdmin/css/sb-admin-2.min.css" >
     <script src="https://kit.fontawesome.com/f9029665cb.js" crossorigin="anonymous"></script>
 
 </head>
@@ -59,6 +58,7 @@
         </li>
 
         <hr class="sidebar-divider">
+
 
         <div class="sidebar-heading">
             Quản lý category
@@ -144,92 +144,90 @@
                             </a>
                         </div>
                     </li>
+
                 </ul>
+
             </nav>
 
+            <!--Content-->
+            <!---------------------------------------------------------------------------------------------------------->
             <div class="container-fluid">
 
                 <!-- Page Heading -->
 
                 <!-- DataTales Example -->
                 <div class="container-fluid">
+
                     <div class="row">
                         <div class="col-12">
                             <div class="card">
                                 <div class="card-header">
-                                    <h4 class="card-title">Danh Sách Danh Mục Chính</h4>
+                                    <h4 class="card-title">Chỉnh sửa thông tin danh mục
+                                    </h4>
                                 </div>
                                 <div class="card-body">
-                                    <div class="table-responsive">
-                                        <div class="dataTables_wrapper">
-                                            <div class="dataTables_wrapper">
-                                                <table id="example" class="table table-bordered"
-                                                       style="min-width: 845px" role="grid"
-                                                       aria-describedby="example_info">
-                                                    <thead>
-                                                    <tr role="row">
-                                                        <th class="sorting_desc" tabindex="0" aria-controls="example"
-                                                            rowspan="1" colspan="1" aria-sort="descending"
-                                                            aria-label="Mã: activate to sort column ascending"
-                                                            style="width: 98.2969px;">Mã
-                                                        </th>
-                                                        <th class="sorting" tabindex="0" aria-controls="example"
-                                                            rowspan="1" colspan="1"
-                                                            aria-label="Tên danh mục: activate to sort column ascending"
-                                                            style="width: 485.891px;">Tên danh mục
-                                                        </th>
-                                                        <th class="sorting" tabindex="0" aria-controls="example"
-                                                            rowspan="1" colspan="1"
-                                                            aria-label="Mô tả: activate to sort column ascending"
-                                                            style="width: 485.891px;">Mô tả
-                                                        </th>
-                                                        <th class="sorting" tabindex="0" aria-controls="example"
-                                                            rowspan="1" colspan="1"
-                                                            aria-label="Mô tả: activate to sort column ascending"
-                                                            style="width: 485.891px;">Chỉnh sửa
-                                                        </th>
-                                                    </tr>
-                                                    </thead>
-                                                    <c:forEach items="${listP}" var="o">
-                                                        <tbody>
-                                                        <tr class="odd" role="row">
-                                                            <td class="sorting_1" name="cateid">${o.categoryId}</td>
-                                                            <td><a>${o.name}</a></td>
-                                                            <td><a>${o.description}</a></td>
-                                                            <td>
-                                                                <div class="d-flex justify-content-sm-center">
-                                                                    <a href="/admin/editCategory/${o.categoryId}"
-                                                                       class="btn btn-info btn-icon-split ">
-                                                                    <span class="icon text-white-50 ">
-                                                                        <i class="fas fa-edit"></i>
-                                                                    </span>
-                                                                        <span class="text">Chỉnh sửa</span>
-                                                                    </a>
-                                                                </div>
-                                                            </td>
-                                                        </tbody>
-                                                    </c:forEach>
-                                                </table>
+                                    <form class="form-valide-with-icon" action="saveEditCategory" method="POST" enctype="multipart/form-data"
+                                          novalidate="novalidate" onsubmit="return confirm('Xác nhận chỉnh sửa thông tin.');">
+                                        <div class="form-group">
+                                            <div class="form-group">
+                                                <label class="text-label">Id danh mục</label>
+                                                <div class="input-group">
+                                                    <div class="input-group-prepend">
+                                                        <span class="input-group-text">
+                                                            <i class="fa fa-header" aria-hidden="true"></i>
+                                                        </span>
+                                                    </div>
+                                                    <input type="text" class="form-control" name="idcate"
+                                                           placeholder="Id danh mục" value="${cate.categoryId}" readonly>
+                                                </div>
                                             </div>
+                                            <div class="form-group">
+                                                <label class="text-label">Tên danh mục</label>
+                                                <div class="input-group">
+                                                    <div class="input-group-prepend">
+                                                        <span class="input-group-text">
+                                                            <i class="fa fa-header" aria-hidden="true"></i>
+                                                        </span>
+                                                    </div>
+                                                    <input type="text" class="form-control" name="namecate"
+                                                           placeholder="Tên danh mục" value="${cate.name}">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="text-label">Mô tả</label>
+                                                <div class="input-group">
+                                                    <div class="input-group-prepend">
+                                                        <span class="input-group-text">
+                                                            <i class="fa fa-header" aria-hidden="true"></i>
+                                                        </span>
+                                                    </div>
+                                                    <input type="text" class="form-control" name="descriptioncate"
+                                                           placeholder="Mô tả" value="${cate.description}">
+                                                </div>
+                                            </div>
+                                            <button type="submit" class="btn btn-primary">Chỉnh sửa</button>
                                         </div>
-                                    </div>
+                                    </form>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+            <!---------------------------------------------------------------------------------------------------------->
+
         </div>
     </div>
     <!-- /.container-fluid -->
 
+</div>
 </div>
 <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
      aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Bạn muốn thoát khỏi hệ thống ??</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Bạn muốn thoát khỏi hệ thống ??</h5>
                 <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">×</span>
                 </button>
@@ -242,6 +240,8 @@
         </div>
     </div>
 </div>
+
+
 <!-- Bootstrap core JavaScript-->
 <script src="${pageContext.request.contextPath}/TemplateAdmin/vendor/jquery/jquery.min.js"></script>
 <script src="${pageContext.request.contextPath}/TemplateAdmin/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
