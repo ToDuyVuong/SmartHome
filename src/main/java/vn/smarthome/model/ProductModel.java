@@ -24,5 +24,4 @@ public class ProductModel {
     private Category category;
     private List<OrderItem> orderItems;
     private Set<Cart> carts = new HashSet<>();
-
 }
