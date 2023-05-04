@@ -90,7 +90,7 @@
                                         <div class="card-body">
 
                                             <h4 class="card-title"><a href="/product/detail/${product.productId}"
-                                                                      title="${product.name}">${product.name.substring(0, 40)}</a>
+                                                                      title="${product.name}">${product.name.substring(0, 20)}</a>
                                             </h4>
                                             <p class="card-text"
                                                id="description-${product.productId}">${product.description}</p>

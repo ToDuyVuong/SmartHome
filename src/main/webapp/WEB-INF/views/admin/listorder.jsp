@@ -142,6 +142,7 @@
                                         <th>Ghi chú</th>
                                         <th>SĐT</th>
                                         <th>Giao đến</th>
+                                        <th>Phương thức vận chuyển</th>
                                         <th>Chi tiết</th>
                                         <th>Trạng thái đơn hàng</th>
                                         <th>
@@ -157,6 +158,7 @@
                                             <td>${t.date}</td>
                                             <td>${t.note}</td>
                                             <td>${t.phone}</td>
+                                            <td>${t.address}</td>
                                             <td>${t.shipTo}</td>
                                             <td><a href="/admin/orderDetail/${t.orderId}">order's detail</a></td>
                                             <td>${t.status}</td>
