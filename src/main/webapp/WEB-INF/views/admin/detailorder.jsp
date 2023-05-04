@@ -189,12 +189,12 @@
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                   <thead>
                   <tr>
-                    <th>Product ID</th>
-                    <th>Name</th>
-                    <th>Description</th>
-                    <th>Image</th>
-                    <th>Price</th>
-                    <th>Quantity</th>
+                    <th>Mã sản phẩm</th>
+                    <th>Tên</th>
+                    <th>Mô tả</th>
+                    <th>Hình ảnh</th>
+                    <th>Đơn giá</th>
+                    <th>Số lượng</th>
                   </tr>
                   </thead>
                   <c:forEach items="${listOI}" var="t">

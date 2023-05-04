@@ -186,7 +186,7 @@
                                                         <th class="sorting" tabindex="0" aria-controls="example"
                                                             rowspan="1" colspan="1"
                                                             aria-label="Mô tả: activate to sort column ascending"
-                                                            style="width: 485.891px;">Chỉnh sửa
+                                                            style="width: 200px;">Thao tác
                                                         </th>
                                                     </tr>
                                                     </thead>
