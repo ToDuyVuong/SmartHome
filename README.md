@@ -4,8 +4,8 @@ Thành viên nhóm 8:
 
 - 20110599 - Hà Nhật Vềnh
 - 20110053 - Tô Duy Vượng
-- 2011xxxx - Đinh Tấn Phúc Huy
-- 2011xxxx - Đỗ Trung Đức
+- 20110129 - Đinh Tấn Phúc Huy
+- 20110459 - Đỗ Trung Đức
 <hr>
 
 ## Công nghệ, thư viện sử dụng:
