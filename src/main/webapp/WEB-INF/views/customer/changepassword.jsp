@@ -51,9 +51,9 @@
                         <form method="post" action="/profile/changePassword">
                             <!-- Form Group (current password)-->
                             <div class="mb-3">
-                                <label class="small mb-1" for="password">Mật khẩu củ:</label>
+                                <label class="small mb-1" for="password">Mật khẩu cũ:</label>
                                 <input class="form-control" id="password" type="password" name="password"
-                                       placeholder="Nhập mật khẩu củ.">
+                                       placeholder="Nhập mật khẩu cũ.">
                             </div>
                             <!-- Form Group (new password)-->
                             <div class="mb-3">
@@ -77,7 +77,7 @@
                                 </div>
                                 <a
                                         href="<c:url value="/profile"/>"
-                                        class="btn btn-primary"><i class="fas fas-bars"></i>Qauy lại</a>
+                                        class="btn btn-primary"><i class="fas fas-bars"></i>Quay lại</a>
                             </div>
                         </form>
                     </div>

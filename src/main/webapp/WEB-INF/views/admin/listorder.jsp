@@ -136,14 +136,14 @@
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                     <tr>
-                                        <th>OrderId</th>
-                                        <th>Customer Name</th>
-                                        <th>Order Date</th>
-                                        <th>Note</th>
-                                        <th>Phone</th>
-                                        <th>Ship To</th>
-                                        <th>Detail</th>
-                                        <th>Status</th>
+                                        <th>Mã đơn hàng</th>
+                                        <th>Tên khách hàng</th>
+                                        <th>Ngày đặt hàng</th>
+                                        <th>Ghi chú</th>
+                                        <th>SĐT</th>
+                                        <th>Giao đến</th>
+                                        <th>Chi tiết</th>
+                                        <th>Trạng thái đơn hàng</th>
                                         <th>
                                             <div class="d-flex justify-content-sm-center">Chuyển trạng thái</div>
                                         </th>

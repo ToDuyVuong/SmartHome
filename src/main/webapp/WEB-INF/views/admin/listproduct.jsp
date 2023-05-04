@@ -166,18 +166,15 @@
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                     <tr>
-                                        <th>ID</th>
-                                        <th>Name</th>
-                                        <th>Description</th>
-                                        <th>Image</th>
-                                        <th>Price</th>
-                                        <th>Quantity</th>
-                                        <th>Category ID</th>
+                                        <th>Mã sản phẩm</th>
+                                        <th>Tên Sản phẩm</th>
+                                        <th>Mô tả</th>
+                                        <th>Hình ảnh</th>
+                                        <th>Đơn giá</th>
+                                        <th>Số lượng</th>
+                                        <th>Mã danh mục</th>
                                         <th>
-                                            <div class="d-flex justify-content-sm-center">Xoá</div>
-                                        </th>
-                                        <th>
-                                            <div class="d-flex justify-content-sm-center">Chỉnh sửa</div>
+                                            <div class="d-flex justify-content-sm-center">Thao tác</div>
                                         </th>
                                     </tr>
                                     </thead>
@@ -201,9 +198,7 @@
                                                         <span class="text">Xoá</span>
                                                     </a>
                                                 </div>
-                                            </td>
-                                            <td>
-                                                <div class="d-flex justify-content-sm-center">
+                                                <div class="d-flex justify-content-sm-center mt-2">
                                                     <a href="/admin/editProduct/${t.productId}"
                                                        class="btn btn-info btn-icon-split ">
                                                         <span class="icon text-white-50 ">
