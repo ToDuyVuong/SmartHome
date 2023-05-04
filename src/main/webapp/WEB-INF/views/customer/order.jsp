@@ -280,7 +280,7 @@
                                                         <div class="media-body  my-auto">
                                                             <div class="row ">
                                                                 <div class="col-auto"><p class="mb-0">
-                                                                    <b >${item.products.name.substring(0, 45)}</b></p>
+                                                                    <b >${item.products.name.substring(0, 20)}</b></p>
                                                                     <small class="text-muted"
                                                                            id="description-${item.products.productId}">
                                                                             ${item.products.description}</small>
