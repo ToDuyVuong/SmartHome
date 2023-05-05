@@ -11,9 +11,9 @@ Thành viên nhóm 8:
 ## Công nghệ, thư viện sử dụng:
 
 - Framework SpringBoot
-- JSP, Thymeleaf
+- HTML, CSS, JSP
 - MySQL
-
+- Mẫu thiết kế: Factory Pattern + Strategy pattern
 <hr>
 
 # RUN APP
@@ -22,9 +22,16 @@ git clone https://github.com/ToDuyVuong/SmartHome.git
 
 ## B2: Cấu hình database
 
-- Tạo database tên "smarthome_db" trong MYSQL Server và cấu hình properties file.
-- Có thể sử dụng file "smarthome_db.sql" trong thư mục Documentation/data để import dữ liệu.
+- Tạo database tên "smarthome_mtkpm" trong MYSQL Server và cấu hình properties file.
+
+- Dùng file smarthome_mtkpm.sql để backup dữ liệu
 
 ## B3: Chạy lệnh khởi động || hoặc chạy bằng IDE
 
 - ./mvnw spring-boot:run
+
+# Đường dẫn mặc định
+ - Trang chủ: http://localhost:8080
+ - Trang login admin và customer: http://localhost:8080/login
+   + Tài khoản admin: TK: admin; MK: admin
+ - Trang sản phẩm: http://localhost:8080/product
